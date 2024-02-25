@@ -1,0 +1,32 @@
+Number of packet: 7220
+Finish parsing aimchat pcap files ... for 2s
+Number of packet: 60271
+Finish parsing email pcap files ... for 14s
+Number of packet: 2533981
+Finish parsing facebook pcap files ... for 451s
+Number of packet: 8064067
+Finish parsing ftps pcap files ... for 2729s
+Number of packet: 12239
+Finish parsing gmail pcap files ... for 1024s
+Number of packet: 4737056
+Finish parsing hangouts pcap files ... for 864s
+Number of packet: 11995
+Finish parsing icq pcap files ... for 35s
+Number of packet: 1169137
+Finish parsing netflix pcap files ... for 139s
+Number of packet: 825510
+Finish parsing scp pcap files ... for 152s
+Number of packet: 976010
+Finish parsing sftp pcap files ... for 158s
+Number of packet: 4549880
+Finish parsing skype pcap files ... for 818s
+Number of packet: 156783
+Finish parsing spotify pcap files ... for 71s
+Number of packet: 422074
+Finish parsing bittorrent pcap files ... for 47s
+Number of packet: 1564530
+Finish parsing voipbuster pcap files ... for 251s
+Number of packet: 466259
+Finish parsing vimeo pcap files ... for 66s
+Number of packet: 460202
+Finish parsing youtube pcap files ... for 62s

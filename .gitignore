@@ -1,0 +1,3 @@
+# Project exclude paths
+__pycache__/
+/data/datasets/iscx2016vpn-pytorch/*
