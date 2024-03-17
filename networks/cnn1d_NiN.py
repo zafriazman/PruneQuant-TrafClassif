@@ -16,30 +16,30 @@ class NiN_CNN1D_TrafficClassification_with_auxiliary(nn.Module):
         super().__init__()
         
         # Block 1
-        self.conv1 = nn.Conv1d(in_channels=input_ch, out_channels=16, kernel_size=2, stride=2, padding='valid')
+        self.conv1 = nn.Conv1d(in_channels=input_ch, out_channels=16, kernel_size=2, stride=2, padding=0)
         self.bn1 = nn.BatchNorm1d(16)
-        self.conv2 = nn.Conv1d(in_channels=16, out_channels=16, kernel_size=1, stride=1, padding='same')
-        self.conv3 = nn.Conv1d(in_channels=16, out_channels=16, kernel_size=1, stride=1, padding='same')
+        self.conv2 = nn.Conv1d(in_channels=16, out_channels=16, kernel_size=1, stride=1, padding=0)
+        self.conv3 = nn.Conv1d(in_channels=16, out_channels=16, kernel_size=1, stride=1, padding=0)
         self.bn2 = nn.BatchNorm1d(16)
-        self.submod1 = nn.Conv1d(in_channels=16, out_channels=num_classes, kernel_size=1, stride=1, padding='same')
+        self.submod1 = nn.Conv1d(in_channels=16, out_channels=num_classes, kernel_size=1, stride=1, padding=0)
         
         # Block 2
-        self.conv4 = nn.Conv1d(in_channels=16, out_channels=32, kernel_size=2, stride=2, padding='valid')
+        self.conv4 = nn.Conv1d(in_channels=16, out_channels=32, kernel_size=2, stride=2, padding=0)
         self.bn3 = nn.BatchNorm1d(32)
-        self.conv5 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=1, stride=1, padding='same')
-        self.conv6 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=1, stride=1, padding='same')
+        self.conv5 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=1, stride=1, padding=0)
+        self.conv6 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=1, stride=1, padding=0)
         self.bn4 = nn.BatchNorm1d(32)
-        self.submod2 = nn.Conv1d(in_channels=32, out_channels=num_classes, kernel_size=1, stride=1, padding='same')
+        self.submod2 = nn.Conv1d(in_channels=32, out_channels=num_classes, kernel_size=1, stride=1, padding=0)
 
         # Block 3
-        self.conv7 = nn.Conv1d(in_channels=32, out_channels=64, kernel_size=2, stride=2, padding='valid')
+        self.conv7 = nn.Conv1d(in_channels=32, out_channels=64, kernel_size=2, stride=2, padding=0)
         self.bn5 = nn.BatchNorm1d(64)
-        self.conv8 = nn.Conv1d(in_channels=64, out_channels=64, kernel_size=1, stride=1, padding='same')
-        self.conv9 = nn.Conv1d(in_channels=64, out_channels=64, kernel_size=1, stride=1, padding='same')
+        self.conv8 = nn.Conv1d(in_channels=64, out_channels=64, kernel_size=1, stride=1, padding=0)
+        self.conv9 = nn.Conv1d(in_channels=64, out_channels=64, kernel_size=1, stride=1, padding=0)
         self.bn6 = nn.BatchNorm1d(64)
-        self.submod3 = nn.Conv1d(in_channels=64, out_channels=num_classes, kernel_size=1, stride=1, padding='same')
+        self.submod3 = nn.Conv1d(in_channels=64, out_channels=num_classes, kernel_size=1, stride=1, padding=0)
 
-        self.conv10 = nn.Conv1d(in_channels=64, out_channels=num_classes, kernel_size=1, stride=1, padding='same')
+        self.conv10 = nn.Conv1d(in_channels=64, out_channels=num_classes, kernel_size=1, stride=1, padding=0)
         
         # Generic layer
         self.relu = nn.ReLU()
@@ -94,27 +94,27 @@ class NiN_CNN1D_TrafficClassification(nn.Module):
         super().__init__()
         
         # Block 1
-        self.conv1 = nn.Conv1d(in_channels=input_ch, out_channels=16, kernel_size=2, stride=2, padding='valid')
+        self.conv1 = nn.Conv1d(in_channels=input_ch, out_channels=16, kernel_size=2, stride=2, padding=0)
         self.bn1 = nn.BatchNorm1d(16)
-        self.conv2 = nn.Conv1d(in_channels=16, out_channels=16, kernel_size=1, stride=1, padding='same')
-        self.conv3 = nn.Conv1d(in_channels=16, out_channels=16, kernel_size=1, stride=1, padding='same')
+        self.conv2 = nn.Conv1d(in_channels=16, out_channels=16, kernel_size=1, stride=1, padding=0)
+        self.conv3 = nn.Conv1d(in_channels=16, out_channels=16, kernel_size=1, stride=1, padding=0)
         self.bn2 = nn.BatchNorm1d(16)
         
         # Block 2
-        self.conv4 = nn.Conv1d(in_channels=16, out_channels=32, kernel_size=2, stride=2, padding='valid')
+        self.conv4 = nn.Conv1d(in_channels=16, out_channels=32, kernel_size=2, stride=2, padding=0)
         self.bn3 = nn.BatchNorm1d(32)
-        self.conv5 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=1, stride=1, padding='same')
-        self.conv6 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=1, stride=1, padding='same')
+        self.conv5 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=1, stride=1, padding=0)
+        self.conv6 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=1, stride=1, padding=0)
         self.bn4 = nn.BatchNorm1d(32)
 
         # Block 3
-        self.conv7 = nn.Conv1d(in_channels=32, out_channels=64, kernel_size=2, stride=2, padding='valid')
+        self.conv7 = nn.Conv1d(in_channels=32, out_channels=64, kernel_size=2, stride=2, padding=0)
         self.bn5 = nn.BatchNorm1d(64)
-        self.conv8 = nn.Conv1d(in_channels=64, out_channels=64, kernel_size=1, stride=1, padding='same')
-        self.conv9 = nn.Conv1d(in_channels=64, out_channels=64, kernel_size=1, stride=1, padding='same')
+        self.conv8 = nn.Conv1d(in_channels=64, out_channels=64, kernel_size=1, stride=1, padding=0)
+        self.conv9 = nn.Conv1d(in_channels=64, out_channels=64, kernel_size=1, stride=1, padding=0)
         self.bn6 = nn.BatchNorm1d(64)
 
-        self.conv10 = nn.Conv1d(in_channels=64, out_channels=num_classes, kernel_size=1, stride=1, padding='same')
+        self.conv10 = nn.Conv1d(in_channels=64, out_channels=num_classes, kernel_size=1, stride=1, padding=0)
 
         self.relu = nn.ReLU()
 

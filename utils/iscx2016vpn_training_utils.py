@@ -134,12 +134,13 @@ class SaveBestModel:
             self.best_valid_loss = current_valid_loss
             print(f"\nBest validation loss: {self.best_valid_loss}")
             print(f"\nSaving best model for epoch: {epoch+1}\n")
+            model_name = model.__class__.__name__
             torch.save({
                 'epoch': epoch+1,
                 'state_dict': model.state_dict(),
                 'optimizer_state_dict': optimizer.state_dict(),
                 'loss': criterion,
-                }, os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'best_model.pth'))
+                }, os.path.join('networks', 'pretrained_models', 'iscx2016vpn', (model_name+'_best_model.pth')))
 
 
 
@@ -257,7 +258,7 @@ if __name__ == '__main__':
     test_ratio  = 1.0 - train_ratio - val_ratio
     train_loader, valid_loader, test_loader, classes = create_data_loaders_iscx2016vpn(
         os.path.join('data', 'datasets', 'iscx2016vpn-pytorch'),
-        batch_size=1024,
+        batch_size=int(args.batch_size),
         n_worker=0,
         train_ratio=train_ratio,
         val_ratio=val_ratio
@@ -269,16 +270,18 @@ if __name__ == '__main__':
         model = NiN_CNN1D_TrafficClassification_with_auxiliary(input_ch=1, num_classes=classes).to(device)
     else:
         model = CNN1D_TrafficClassification(input_ch=1, num_classes=classes).to(device)
+        
 
     # load best model if it exist / checkpoint
-    prev_path = Path(os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'best_model.pth'))
+    model_name = model.__class__.__name__
+    prev_path = Path(os.path.join('networks', 'pretrained_models', 'iscx2016vpn', (model_name+'_best_model.pth')))
     if (prev_path.is_file() == True):
         print(f"Previous trained model exist at {prev_path}\n")
         print("Loading the model...")
         model.load_state_dict(torch.load(prev_path), strict=False)
 
     # hyperparameter for training
-    optimizer = optim.Adam(model.parameters(), lr=args.lr)
+    optimizer = optim.Adam(model.parameters(), lr=float(args.lr))
     criterion = nn.CrossEntropyLoss()
 
     # Start the training.
@@ -297,7 +300,7 @@ if __name__ == '__main__':
         save_best_model(valid_epoch_loss, epoch, model, optimizer, criterion) # save the best model in this current epoch
 
     # Save the loss and accuracy plots.
-    save_plots(train_acc, valid_acc, train_loss, valid_loss, name='CNN1D_Model')
+    save_plots(train_acc, valid_acc, train_loss, valid_loss, name=model_name)
     print(f"TRAINING COMPLETE")
     print(f"Training ratio :{train_ratio}")
     print(f"Val ratio      :{val_ratio}")
@@ -309,10 +312,11 @@ if __name__ == '__main__':
     else:
         inf_model = CNN1D_TrafficClassification(input_ch=1, num_classes=classes).to(device)
 
+    model_name = inf_model.__class__.__name__
     checkpoint = torch.load(prev_path, map_location=device)
     sd = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
     inf_model.load_state_dict(sd, strict=False)
     test_loss, test_acc = validate(inf_model, test_loader, criterion, device)
-    torch.save(inf_model.state_dict(), os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'best_model_without_aux.pth'))
+    torch.save(inf_model.state_dict(), os.path.join('networks', 'pretrained_models', 'iscx2016vpn', (model_name+'_best_model_without_aux.pth')))
     
     print(f"Acc on unseen test data (not validation dataset): {test_acc}")
