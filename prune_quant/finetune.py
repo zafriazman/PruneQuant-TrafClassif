@@ -1,0 +1,137 @@
+import os
+import sys
+import time
+import torch
+import argparse
+import torch.nn as nn
+import torch.optim as optim
+import torch.nn.utils.prune as prune
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from tqdm import tqdm
+from pytorch_quantization import quant_modules
+from networks.cnn1d import CNN1D_TrafficClassification
+from utils.iscx2016vpn_training_utils import create_data_loaders_iscx2016vpn
+from prune_quant.quant_utils import evaluate, save_model_state_dict, load_fp32_model, benchmark_against_NiN
+from prune_quant.prune import prune_permenantly
+from prune_quant.quant_convert import convert_to_onnx
+
+
+def finetune(net, train_loader, val_loader, epochs, lr, current_val_loss, action_prune, action_quant, device):
+
+    net.to(device)
+    qat_optimizer = optim.SGD(net.parameters(), lr=lr)
+    qat_criterion = nn.CrossEntropyLoss().to(device)   # training settings
+
+    for epoch in range(0, epochs):
+
+        net.train()
+        epoch_loss = 0
+        epoch_acc = 0
+        train_running_loss = 0.0
+        train_running_correct = 0
+        counter = 0
+
+        for i, data in tqdm(enumerate(train_loader), total=len(train_loader)):
+
+            counter += 1
+            rawpacket, labels = data
+            rawpacket = rawpacket.to(device)
+            labels = labels.to(device)
+            qat_optimizer.zero_grad()
+
+            # Forward pass.
+            outputs = net(rawpacket)
+
+            # Calculate the loss.
+            loss = qat_criterion(outputs, labels)
+            train_running_loss += loss.item()
+
+            # Calculate the accuracy.
+            _, preds = torch.max(outputs.data, 1)   # highest probability along 2nd dimension [1] which is the class
+            train_running_correct += (preds == labels).sum().item()
+
+            # Backpropagation
+            loss.backward()
+
+            # Update the weights.
+            qat_optimizer.step()
+        
+        # Loss and accuracy for the complete epoch.
+        epoch_loss = train_running_loss / counter
+        epoch_acc = 100. * (train_running_correct / len(train_loader.dataset))
+
+        print(f"Epoch {epoch}: Training loss: {epoch_loss:.3f}, training acc: {epoch_acc:.3f}")
+        val_loss, val_acc, _ = evaluate(net, val_loader, qat_criterion, device)
+        print(f"Epoch {epoch}: Validation loss: {val_loss:.3f}, validation acc: {val_acc:.3f}")
+
+        # Save the model
+        if val_loss < current_val_loss:
+            print(f"Saving best model with {val_acc}% validation acc")
+            save_model_state_dict(net, action_prune, action_quant)
+
+
+
+if __name__ == "__main__":
+
+    # Set hyperparameters
+    start_time  = time.time()
+    device      = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    n_worker    = 0
+    train_ratio = 0.65
+    val_ratio   = 0.15
+    dataset     = os.path.join('data', 'datasets', 'iscx2016vpn-pytorch')
+    parser      = argparse.ArgumentParser()
+    criterion   = nn.CrossEntropyLoss()
+    parser.add_argument('--epochs', default=120, help='train with how many epochs')
+    parser.add_argument('--batch_size', default=1, help='desired batch size to deploy the compressed model')
+    parser.add_argument('--dataset', default='iscx2016vpn', help='which dataset to train on')
+    parser.add_argument('--lr', default=0.001, help='learning rate')
+    parser.add_argument('--eval_trt', default='false', help='only set this to \'true\' after converting onnx to trt engine')
+    args = parser.parse_args()
+    inf_batch_size = int(args.batch_size)
+    train_loader, valid_loader, test_loader, classes = create_data_loaders_iscx2016vpn(dataset, inf_batch_size, n_worker, train_ratio, val_ratio)
+    example_inputs = (next(iter(test_loader))[0]).to(device)
+
+
+    # Check whether to benchmark the trt model or to finetune
+    if args.eval_trt == "true":
+        trt_engine_path = os.path.join("networks","quantized_models","iscx2016vpn","model_engine.trt")
+        path_own_model  = os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
+        path_NiN_model  = os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'NiN_CNN1D_TrafficClassification_best_model_without_aux.pth')
+        net             = load_fp32_model(path=path_own_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
+        net_NiN         = load_fp32_model(path=path_NiN_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
+        benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
+        exit()
+
+
+    # Load prune and quantized model
+    quant_modules.initialize()
+    net          = CNN1D_TrafficClassification(input_ch=example_inputs.shape[1], num_classes=classes).to(device)
+    checkpoint   = torch.load(os.path.join("networks","quantized_models","iscx2016vpn", "model.pt"), map_location=device)
+    action_prune = checkpoint['action_prune']
+    action_quant = checkpoint['action_quant']
+    for name, module in net.named_modules():
+        if isinstance(module, torch.nn.Conv1d): # dummy pruning to add masks
+            prune.ln_structured(module, name='weight', amount=0., n=2, dim=0)   
+    sd = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+    net.load_state_dict(sd, strict=True)
+
+
+    # Get model's accuracy with targeted inference batch_size
+    best_acc = 0
+    current_loss, current_acc, _ = evaluate(net, valid_loader, criterion, device)
+    print(f"Current accuracy is: {current_acc:.2f}%")
+
+
+    # Finetune model
+    finetune(net, train_loader, valid_loader, int(args.epochs), float(args.lr), current_loss, action_prune, action_quant, device)
+
+
+    # Save as onnx
+    prune_permenantly(net)
+    onnx_path       = os.path.join("networks","quantized_models","iscx2016vpn","model.onnx")
+    convert_to_onnx(net, example_inputs, onnx_path)
+    print(f"Export model as onnx at {onnx_path}")
+    print("Please run trtexec to convert to .trt engine")
+
