@@ -2,34 +2,45 @@
 
 PruneQuant-TrafClassif simplifies traffic classification using the ISCXVPN2016 dataset. Follow these steps to get started.
 
-## Dataset Preparation
 
-1. **Download Dataset**: Get ISCX2016VPN from [UNB datasets](https://www.unb.ca/cic/datasets/vpn.html). Cite the dataset using the provided reference.
+&nbsp;
+&nbsp;
+&nbsp;
+
+## 1 - Dataset Preparation
+
+1. **Download Dataset**: Get ISCX2016VPN from [UNB datasets](https://www.unb.ca/cic/datasets/vpn.html).
 
 2. **Extract PCAP Files**:
-   Extract `.pcap` or `.pcappng` files into `repo/data/datasets/iscx2016vpn-extracted-pcaps/`
+   Extract `.pcap` and `.pcappng` files into `repo/data/datasets/iscx2016vpn-extracted-pcaps/`
 
 3. **Preprocess Data**:
    Run `python utils/preprocess_iscx2016vpn.py` to preprocess packet files to DL friendly format.
 
-## Training
+&nbsp;
+&nbsp;
+&nbsp;
 
-Execute the training script. Adjust --epochs and --batch_size as needed.
+
+## 2 - Training
+
+Execute the training script:
 ```bash
 python utils/iscx2016vpn_training_utils.py --NiN_model false --epochs 250 --batch_size 128
 ```
 
 ## Search for best pruning and quantization strategy
-To remove 60% of the filters, execute
+To prune 20% of the filters and quantize to 8 bit, execute:
 ```bash
-python auto_prune_quant.py --dataset iscx2016vpn --model CNN1D_TrafficClassification --prune_ratio 0.6 --qat_epochs 1 --data_bsize 1024 --max_episodes 200
-python auto_prune_quant.py --dataset iscx2016vpn --model CNN1D_TrafficClassification --prune_ratio 0.1 --qat_epochs 5 --data_bsize 1024 --seed 2024 --action_std 0.3 | tee logs/prune0.1_qatepch5_bsize1024_actionstd0.3.txt
+python auto_prune_quant.py --dataset iscx2016vpn --model CNN1D_TrafficClassification --prune_ratio 0.2 --qat_epochs 5 --data_bsize 1024 --seed 2024 --action_std 0.5 --max_episodes 1000 | tee logs/prune0.20_qatepch5_bsize1024_actionstd0.5_maxepsd1000.txt
 ```
 
+&nbsp;
+&nbsp;
+&nbsp;
 
 
-
-## Finetuning and Inferencing
+## 3 - Finetuning and Inferencing
 
 Improve model accuracy by finetuning with optimal settings. Adjust parameters such as batch size (--batch_size), epochs (--epochs), and learning rate (--lr). This generates an ONNX model.
 ```bash
