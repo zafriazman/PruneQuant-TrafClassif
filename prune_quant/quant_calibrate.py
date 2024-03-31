@@ -36,7 +36,8 @@ def collect_stats(model, data_loader, num_batches):
                 module.disable()
 
     # Feed data to the network for collecting stats
-    for i, (rawpacket, _) in tqdm(enumerate(data_loader), total=num_batches):
+    #for i, (rawpacket, _) in tqdm(enumerate(data_loader), total=num_batches):
+    for i, (rawpacket, _) in enumerate(data_loader):
         model(rawpacket.cuda())
         if i >= num_batches:
             break
@@ -50,10 +51,10 @@ def collect_stats(model, data_loader, num_batches):
             else:
                 module.enable()
 
-def qat_train(quantized_net, data_loader, epochs, device):
+def qat_train(quantized_net, data_loader, epochs, device, lr, qat_momentum, qat_wd):
 
     quantized_net.to(device)
-    qat_optimizer = optim.SGD(quantized_net.parameters(), lr=0.01)
+    qat_optimizer = optim.SGD(quantized_net.parameters(), lr, qat_momentum, qat_wd)
     qat_criterion = nn.CrossEntropyLoss().to(device)   # training settings
 
     """ for rawpacket, label in data_loader:
@@ -70,7 +71,8 @@ def qat_train(quantized_net, data_loader, epochs, device):
         train_running_correct = 0
         counter = 0
 
-        for i, data in tqdm(enumerate(data_loader), total=len(data_loader)):
+        for data in data_loader:
+        #for i, data in tqdm(enumerate(data_loader), total=len(data_loader)):
 
             counter += 1
             rawpacket, labels = data
@@ -99,5 +101,5 @@ def qat_train(quantized_net, data_loader, epochs, device):
         epoch_loss = train_running_loss / counter
         epoch_acc = 100. * (train_running_correct / len(data_loader.dataset))
 
-        print(f"Epoch {epoch}: Training loss: {epoch_loss:.3f}, training acc: {epoch_acc:.3f}")
+        #print(f"Epoch {epoch}: Training loss: {epoch_loss:.3f}, training acc: {epoch_acc:.3f}")
     

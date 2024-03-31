@@ -17,10 +17,10 @@ from prune_quant.prune import prune_permenantly
 from prune_quant.quant_convert import convert_to_onnx
 
 
-def finetune(net, train_loader, val_loader, epochs, lr, current_val_loss, action_prune, action_quant, device):
+def finetune(net, train_loader, val_loader, dataset_name, model_name, epochs, lr, qat_momentum, qat_wd, current_val_loss, preserve_array_prune, bitwidths, device):
 
     net.to(device)
-    qat_optimizer = optim.SGD(net.parameters(), lr=lr)
+    qat_optimizer = optim.SGD(net.parameters(), lr, qat_momentum, qat_wd)
     qat_criterion = nn.CrossEntropyLoss().to(device)   # training settings
 
     for epoch in range(0, epochs):
@@ -68,7 +68,8 @@ def finetune(net, train_loader, val_loader, epochs, lr, current_val_loss, action
         # Save the model
         if val_loss < current_val_loss:
             print(f"Saving best model with {val_acc}% validation acc")
-            save_model_state_dict(net, action_prune, action_quant)
+            save_model_state_dict(net, dataset_name, model_name, preserve_array_prune, bitwidths)
+
 
 
 
@@ -87,6 +88,8 @@ if __name__ == "__main__":
     parser.add_argument('--batch_size', default=1, help='desired batch size to deploy the compressed model')
     parser.add_argument('--dataset', default='iscx2016vpn', help='which dataset to train on')
     parser.add_argument('--lr', default=0.001, help='learning rate')
+    parser.add_argument('--qat_momentum', default=0.9, type=float, help='momentum for quantize aware training')
+    parser.add_argument('--qat_wd', default=4e-5, type=float, help='weight decay for quantize aware training')
     parser.add_argument('--eval_trt', default='false', help='only set this to \'true\' after converting onnx to trt engine')
     args = parser.parse_args()
     inf_batch_size = int(args.batch_size)
@@ -108,9 +111,10 @@ if __name__ == "__main__":
     # Load prune and quantized model
     quant_modules.initialize()
     net          = CNN1D_TrafficClassification(input_ch=example_inputs.shape[1], num_classes=classes).to(device)
-    checkpoint   = torch.load(os.path.join("networks","quantized_models","iscx2016vpn", "model.pt"), map_location=device)
-    action_prune = checkpoint['action_prune']
-    action_quant = checkpoint['action_quant']
+    model_name   = net.__class__.__name__
+    checkpoint   = torch.load(os.path.join("networks","quantized_models","iscx2016vpn", f"{model_name}_{args.dataset}.pt"), map_location=device)
+    preserve_array_prune = checkpoint['preserve_array_prune']
+    bitwidths = checkpoint['bitwidths']
     for name, module in net.named_modules():
         if isinstance(module, torch.nn.Conv1d): # dummy pruning to add masks
             prune.ln_structured(module, name='weight', amount=0., n=2, dim=0)   
@@ -125,7 +129,9 @@ if __name__ == "__main__":
 
 
     # Finetune model
-    finetune(net, train_loader, valid_loader, int(args.epochs), float(args.lr), current_loss, action_prune, action_quant, device)
+    finetune(net, train_loader, valid_loader, str(args.dataset), model_name,
+             int(args.epochs), float(args.lr), float(args.qat_momentum), float(args.qat_wd), 
+             current_loss, preserve_array_prune, bitwidths, device)
 
 
     # Save as onnx

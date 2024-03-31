@@ -19,6 +19,13 @@ Execute the training script. Adjust --epochs and --batch_size as needed.
 python utils/iscx2016vpn_training_utils.py --NiN_model false --epochs 250 --batch_size 128
 ```
 
+## Search for best pruning and quantization strategy
+To remove 60% of the filters, execute
+```bash
+python auto_prune_quant.py --dataset iscx2016vpn --model CNN1D_TrafficClassification --prune_ratio 0.6 --qat_epochs 1 --data_bsize 1024 --max_episodes 200
+python auto_prune_quant.py --dataset iscx2016vpn --model CNN1D_TrafficClassification --prune_ratio 0.1 --qat_epochs 5 --data_bsize 1024 --seed 2024 --action_std 0.3 | tee logs/prune0.1_qatepch5_bsize1024_actionstd0.3.txt
+```
+
 
 
 
@@ -30,9 +37,9 @@ python prune_quant/finetune.py --epochs 25 --lr 0.001 --batch_size 32
 ```
 Convert the ONNX model to a TensorRT (.trt) engine:
 ```bash
-trtexec --int8 --onnx=networks/quantized_models/iscx2016vpn/model.onnx --saveEngine=networks/quantized_models/iscx2016vpn/model_engine.trt
+trtexec --onnx=networks/quantized_models/iscx2016vpn/model.onnx --saveEngine=networks/quantized_models/iscx2016vpn/model_engine.trt --int8 
 ```
-Evaluate the performance and accuracy of the TensorRT engine (use same batch_size as finetuning):
+Evaluate the performance and accuracy of the TensorRT engine (use a batch size comparable to that used during fine-tuning):
 ```bash
-python prune_quant/finetune.py --batch_size 32 --eval_trt true
+python prune_quant/finetune.py --batch_size 1 --eval_trt true
 ```

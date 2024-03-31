@@ -1,0 +1,11 @@
+A lot of the Reinforcement Learning (RL) component was modified from:
+https://github.com/yusx-swapp/GNN-RL-Model-Compression
+
+@inproceedings{yu2022topology,
+  title={Topology-aware network pruning using multi-stage graph embedding and reinforcement learning},
+  author={Yu, Sixing and Mazaheri, Arya and Jannesari, Ali},
+  booktitle={International conference on machine learning},
+  pages={25656--25667},
+  year={2022},
+  organization={PMLR}
+}

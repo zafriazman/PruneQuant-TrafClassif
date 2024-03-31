@@ -17,4 +17,4 @@ def convert_to_onnx(prune_quant_net, example_inputs, onnx_path):
         
     # my Shell command to run trtexec for converting .onnx to .trt engine
     cmd1 = 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/zafri/anaconda3/envs/cuda12:/home/zafri/anaconda3/envs/cuda12/lib'
-    cmd2 = '/home/zafri/anaconda3/envs/cuda12/TensorRT-8.6.1.6/bin/trtexec --int8 --onnx=networks/quantized_models/iscx2016vpn/model.onnx --saveEngine=networks/quantized_models/iscx2016vpn/model_engine.trt'
+    cmd2 = '/home/zafri/anaconda3/envs/cuda12/TensorRT-8.6.1.6/bin/trtexec --onnx=networks/quantized_models/iscx2016vpn/model.onnx --saveEngine=networks/quantized_models/iscx2016vpn/model_engine.trt --int8'

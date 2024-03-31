@@ -74,7 +74,6 @@ def evaluate_trt(engine_path, dataloader, batch_size, num_classes):
 def evaluate(model, dataloader, criterion, device):
 
     model.eval()
-    print('Validation')
     valid_running_loss = 0.0
     valid_running_correct = 0
     counter = 0
@@ -132,13 +131,14 @@ def print_size_of_model(model):
 
 
 
-def save_model_state_dict(model, action_prune, action_quant):
+def save_model_state_dict(model, model_name, dataset, preserve_array_prune, bitwidth_array):
     content = {
-        'state_dict'  : model.state_dict(),
-        'action_prune': action_prune,
-        'action_quant': action_quant
+        'state_dict'          : model.state_dict(),
+        'preserve_array_prune': preserve_array_prune,
+        'bitwidths'           : bitwidth_array
     }
-    checkpoint = os.path.join("networks","quantized_models","iscx2016vpn", "model.pt")
+    checkpoint = os.path.join("networks","quantized_models","iscx2016vpn", f"{model_name}_{dataset}.pt")
+    print(f"Saving state_dict checkpoint with masks for finetuning at {checkpoint}")
     torch.save(content, checkpoint)
 
 
@@ -173,8 +173,8 @@ def benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, batch_size
 
     # My model (baseline on CPU)
     start_time_inf_cpu             = time.time()
-    _, test_acc_cpu, time_cpu    = evaluate(net.cpu(), test_loader, criterion, torch.device("cpu"))
-    cpu_inf_time                  = time.time() - start_time_inf_fp32
+    _, test_acc_cpu, time_cpu      = evaluate(net.cpu(), test_loader, criterion, torch.device("cpu"))
+    cpu_inf_time                   = time.time() - start_time_inf_cpu
     
     # prune and quantized model
     start_time_inf               = time.time()
