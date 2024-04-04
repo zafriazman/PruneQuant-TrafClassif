@@ -58,7 +58,7 @@ python auto_prune_quant.py --dataset iscx2016vpn --model CNN1D_TrafficClassifica
 
 ## 4 - Finetuning and Inferencing
 
-Improve model accuracy by finetuning with optimal settings. Adjust parameters such as batch size (--batch_size), epochs (--epochs), and learning rate (--lr). This generates an ONNX model. Change dataset argument from `iscx2016vpn`  to `ustctfc2016` accordingly
+Improve model accuracy by finetuning with optimal settings. This generates an ONNX model. Change dataset argument from `iscx2016vpn` to `ustctfc2016` accordingly
 ```bash
 python prune_quant/finetune.py --dataset iscx2016vpn --epochs 25 --lr 0.001 --batch_size 32
 ```
