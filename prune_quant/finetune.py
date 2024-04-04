@@ -80,8 +80,6 @@ if __name__ == "__main__":
     start_time  = time.time()
     device      = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     n_worker    = 0
-    train_ratio = 0.65
-    val_ratio   = 0.15
     parser      = argparse.ArgumentParser()
     criterion   = nn.CrossEntropyLoss()
     parser.add_argument('--epochs', default=120, help='train with how many epochs')
@@ -95,8 +93,12 @@ if __name__ == "__main__":
     inf_batch_size = int(args.batch_size)
     if args.dataset == "iscx2016vpn":
         dataset     = os.path.join('data', 'datasets', 'iscx2016vpn-pytorch')
+        train_ratio = 0.65
+        val_ratio   = 0.15
     elif args.dataset == "ustctfc2016":
         dataset     = os.path.join('data', 'datasets', 'ustc-tfc2016-pytorch')
+        train_ratio = 0.8
+        val_ratio   = 0.1
     train_loader, valid_loader, test_loader, classes = create_data_loaders(dataset, inf_batch_size, n_worker, train_ratio, val_ratio)
     example_inputs = (next(iter(test_loader))[0]).to(device)
 
