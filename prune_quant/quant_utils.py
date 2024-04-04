@@ -137,7 +137,10 @@ def save_model_state_dict(model, model_name, dataset, preserve_array_prune, bitw
         'preserve_array_prune': preserve_array_prune,
         'bitwidths'           : bitwidth_array
     }
-    checkpoint = os.path.join("networks","quantized_models","iscx2016vpn", f"{model_name}_{dataset}.pt")
+    if dataset == "iscx2016vpn":
+        checkpoint = os.path.join("networks","quantized_models","iscx2016vpn", f"{model_name}_{dataset}.pt")
+    elif dataset == "ustctfc2016":
+        checkpoint = os.path.join("networks","quantized_models","ustc-tfc2016", f"{model_name}_{dataset}.pt")
     print(f"Saving state_dict checkpoint with masks for finetuning at {checkpoint}")
     torch.save(content, checkpoint)
 

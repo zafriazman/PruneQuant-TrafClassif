@@ -1,0 +1,59 @@
+Number of packet: 15000
+Finish parsing BitTorrent pcap files ... for 2s
+
+Number of packet: 449980
+Finish parsing Cridex pcap files ... for 37s
+
+Number of packet: 6000
+Finish parsing Facetime pcap files ... for 2s
+
+Number of packet: 360000
+Finish parsing FTP pcap files ... for 35s
+
+Number of packet: 168230
+Finish parsing Geodo pcap files ... for 27s
+
+Number of packet: 25000
+Finish parsing Gmail pcap files ... for 4s
+
+Number of packet: 163747
+Finish parsing Htbot pcap files ... for 16s
+
+Number of packet: 72701
+Finish parsing Miuref pcap files ... for 9s
+
+Number of packet: 200000
+Finish parsing MySQL pcap files ... for 20s
+
+Number of packet: 496978
+Finish parsing Neris pcap files ... for 54s
+
+Number of packet: 351229
+Finish parsing Nsis-ay pcap files ... for 38s
+
+Number of packet: 15000
+Finish parsing Outlook pcap files ... for 3s
+
+Number of packet: 258643
+Finish parsing Shifu pcap files ... for 79s
+
+Number of packet: 12000
+Finish parsing Skype pcap files ... for 5s
+
+Number of packet: 925452
+Finish parsing SMB pcap files ... for 114s
+
+Number of packet: 20388
+Finish parsing Tinba pcap files ... for 10s
+
+Number of packet: 437227
+Finish parsing Virut pcap files ... for 40s
+
+Number of packet: 1210059
+Finish parsing Weibo pcap files ... for 125s
+
+Number of packet: 140000
+Finish parsing WorldOfWarcraft pcap files ... for 20s
+
+Number of packet: 86190
+Finish parsing Zeus pcap files ... for 9s

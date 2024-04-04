@@ -14,7 +14,7 @@ from RL.environment import RL_env
 from parameter import parse_args
 from prune_quant.quant_utils import load_fp32_model
 from utils.net_info import get_num_hidden_layer
-from utils.iscx2016vpn_training_utils import create_data_loaders_iscx2016vpn
+from utils.training_utils import create_data_loaders
 
 logging.disable(30)
 torch.backends.cudnn.deterministic = True
@@ -102,21 +102,31 @@ if __name__ == "__main__":
     device          = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     batch_size      = args.data_bsize
     n_worker        = args.n_worker
-    train_ratio     = 0.65
-    val_ratio       = 0.15
-    dataset         = os.path.join('data', 'datasets', 'iscx2016vpn-pytorch')
-
+    
+    
 
     # Load dataset
     if args.dataset == "iscx2016vpn":
-        train_loader, val_loader, test_loader, classes = create_data_loaders_iscx2016vpn(dataset, batch_size, n_worker, train_ratio, val_ratio)
+        dataset         = os.path.join('data', 'datasets', 'iscx2016vpn-pytorch')
+        train_ratio     = 0.65
+        val_ratio       = 0.15
+        train_loader, val_loader, test_loader, classes = create_data_loaders(dataset, batch_size, n_worker, train_ratio, val_ratio)
         example_inputs  = (next(iter(test_loader))[0]).to(device)
+        path_own_model  = os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
+
+    elif args.dataset == "ustctfc2016":
+        dataset         = os.path.join('data', 'datasets', 'ustc-tfc2016-pytorch')
+        train_ratio     = 0.8
+        val_ratio       = 0.1
+        train_loader, val_loader, test_loader, classes = create_data_loaders(dataset, batch_size, n_worker, train_ratio, val_ratio)
+        example_inputs  = (next(iter(test_loader))[0]).to(device)
+        path_own_model  = os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
+
     else:
         raise NotImplementedError(f"Did not implement for this \"{args.dataset}\" dataset")
 
 
     # Load baseline model
-    path_own_model  = os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
     net             = load_fp32_model(path=path_own_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
     cudnn.benchmark = True
     n_layer         = get_num_hidden_layer(net, args.model)

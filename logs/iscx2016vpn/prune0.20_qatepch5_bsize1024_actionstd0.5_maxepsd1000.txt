@@ -1,0 +1,1406 @@
+class name: scp 	 label: 0 	 no. packet: 7000
+class name: skype 	 label: 1 	 no. packet: 7000
+class name: sftp 	 label: 2 	 no. packet: 7000
+class name: aimchat 	 label: 3 	 no. packet: 7000
+class name: facebook 	 label: 4 	 no. packet: 7000
+class name: ftps 	 label: 5 	 no. packet: 7000
+class name: netflix 	 label: 6 	 no. packet: 7000
+class name: icq 	 label: 7 	 no. packet: 7000
+class name: hangouts 	 label: 8 	 no. packet: 7000
+class name: spotify 	 label: 9 	 no. packet: 7000
+class name: gmail 	 label: 10 	 no. packet: 7000
+class name: voipbuster 	 label: 11 	 no. packet: 7000
+class name: bittorrent 	 label: 12 	 no. packet: 7000
+class name: youtube 	 label: 13 	 no. packet: 7000
+class name: email 	 label: 14 	 no. packet: 7000
+class name: vimeo 	 label: 15 	 no. packet: 7000
+Initial val. accuracy on unseen test data (not validation dataset): 96.1161%
+Random Seed: 2024
+-------------------- Start searching for the pruning and quantization policies ----------------------------------------
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Saving best model in onnx at networks/quantized_models/iscx2016vpn/model.onnx
+Best accuracy is 28.71% with FLOPs ratio of 77.290045% from baseline model
+Episode 1 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 6.188
+Episode 2 	 Avg length: 1 	 Avg reward: 14 	 Elapsed time 5.297
+Episode 3 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 5.274
+Episode 4 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.232
+Episode 5 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.300
+Episode 6 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.274
+Episode 7 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.304
+Episode 8 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.224
+Episode 9 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.287
+Episode 10 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.304
+Episode 11 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.209
+Episode 12 	 Avg length: 0 	 Avg reward: 5 	 Elapsed time 5.295
+Episode 13 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.272
+Episode 14 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.278
+Episode 15 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.233
+Episode 16 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.285
+Episode 17 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.287
+Episode 18 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.300
+Episode 19 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.233
+Episode 20 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.280
+Episode 21 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.281
+Episode 22 	 Avg length: 0 	 Avg reward: 5 	 Elapsed time 5.211
+Episode 23 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.279
+Episode 24 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.273
+Episode 25 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.286
+Episode 26 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.228
+Episode 27 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.290
+Episode 28 	 Avg length: 0 	 Avg reward: 5 	 Elapsed time 5.270
+Episode 29 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.285
+Episode 30 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.224
+Episode 31 	 Avg length: 0 	 Avg reward: 4 	 Elapsed time 5.278
+Episode 32 	 Avg length: 0 	 Avg reward: 5 	 Elapsed time 5.287
+Episode 33 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.232
+Episode 34 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 5.281
+Episode 35 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 5.292
+Episode 36 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.287
+Episode 37 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.223
+Episode 38 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 5.337
+Episode 39 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.290
+Episode 40 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.302
+Episode 41 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.230
+Episode 42 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.301
+Episode 43 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.322
+Episode 44 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 4.987
+Episode 45 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.025
+Episode 46 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.016
+Episode 47 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.041
+Episode 48 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 4.968
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.8618388175964355 	 
+Epoches 1 	 loss: 0.8468653559684753 	 
+Epoches 2 	 loss: 0.8342991471290588 	 
+Epoches 3 	 loss: 0.8244830965995789 	 
+Epoches 4 	 loss: 0.8215712308883667 	 
+Epoches 5 	 loss: 0.8148857951164246 	 
+Epoches 6 	 loss: 0.8073298335075378 	 
+Epoches 7 	 loss: 0.8019943237304688 	 
+Epoches 8 	 loss: 0.7961755394935608 	 
+Epoches 9 	 loss: 0.7895533442497253 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 49 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.153
+Episode 50 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 5.025
+Episode 51 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.204
+Episode 52 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.136
+Episode 53 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.292
+Episode 54 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.313
+Episode 55 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.413
+Episode 56 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 5.531
+Episode 57 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.236
+Episode 58 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.280
+Episode 59 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.190
+Episode 60 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.264
+Episode 61 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.285
+Episode 62 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.395
+Episode 63 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.365
+Episode 64 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.209
+Episode 65 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.069
+Episode 66 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.046
+Episode 67 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.133
+Episode 68 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.070
+Episode 69 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.076
+Episode 70 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.027
+Episode 71 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.180
+Episode 72 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.429
+Episode 73 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.179
+Episode 74 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.017
+Episode 75 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.076
+Episode 76 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.053
+Episode 77 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 4.979
+Episode 78 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.024
+Episode 79 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.063
+Episode 80 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.075
+Episode 81 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.208
+Episode 82 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.335
+Episode 83 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.268
+Episode 84 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.291
+Episode 85 	 Avg length: 0 	 Avg reward: 5 	 Elapsed time 5.203
+Episode 86 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.335
+Episode 87 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.275
+Episode 88 	 Avg length: 0 	 Avg reward: 5 	 Elapsed time 5.291
+Episode 89 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.331
+Episode 90 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.298
+Episode 91 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.102
+Episode 92 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.043
+Episode 93 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.139
+Episode 94 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.083
+Episode 95 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 4.979
+Episode 96 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.020
+Episode 97 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.053
+Episode 98 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.026
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.836833119392395 	 
+Epoches 1 	 loss: 0.8188656568527222 	 
+Epoches 2 	 loss: 0.7981501817703247 	 
+Epoches 3 	 loss: 0.7754284739494324 	 
+Epoches 4 	 loss: 0.7563365697860718 	 
+Epoches 5 	 loss: 0.7449223399162292 	 
+Epoches 6 	 loss: 0.7365948557853699 	 
+Epoches 7 	 loss: 0.7320396900177002 	 
+Epoches 8 	 loss: 0.7277378439903259 	 
+Epoches 9 	 loss: 0.7224186658859253 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 99 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.161
+Episode 100 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.316
+Episode 101 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.301
+Episode 102 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.332
+Episode 103 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.249
+Episode 104 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.292
+Episode 105 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.297
+Episode 106 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.229
+Episode 107 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 5.304
+Episode 108 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.282
+Episode 109 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.314
+Episode 110 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.248
+Episode 111 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.257
+Episode 112 	 Avg length: 0 	 Avg reward: 5 	 Elapsed time 5.368
+Episode 113 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.331
+Episode 114 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.238
+Episode 115 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.320
+Episode 116 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.302
+Episode 117 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.247
+Episode 118 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.301
+Episode 119 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.305
+Episode 120 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.304
+Episode 121 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 5.227
+Episode 122 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 5.301
+Episode 123 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 5.295
+Episode 124 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.314
+Episode 125 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 5.243
+Episode 126 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 5.314
+Episode 127 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.293
+Episode 128 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.246
+Episode 129 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.302
+Episode 130 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.320
+Episode 131 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.312
+Episode 132 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.252
+Episode 133 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.277
+Episode 134 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.303
+Episode 135 	 Avg length: 0 	 Avg reward: 4 	 Elapsed time 5.294
+Episode 136 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.220
+Episode 137 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.280
+Episode 138 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.285
+Episode 139 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 5.245
+Episode 140 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 5.293
+Episode 141 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 5.283
+Episode 142 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.281
+Episode 143 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 5.241
+Episode 144 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.287
+Episode 145 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.312
+Episode 146 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.279
+Episode 147 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.251
+Episode 148 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.298
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.9088501334190369 	 
+Epoches 1 	 loss: 0.8922834396362305 	 
+Epoches 2 	 loss: 0.8735330700874329 	 
+Epoches 3 	 loss: 0.8545231223106384 	 
+Epoches 4 	 loss: 0.8405037522315979 	 
+Epoches 5 	 loss: 0.8310053944587708 	 
+Epoches 6 	 loss: 0.8224251866340637 	 
+Epoches 7 	 loss: 0.813626766204834 	 
+Epoches 8 	 loss: 0.8053827285766602 	 
+Epoches 9 	 loss: 0.7983671426773071 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 149 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.354
+Episode 150 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.250
+Episode 151 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.303
+Episode 152 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.304
+Episode 153 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.293
+Episode 154 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.242
+Episode 155 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.290
+Episode 156 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 5.293
+Episode 157 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.299
+Episode 158 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.237
+Episode 159 	 Avg length: 0 	 Avg reward: 5 	 Elapsed time 5.304
+Episode 160 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.292
+Episode 161 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.229
+Episode 162 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.300
+Episode 163 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.288
+Episode 164 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.278
+Episode 165 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.234
+Episode 166 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.299
+Episode 167 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.309
+Episode 168 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.318
+Episode 169 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.229
+Episode 170 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.317
+Episode 171 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.284
+Episode 172 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.110
+Episode 173 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.257
+Episode 174 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.149
+Episode 175 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.099
+Episode 176 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 4.969
+Episode 177 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 5.081
+Episode 178 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 5.158
+Episode 179 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.261
+Episode 180 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.350
+Episode 181 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 5.296
+Episode 182 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.296
+Episode 183 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 5.251
+Episode 184 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 5.308
+Episode 185 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 5.345
+Episode 186 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 5.328
+Episode 187 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 5.239
+Episode 188 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.309
+Episode 189 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 5.278
+Episode 190 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 5.241
+Episode 191 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.300
+Episode 192 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.300
+Episode 193 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.023
+Episode 194 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.051
+Episode 195 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.125
+Episode 196 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.163
+Episode 197 	 Avg length: 0 	 Avg reward: 5 	 Elapsed time 5.159
+Episode 198 	 Avg length: 0 	 Avg reward: 2 	 Elapsed time 5.120
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.5149939060211182 	 
+Epoches 1 	 loss: 0.506593644618988 	 
+Epoches 2 	 loss: 0.4974081218242645 	 
+Epoches 3 	 loss: 0.48807692527770996 	 
+Epoches 4 	 loss: 0.4802464246749878 	 
+Epoches 5 	 loss: 0.47478607296943665 	 
+Epoches 6 	 loss: 0.4700309634208679 	 
+Epoches 7 	 loss: 0.46450164914131165 	 
+Epoches 8 	 loss: 0.45927694439888 	 
+Epoches 9 	 loss: 0.45449668169021606 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 199 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.175
+Episode 200 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.139
+Episode 201 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.090
+Episode 202 	 Avg length: 0 	 Avg reward: 5 	 Elapsed time 5.052
+Episode 203 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.142
+Episode 204 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.202
+Episode 205 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.018
+Episode 206 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.134
+Episode 207 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.300
+Episode 208 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.331
+Episode 209 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.232
+Episode 210 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.273
+Episode 211 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 5.287
+Episode 212 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 5.220
+Episode 213 	 Avg length: 4 	 Avg reward: 11 	 Elapsed time 5.287
+Episode 214 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.291
+Episode 215 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 5.293
+Episode 216 	 Avg length: 1 	 Avg reward: 8 	 Elapsed time 5.226
+Episode 217 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 5.281
+Episode 218 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 5.279
+Episode 219 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.044
+Episode 220 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 4.946
+Episode 221 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.011
+Episode 222 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 4.994
+Episode 223 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 4.940
+Episode 224 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 4.997
+Episode 225 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.009
+Episode 226 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 5.038
+Episode 227 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 4.940
+Episode 228 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.041
+Episode 229 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 5.015
+Episode 230 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.003
+Episode 231 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 4.943
+Episode 232 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 5.000
+Episode 233 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.986
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Saving best model in onnx at networks/quantized_models/iscx2016vpn/model.onnx
+Best accuracy is 40.33% with FLOPs ratio of 73.550317% from baseline model
+Episode 234 	 Avg length: 3 	 Avg reward: 40 	 Elapsed time 5.048
+Episode 235 	 Avg length: 1 	 Avg reward: 13 	 Elapsed time 4.957
+Episode 236 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.011
+Episode 237 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.002
+Episode 238 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.039
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 1.0552140474319458 	 
+Epoches 1 	 loss: 1.0453686714172363 	 
+Epoches 2 	 loss: 1.0345107316970825 	 
+Epoches 3 	 loss: 1.0228607654571533 	 
+Epoches 4 	 loss: 1.010069727897644 	 
+Epoches 5 	 loss: 0.9975112676620483 	 
+Epoches 6 	 loss: 0.98710036277771 	 
+Epoches 7 	 loss: 0.976216197013855 	 
+Epoches 8 	 loss: 0.9651258587837219 	 
+Epoches 9 	 loss: 0.9542482495307922 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 239 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.065
+Episode 240 	 Avg length: 2 	 Avg reward: 9 	 Elapsed time 5.223
+Episode 241 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 5.086
+Episode 242 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 5.058
+Episode 243 	 Avg length: 1 	 Avg reward: 27 	 Elapsed time 5.009
+Episode 244 	 Avg length: 0 	 Avg reward: 27 	 Elapsed time 5.324
+Episode 245 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 5.083
+Episode 246 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 5.080
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Saving best model in onnx at networks/quantized_models/iscx2016vpn/model.onnx
+Best accuracy is 45.99% with FLOPs ratio of 77.023273% from baseline model
+Episode 247 	 Avg length: 0 	 Avg reward: 45 	 Elapsed time 5.069
+Episode 248 	 Avg length: 0 	 Avg reward: 39 	 Elapsed time 5.167
+Episode 249 	 Avg length: 0 	 Avg reward: 38 	 Elapsed time 4.945
+Episode 250 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.999
+Episode 251 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.081
+Episode 252 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.068
+Episode 253 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.069
+Episode 254 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.012
+Episode 255 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 5.198
+Episode 256 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 4.930
+Episode 257 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 5.014
+Episode 258 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 5.018
+Episode 259 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 5.015
+Episode 260 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.951
+Episode 261 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 5.007
+Episode 262 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 5.060
+Episode 263 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.944
+Episode 264 	 Avg length: 1 	 Avg reward: 37 	 Elapsed time 4.994
+Episode 265 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.990
+Episode 266 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.980
+Episode 267 	 Avg length: 1 	 Avg reward: 14 	 Elapsed time 4.921
+Episode 268 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 269 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.814349353313446 	 
+Epoches 1 	 loss: 0.8064114451408386 	 
+Epoches 2 	 loss: 0.7980706095695496 	 
+Epoches 3 	 loss: 0.789542019367218 	 
+Epoches 4 	 loss: 0.7807797193527222 	 
+Epoches 5 	 loss: 0.7717574834823608 	 
+Epoches 6 	 loss: 0.7629929780960083 	 
+Epoches 7 	 loss: 0.7539963126182556 	 
+Epoches 8 	 loss: 0.7448016405105591 	 
+Epoches 9 	 loss: 0.7363042831420898 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 270 	 Avg length: 3 	 Avg reward: 24 	 Elapsed time 5.045
+Episode 271 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 5.116
+Episode 272 	 Avg length: 3 	 Avg reward: 41 	 Elapsed time 5.181
+Episode 273 	 Avg length: 4 	 Avg reward: 13 	 Elapsed time 5.137
+Episode 274 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.064
+Episode 275 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 5.056
+Episode 276 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 4.951
+Episode 277 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 5.006
+Episode 278 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 5.000
+Episode 279 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 4.993
+Episode 280 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 4.931
+Episode 281 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 4.996
+Episode 282 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 5.021
+Episode 283 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 5.034
+Episode 284 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 5.079
+Episode 285 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 4.982
+Episode 286 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 5.004
+Episode 287 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 4.926
+Episode 288 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.987
+Episode 289 	 Avg length: 1 	 Avg reward: 35 	 Elapsed time 4.979
+Episode 290 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 291 	 Avg length: 3 	 Avg reward: 24 	 Elapsed time 4.997
+Episode 292 	 Avg length: 1 	 Avg reward: 7 	 Elapsed time 4.929
+Episode 293 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 4.979
+Episode 294 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.977
+Episode 295 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.913
+Episode 296 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.961
+Episode 297 	 Avg length: 0 	 Avg reward: 24 	 Elapsed time 4.973
+Episode 298 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.989
+Episode 299 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.931
+Episode 300 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.977
+Episode 301 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.979
+Episode 302 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 4.986
+Episode 303 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 4.917
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.7004685997962952 	 
+Epoches 1 	 loss: 0.6871256828308105 	 
+Epoches 2 	 loss: 0.6719372272491455 	 
+Epoches 3 	 loss: 0.655381441116333 	 
+Epoches 4 	 loss: 0.6378827691078186 	 
+Epoches 5 	 loss: 0.6230802536010742 	 
+Epoches 6 	 loss: 0.6089271903038025 	 
+Epoches 7 	 loss: 0.5956636071205139 	 
+Epoches 8 	 loss: 0.5848780870437622 	 
+Epoches 9 	 loss: 0.5767856240272522 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 304 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 5.022
+Episode 305 	 Avg length: 0 	 Avg reward: 24 	 Elapsed time 4.987
+Episode 306 	 Avg length: 0 	 Avg reward: 38 	 Elapsed time 4.929
+Episode 307 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.976
+Episode 308 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 4.992
+Episode 309 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 4.994
+Episode 310 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.943
+Episode 311 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.992
+Episode 312 	 Avg length: 0 	 Avg reward: 40 	 Elapsed time 4.975
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Saving best model in onnx at networks/quantized_models/iscx2016vpn/model.onnx
+Best accuracy is 47.93% with FLOPs ratio of 78.610074% from baseline model
+Episode 313 	 Avg length: 2 	 Avg reward: 47 	 Elapsed time 5.023
+Episode 314 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 315 	 Avg length: 3 	 Avg reward: 22 	 Elapsed time 4.979
+Episode 316 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.931
+Episode 317 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.987
+Episode 318 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.996
+Episode 319 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.983
+Episode 320 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.936
+Episode 321 	 Avg length: 0 	 Avg reward: 39 	 Elapsed time 4.986
+Episode 322 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.994
+Episode 323 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.923
+Episode 324 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.997
+Episode 325 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.988
+Episode 326 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.995
+Episode 327 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.926
+Episode 328 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.995
+Episode 329 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 4.987
+Episode 330 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 4.990
+Episode 331 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.926
+Episode 332 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.997
+Episode 333 	 Avg length: 1 	 Avg reward: 21 	 Elapsed time 4.969
+Episode 334 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.909
+Episode 335 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.971
+Episode 336 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 4.997
+Episode 337 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.980
+Episode 338 	 Avg length: 0 	 Avg reward: 27 	 Elapsed time 4.909
+Episode 339 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 4.984
+Episode 340 	 Avg length: 0 	 Avg reward: 24 	 Elapsed time 4.969
+Episode 341 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 4.971
+Episode 342 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 4.913
+Episode 343 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 4.979
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Saving best model in onnx at networks/quantized_models/iscx2016vpn/model.onnx
+Best accuracy is 52.26% with FLOPs ratio of 79.418287% from baseline model
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.6073977947235107 	 
+Epoches 1 	 loss: 0.5947756171226501 	 
+Epoches 2 	 loss: 0.5813338160514832 	 
+Epoches 3 	 loss: 0.5722947716712952 	 
+Epoches 4 	 loss: 0.5654482245445251 	 
+Epoches 5 	 loss: 0.5605980753898621 	 
+Epoches 6 	 loss: 0.5552262663841248 	 
+Epoches 7 	 loss: 0.5496320128440857 	 
+Epoches 8 	 loss: 0.5457754135131836 	 
+Epoches 9 	 loss: 0.5418327450752258 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 344 	 Avg length: 0 	 Avg reward: 52 	 Elapsed time 5.076
+Episode 345 	 Avg length: 1 	 Avg reward: 35 	 Elapsed time 4.931
+Episode 346 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.974
+Episode 347 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 4.977
+Episode 348 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.979
+Episode 349 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 350 	 Avg length: 3 	 Avg reward: 22 	 Elapsed time 4.915
+Episode 351 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.970
+Episode 352 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.965
+Episode 353 	 Avg length: 0 	 Avg reward: 24 	 Elapsed time 4.978
+Episode 354 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.927
+Episode 355 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 4.978
+Episode 356 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.995
+Episode 357 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.925
+Episode 358 	 Avg length: 0 	 Avg reward: 40 	 Elapsed time 4.986
+Episode 359 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 360 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 361 	 Avg length: 1 	 Avg reward: 23 	 Elapsed time 4.972
+Episode 362 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.971
+Episode 363 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.931
+Episode 364 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 5.003
+Episode 365 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.989
+Episode 366 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.012
+Episode 367 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.6982123255729675 	 
+Epoches 1 	 loss: 0.695882260799408 	 
+Epoches 2 	 loss: 0.6932561993598938 	 
+Epoches 3 	 loss: 0.6889885067939758 	 
+Epoches 4 	 loss: 0.6836000084877014 	 
+Epoches 5 	 loss: 0.6774535179138184 	 
+Epoches 6 	 loss: 0.6708517074584961 	 
+Epoches 7 	 loss: 0.6646069288253784 	 
+Epoches 8 	 loss: 0.6587667465209961 	 
+Epoches 9 	 loss: 0.6536356806755066 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 368 	 Avg length: 3 	 Avg reward: 49 	 Elapsed time 5.087
+Episode 369 	 Avg length: 2 	 Avg reward: 14 	 Elapsed time 4.929
+Episode 370 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.978
+Episode 371 	 Avg length: 1 	 Avg reward: 25 	 Elapsed time 4.971
+Episode 372 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 4.979
+Episode 373 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.936
+Episode 374 	 Avg length: 0 	 Avg reward: 41 	 Elapsed time 5.017
+Episode 375 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 376 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 377 	 Avg length: 1 	 Avg reward: 49 	 Elapsed time 4.976
+Episode 378 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.990
+Episode 379 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.937
+Episode 380 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.999
+Episode 381 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.975
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Saving best model in onnx at networks/quantized_models/iscx2016vpn/model.onnx
+Best accuracy is 52.68% with FLOPs ratio of 77.960452% from baseline model
+Episode 382 	 Avg length: 0 	 Avg reward: 52 	 Elapsed time 5.026
+Episode 383 	 Avg length: 0 	 Avg reward: 52 	 Elapsed time 4.929
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Saving best model in onnx at networks/quantized_models/iscx2016vpn/model.onnx
+Best accuracy is 53.65% with FLOPs ratio of 79.883180% from baseline model
+Episode 384 	 Avg length: 0 	 Avg reward: 53 	 Elapsed time 5.006
+Episode 385 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 386 	 Avg length: 4 	 Avg reward: 13 	 Elapsed time 4.997
+Episode 387 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.997
+Episode 388 	 Avg length: 3 	 Avg reward: 53 	 Elapsed time 4.989
+Episode 389 	 Avg length: 3 	 Avg reward: 20 	 Elapsed time 4.989
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.564362108707428 	 
+Epoches 1 	 loss: 0.5593142509460449 	 
+Epoches 2 	 loss: 0.5537461638450623 	 
+Epoches 3 	 loss: 0.5478018522262573 	 
+Epoches 4 	 loss: 0.5413022637367249 	 
+Epoches 5 	 loss: 0.5348695516586304 	 
+Epoches 6 	 loss: 0.5293547511100769 	 
+Epoches 7 	 loss: 0.5246977806091309 	 
+Epoches 8 	 loss: 0.5200380682945251 	 
+Epoches 9 	 loss: 0.5153529644012451 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 390 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.993
+Episode 391 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 5.050
+Episode 392 	 Avg length: 0 	 Avg reward: 25 	 Elapsed time 4.941
+Episode 393 	 Avg length: 0 	 Avg reward: 39 	 Elapsed time 4.992
+Episode 394 	 Avg length: 0 	 Avg reward: 33 	 Elapsed time 4.999
+Episode 395 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.989
+Episode 396 	 Avg length: 0 	 Avg reward: 33 	 Elapsed time 4.943
+Episode 397 	 Avg length: 0 	 Avg reward: 27 	 Elapsed time 4.991
+Episode 398 	 Avg length: 0 	 Avg reward: 44 	 Elapsed time 4.981
+Episode 399 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.921
+Episode 400 	 Avg length: 0 	 Avg reward: 24 	 Elapsed time 4.973
+Episode 401 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.975
+Episode 402 	 Avg length: 1 	 Avg reward: 37 	 Elapsed time 4.982
+Episode 403 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 404 	 Avg length: 1 	 Avg reward: 45 	 Elapsed time 4.912
+Episode 405 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.969
+Episode 406 	 Avg length: 0 	 Avg reward: 44 	 Elapsed time 4.971
+Episode 407 	 Avg length: 1 	 Avg reward: 35 	 Elapsed time 4.995
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Saving best model in onnx at networks/quantized_models/iscx2016vpn/model.onnx
+Best accuracy is 56.33% with FLOPs ratio of 78.999885% from baseline model
+Episode 408 	 Avg length: 3 	 Avg reward: 56 	 Elapsed time 5.017
+Episode 409 	 Avg length: 4 	 Avg reward: 37 	 Elapsed time 5.006
+Episode 410 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.915
+Episode 411 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.982
+Episode 412 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.991
+Episode 413 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.977
+Episode 414 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.932
+Episode 415 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 4.988
+Episode 416 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.992
+Episode 417 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 5.020
+Episode 418 	 Avg length: 3 	 Avg reward: 33 	 Elapsed time 5.006
+Episode 419 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.909
+Episode 420 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.956
+Episode 421 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.957
+Episode 422 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.969
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.5668745040893555 	 
+Epoches 1 	 loss: 0.5621505379676819 	 
+Epoches 2 	 loss: 0.5552648305892944 	 
+Epoches 3 	 loss: 0.5466590523719788 	 
+Epoches 4 	 loss: 0.5379728078842163 	 
+Epoches 5 	 loss: 0.5292896628379822 	 
+Epoches 6 	 loss: 0.5204867720603943 	 
+Epoches 7 	 loss: 0.5113738179206848 	 
+Epoches 8 	 loss: 0.5022994875907898 	 
+Epoches 9 	 loss: 0.4960315227508545 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 423 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 4.960
+Episode 424 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.981
+Episode 425 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 426 	 Avg length: 3 	 Avg reward: 21 	 Elapsed time 5.012
+Episode 427 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.943
+Episode 428 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 5.030
+Episode 429 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.916
+Episode 430 	 Avg length: 0 	 Avg reward: 25 	 Elapsed time 4.962
+Episode 431 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.961
+Episode 432 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.965
+Episode 433 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.902
+Episode 434 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 4.965
+Episode 435 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.968
+Episode 436 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.916
+Episode 437 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.999
+Episode 438 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.974
+Episode 439 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.995
+Episode 440 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.909
+Episode 441 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.977
+Episode 442 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.978
+Episode 443 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.975
+Episode 444 	 Avg length: 0 	 Avg reward: 49 	 Elapsed time 4.918
+Episode 445 	 Avg length: 0 	 Avg reward: 48 	 Elapsed time 4.982
+Episode 446 	 Avg length: 1 	 Avg reward: 55 	 Elapsed time 4.988
+Episode 447 	 Avg length: 0 	 Avg reward: 45 	 Elapsed time 4.924
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Saving best model in onnx at networks/quantized_models/iscx2016vpn/model.onnx
+Best accuracy is 63.64% with FLOPs ratio of 78.294986% from baseline model
+Episode 448 	 Avg length: 3 	 Avg reward: 63 	 Elapsed time 5.016
+Episode 449 	 Avg length: 1 	 Avg reward: 37 	 Elapsed time 4.970
+Episode 450 	 Avg length: 0 	 Avg reward: 45 	 Elapsed time 4.970
+Episode 451 	 Avg length: 1 	 Avg reward: 37 	 Elapsed time 4.935
+Episode 452 	 Avg length: 0 	 Avg reward: 27 	 Elapsed time 4.988
+Episode 453 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 4.990
+Episode 454 	 Avg length: 2 	 Avg reward: 28 	 Elapsed time 4.986
+Episode 455 	 Avg length: 0 	 Avg reward: 53 	 Elapsed time 4.919
+Episode 456 	 Avg length: 1 	 Avg reward: 34 	 Elapsed time 4.981
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.5648583173751831 	 
+Epoches 1 	 loss: 0.5591171383857727 	 
+Epoches 2 	 loss: 0.5527832508087158 	 
+Epoches 3 	 loss: 0.5475688576698303 	 
+Epoches 4 	 loss: 0.5444126129150391 	 
+Epoches 5 	 loss: 0.5422388911247253 	 
+Epoches 6 	 loss: 0.5413829684257507 	 
+Epoches 7 	 loss: 0.5398588180541992 	 
+Epoches 8 	 loss: 0.5377348065376282 	 
+Epoches 9 	 loss: 0.5353123545646667 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 457 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 5.031
+Episode 458 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.927
+Episode 459 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.977
+Episode 460 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.962
+Episode 461 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.970
+Episode 462 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.908
+Episode 463 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 4.973
+Episode 464 	 Avg length: 4 	 Avg reward: 23 	 Elapsed time 5.003
+Episode 465 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.966
+Episode 466 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.909
+Episode 467 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.974
+Episode 468 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.976
+Episode 469 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.968
+Episode 470 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.907
+Episode 471 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 4.961
+Episode 472 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.957
+Episode 473 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.967
+Episode 474 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.919
+Episode 475 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.975
+Episode 476 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.993
+Episode 477 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.919
+Episode 478 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 4.990
+Episode 479 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.980
+Episode 480 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.973
+Episode 481 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.921
+Episode 482 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.971
+Episode 483 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.966
+Episode 484 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.903
+Episode 485 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.972
+Episode 486 	 Avg length: 0 	 Avg reward: 53 	 Elapsed time 4.972
+Episode 487 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.980
+Episode 488 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.907
+Episode 489 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 490 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.40874698758125305 	 
+Epoches 1 	 loss: 0.4063244163990021 	 
+Epoches 2 	 loss: 0.4040014147758484 	 
+Epoches 3 	 loss: 0.4025682210922241 	 
+Epoches 4 	 loss: 0.4012696444988251 	 
+Epoches 5 	 loss: 0.39956188201904297 	 
+Epoches 6 	 loss: 0.39801374077796936 	 
+Epoches 7 	 loss: 0.3964311480522156 	 
+Epoches 8 	 loss: 0.39521196484565735 	 
+Epoches 9 	 loss: 0.3941764831542969 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 491 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.065
+Episode 492 	 Avg length: 4 	 Avg reward: 46 	 Elapsed time 4.994
+Episode 493 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 5.002
+Episode 494 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.986
+Episode 495 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 496 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 497 	 Avg length: 2 	 Avg reward: 34 	 Elapsed time 4.908
+Episode 498 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.975
+Episode 499 	 Avg length: 0 	 Avg reward: 43 	 Elapsed time 4.979
+Episode 500 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.011
+Episode 501 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 502 	 Avg length: 2 	 Avg reward: 53 	 Elapsed time 4.915
+Episode 503 	 Avg length: 4 	 Avg reward: 17 	 Elapsed time 4.972
+Episode 504 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.980
+Episode 505 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.972
+Episode 506 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.908
+Episode 507 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.974
+Episode 508 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.967
+Episode 509 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.969
+Episode 510 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.913
+Episode 511 	 Avg length: 0 	 Avg reward: 45 	 Elapsed time 4.967
+Episode 512 	 Avg length: 0 	 Avg reward: 47 	 Elapsed time 4.956
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.5006096363067627 	 
+Epoches 1 	 loss: 0.499183714389801 	 
+Epoches 2 	 loss: 0.4942881762981415 	 
+Epoches 3 	 loss: 0.4867619574069977 	 
+Epoches 4 	 loss: 0.4787869453430176 	 
+Epoches 5 	 loss: 0.4719976782798767 	 
+Epoches 6 	 loss: 0.46882784366607666 	 
+Epoches 7 	 loss: 0.46546462178230286 	 
+Epoches 8 	 loss: 0.46304935216903687 	 
+Epoches 9 	 loss: 0.462981641292572 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 513 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.062
+Episode 514 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 515 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.988
+Episode 516 	 Avg length: 0 	 Avg reward: 57 	 Elapsed time 4.933
+Episode 517 	 Avg length: 3 	 Avg reward: 41 	 Elapsed time 5.038
+Episode 518 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.902
+Episode 519 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.963
+Episode 520 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.972
+Episode 521 	 Avg length: 1 	 Avg reward: 23 	 Elapsed time 4.973
+Episode 522 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.920
+Episode 523 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.973
+Episode 524 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.964
+Episode 525 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.912
+Episode 526 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.969
+Episode 527 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.978
+Episode 528 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.977
+Episode 529 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.926
+Episode 530 	 Avg length: 0 	 Avg reward: 33 	 Elapsed time 4.984
+Episode 531 	 Avg length: 0 	 Avg reward: 53 	 Elapsed time 4.965
+Episode 532 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 533 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.995
+Episode 534 	 Avg length: 1 	 Avg reward: 31 	 Elapsed time 4.985
+Episode 535 	 Avg length: 0 	 Avg reward: 25 	 Elapsed time 4.924
+Episode 536 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.968
+Episode 537 	 Avg length: 0 	 Avg reward: 53 	 Elapsed time 4.968
+Episode 538 	 Avg length: 1 	 Avg reward: 27 	 Elapsed time 4.918
+Episode 539 	 Avg length: 0 	 Avg reward: 24 	 Elapsed time 4.979
+Episode 540 	 Avg length: 0 	 Avg reward: 25 	 Elapsed time 4.993
+Episode 541 	 Avg length: 0 	 Avg reward: 43 	 Elapsed time 4.975
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.5414291024208069 	 
+Epoches 1 	 loss: 0.5373474955558777 	 
+Epoches 2 	 loss: 0.5317138433456421 	 
+Epoches 3 	 loss: 0.52724689245224 	 
+Epoches 4 	 loss: 0.5236262083053589 	 
+Epoches 5 	 loss: 0.5202969908714294 	 
+Epoches 6 	 loss: 0.5163588523864746 	 
+Epoches 7 	 loss: 0.5124029517173767 	 
+Epoches 8 	 loss: 0.5095625519752502 	 
+Epoches 9 	 loss: 0.50667405128479 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 542 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.065
+Episode 543 	 Avg length: 2 	 Avg reward: 36 	 Elapsed time 4.918
+Episode 544 	 Avg length: 0 	 Avg reward: 43 	 Elapsed time 4.980
+Episode 545 	 Avg length: 1 	 Avg reward: 42 	 Elapsed time 4.976
+Episode 546 	 Avg length: 2 	 Avg reward: 54 	 Elapsed time 4.975
+Episode 547 	 Avg length: 1 	 Avg reward: 25 	 Elapsed time 4.918
+Episode 548 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.991
+Episode 549 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.991
+Episode 550 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.011
+Episode 551 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.974
+Episode 552 	 Avg length: 0 	 Avg reward: 49 	 Elapsed time 4.914
+Episode 553 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 5.004
+Episode 554 	 Avg length: 0 	 Avg reward: 40 	 Elapsed time 4.967
+Episode 555 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.973
+Episode 556 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.918
+Episode 557 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.982
+Episode 558 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 4.982
+Episode 559 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.962
+Episode 560 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.965
+Episode 561 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.921
+Episode 562 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 4.974
+Episode 563 	 Avg length: 0 	 Avg reward: 53 	 Elapsed time 4.986
+Episode 564 	 Avg length: 2 	 Avg reward: 49 	 Elapsed time 5.003
+Episode 565 	 Avg length: 1 	 Avg reward: 20 	 Elapsed time 4.981
+Episode 566 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.928
+Episode 567 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.977
+Episode 568 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.980
+Episode 569 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.968
+Episode 570 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.917
+Episode 571 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.992
+Episode 572 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.978
+Episode 573 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.907
+Episode 574 	 Avg length: 0 	 Avg reward: 48 	 Elapsed time 4.988
+Episode 575 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.992
+Episode 576 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.973
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.891336977481842 	 
+Epoches 1 	 loss: 0.8835529088973999 	 
+Epoches 2 	 loss: 0.8704840540885925 	 
+Epoches 3 	 loss: 0.8528778553009033 	 
+Epoches 4 	 loss: 0.8339833617210388 	 
+Epoches 5 	 loss: 0.8175524473190308 	 
+Epoches 6 	 loss: 0.8034254908561707 	 
+Epoches 7 	 loss: 0.789703369140625 	 
+Epoches 8 	 loss: 0.7759882807731628 	 
+Epoches 9 	 loss: 0.763655960559845 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 577 	 Avg length: 1 	 Avg reward: 37 	 Elapsed time 4.960
+Episode 578 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.986
+Episode 579 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.966
+Episode 580 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.963
+Episode 581 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.911
+Episode 582 	 Avg length: 1 	 Avg reward: 54 	 Elapsed time 4.975
+Episode 583 	 Avg length: 0 	 Avg reward: 27 	 Elapsed time 4.972
+Episode 584 	 Avg length: 1 	 Avg reward: 29 	 Elapsed time 4.908
+Episode 585 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 5.038
+Episode 586 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.904
+Episode 587 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.980
+Episode 588 	 Avg length: 0 	 Avg reward: 41 	 Elapsed time 4.999
+Episode 589 	 Avg length: 1 	 Avg reward: 35 	 Elapsed time 4.982
+Episode 590 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.919
+Episode 591 	 Avg length: 0 	 Avg reward: 52 	 Elapsed time 4.982
+Episode 592 	 Avg length: 1 	 Avg reward: 37 	 Elapsed time 4.974
+Episode 593 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.917
+Episode 594 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.970
+Episode 595 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.973
+Episode 596 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.976
+Episode 597 	 Avg length: 0 	 Avg reward: 27 	 Elapsed time 4.925
+Episode 598 	 Avg length: 0 	 Avg reward: 52 	 Elapsed time 4.968
+Episode 599 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.979
+Episode 600 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.011
+Episode 601 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 602 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 603 	 Avg length: 0 	 Avg reward: 50 	 Elapsed time 4.978
+Episode 604 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 605 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.969
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.523850679397583 	 
+Epoches 1 	 loss: 0.5163151621818542 	 
+Epoches 2 	 loss: 0.5080512166023254 	 
+Epoches 3 	 loss: 0.4986492395401001 	 
+Epoches 4 	 loss: 0.48917633295059204 	 
+Epoches 5 	 loss: 0.4804326891899109 	 
+Epoches 6 	 loss: 0.4707081615924835 	 
+Epoches 7 	 loss: 0.4622878432273865 	 
+Epoches 8 	 loss: 0.45453712344169617 	 
+Epoches 9 	 loss: 0.45023104548454285 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 606 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.062
+Episode 607 	 Avg length: 0 	 Avg reward: 48 	 Elapsed time 4.973
+Episode 608 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 609 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 610 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 611 	 Avg length: 2 	 Avg reward: 19 	 Elapsed time 4.961
+Episode 612 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.967
+Episode 613 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.963
+Episode 614 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.910
+Episode 615 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 616 	 Avg length: 1 	 Avg reward: 22 	 Elapsed time 4.968
+Episode 617 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 4.960
+Episode 618 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.960
+Episode 619 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.910
+Episode 620 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.961
+Episode 621 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.962
+Episode 622 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.933
+Episode 623 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.966
+Episode 624 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.981
+Episode 625 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.965
+Episode 626 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.911
+Episode 627 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.971
+Episode 628 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.967
+Episode 629 	 Avg length: 3 	 Avg reward: 52 	 Elapsed time 4.980
+Episode 630 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.996
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.38673877716064453 	 
+Epoches 1 	 loss: 0.38376420736312866 	 
+Epoches 2 	 loss: 0.3808344304561615 	 
+Epoches 3 	 loss: 0.37784528732299805 	 
+Epoches 4 	 loss: 0.37516477704048157 	 
+Epoches 5 	 loss: 0.3726283609867096 	 
+Epoches 6 	 loss: 0.3700926601886749 	 
+Epoches 7 	 loss: 0.3691576421260834 	 
+Epoches 8 	 loss: 0.3697742521762848 	 
+Epoches 9 	 loss: 0.3702618181705475 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 631 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.964
+Episode 632 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.973
+Episode 633 	 Avg length: 0 	 Avg reward: 25 	 Elapsed time 4.981
+Episode 634 	 Avg length: 0 	 Avg reward: 50 	 Elapsed time 4.907
+Episode 635 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 4.980
+Episode 636 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.968
+Episode 637 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.996
+Episode 638 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.921
+Episode 639 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.971
+Episode 640 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 4.974
+Episode 641 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.997
+Episode 642 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.914
+Episode 643 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 644 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 645 	 Avg length: 4 	 Avg reward: 29 	 Elapsed time 4.979
+Episode 646 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.985
+Episode 647 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.920
+Episode 648 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.977
+Episode 649 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.983
+Episode 650 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.987
+Episode 651 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.920
+Episode 652 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.969
+Episode 653 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 4.964
+Episode 654 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.972
+Episode 655 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.923
+Episode 656 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.981
+Episode 657 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.992
+Episode 658 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.918
+Episode 659 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.978
+Episode 660 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.980
+Episode 661 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.999
+Episode 662 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.910
+Episode 663 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.975
+Episode 664 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 4.975
+Episode 665 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.976
+Episode 666 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.919
+Episode 667 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.969
+Episode 668 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.990
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.3653939664363861 	 
+Epoches 1 	 loss: 0.3666516840457916 	 
+Epoches 2 	 loss: 0.3666660189628601 	 
+Epoches 3 	 loss: 0.36575672030448914 	 
+Epoches 4 	 loss: 0.36404767632484436 	 
+Epoches 5 	 loss: 0.3627844452857971 	 
+Epoches 6 	 loss: 0.36189690232276917 	 
+Epoches 7 	 loss: 0.3625485897064209 	 
+Epoches 8 	 loss: 0.36360999941825867 	 
+Epoches 9 	 loss: 0.3650568425655365 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 669 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.984
+Episode 670 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.981
+Episode 671 	 Avg length: 1 	 Avg reward: 50 	 Elapsed time 4.989
+Episode 672 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 673 	 Avg length: 3 	 Avg reward: 20 	 Elapsed time 4.973
+Episode 674 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.930
+Episode 675 	 Avg length: 2 	 Avg reward: 34 	 Elapsed time 4.965
+Episode 676 	 Avg length: 2 	 Avg reward: 12 	 Elapsed time 4.960
+Episode 677 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 4.926
+Episode 678 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 5.051
+Episode 679 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.933
+Episode 680 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.978
+Episode 681 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.971
+Episode 682 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.975
+Episode 683 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.897
+Episode 684 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.983
+Episode 685 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.972
+Episode 686 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.907
+Episode 687 	 Avg length: 0 	 Avg reward: 27 	 Elapsed time 4.969
+Episode 688 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.981
+Episode 689 	 Avg length: 0 	 Avg reward: 53 	 Elapsed time 4.964
+Episode 690 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.912
+Episode 691 	 Avg length: 2 	 Avg reward: 22 	 Elapsed time 4.966
+Episode 692 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.977
+Episode 693 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.985
+Episode 694 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.909
+Episode 695 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.975
+Episode 696 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.968
+Episode 697 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.913
+Episode 698 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.975
+Episode 699 	 Avg length: 0 	 Avg reward: 24 	 Elapsed time 4.978
+Episode 700 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.976
+Episode 701 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.918
+Episode 702 	 Avg length: 0 	 Avg reward: 52 	 Elapsed time 4.969
+Episode 703 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.960
+Episode 704 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.970
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.3001376986503601 	 
+Epoches 1 	 loss: 0.29540538787841797 	 
+Epoches 2 	 loss: 0.2925107181072235 	 
+Epoches 3 	 loss: 0.2908189594745636 	 
+Epoches 4 	 loss: 0.29055118560791016 	 
+Epoches 5 	 loss: 0.29123371839523315 	 
+Epoches 6 	 loss: 0.29335033893585205 	 
+Epoches 7 	 loss: 0.29583990573883057 	 
+Epoches 8 	 loss: 0.29835250973701477 	 
+Epoches 9 	 loss: 0.3007463812828064 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 705 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 4.959
+Episode 706 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.963
+Episode 707 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.965
+Episode 708 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.907
+Episode 709 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.959
+Episode 710 	 Avg length: 0 	 Avg reward: 7 	 Elapsed time 4.966
+Episode 711 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 4.968
+Episode 712 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 4.917
+Episode 713 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 4.977
+Episode 714 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 4.968
+Episode 715 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 5.012
+Episode 716 	 Avg length: 0 	 Avg reward: 27 	 Elapsed time 4.917
+Episode 717 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.983
+Episode 718 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.983
+Episode 719 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.920
+Episode 720 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.971
+Episode 721 	 Avg length: 0 	 Avg reward: 38 	 Elapsed time 4.974
+Episode 722 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.967
+Episode 723 	 Avg length: 1 	 Avg reward: 35 	 Elapsed time 4.925
+Episode 724 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.979
+Episode 725 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.981
+Episode 726 	 Avg length: 1 	 Avg reward: 25 	 Elapsed time 4.980
+Episode 727 	 Avg length: 2 	 Avg reward: 34 	 Elapsed time 4.979
+Episode 728 	 Avg length: 1 	 Avg reward: 29 	 Elapsed time 4.910
+Episode 729 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.977
+Episode 730 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.963
+Episode 731 	 Avg length: 0 	 Avg reward: 52 	 Elapsed time 4.973
+Episode 732 	 Avg length: 0 	 Avg reward: 54 	 Elapsed time 4.921
+Episode 733 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.962
+Episode 734 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.986
+Episode 735 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.921
+Episode 736 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.981
+Episode 737 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.977
+Episode 738 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.987
+Episode 739 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.904
+Episode 740 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.964
+Episode 741 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.983
+Episode 742 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.979
+Episode 743 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 4.919
+Episode 744 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.979
+Episode 745 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.967
+Episode 746 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 4.910
+Episode 747 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.970
+Episode 748 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.967
+Episode 749 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.968
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.3730641007423401 	 
+Epoches 1 	 loss: 0.3736094534397125 	 
+Epoches 2 	 loss: 0.37232059240341187 	 
+Epoches 3 	 loss: 0.3693661391735077 	 
+Epoches 4 	 loss: 0.36492636799812317 	 
+Epoches 5 	 loss: 0.3618548810482025 	 
+Epoches 6 	 loss: 0.3600907027721405 	 
+Epoches 7 	 loss: 0.36092817783355713 	 
+Epoches 8 	 loss: 0.36208927631378174 	 
+Epoches 9 	 loss: 0.3632781207561493 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 750 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.966
+Episode 751 	 Avg length: 0 	 Avg reward: 24 	 Elapsed time 4.981
+Episode 752 	 Avg length: 0 	 Avg reward: 27 	 Elapsed time 4.965
+Episode 753 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.974
+Episode 754 	 Avg length: 0 	 Avg reward: 51 	 Elapsed time 4.912
+Episode 755 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 756 	 Avg length: 1 	 Avg reward: 54 	 Elapsed time 4.959
+Episode 757 	 Avg length: 1 	 Avg reward: 31 	 Elapsed time 4.960
+Episode 758 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.903
+Episode 759 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.954
+Episode 760 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.955
+Episode 761 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.961
+Episode 762 	 Avg length: 1 	 Avg reward: 17 	 Elapsed time 4.926
+Episode 763 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.986
+Episode 764 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.980
+Episode 765 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.968
+Episode 766 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.931
+Episode 767 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.977
+Episode 768 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.978
+Episode 769 	 Avg length: 0 	 Avg reward: 48 	 Elapsed time 4.919
+Episode 770 	 Avg length: 0 	 Avg reward: 53 	 Elapsed time 4.977
+Episode 771 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 772 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.966
+Episode 773 	 Avg length: 1 	 Avg reward: 36 	 Elapsed time 4.976
+Episode 774 	 Avg length: 0 	 Avg reward: 38 	 Elapsed time 4.921
+Episode 775 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 776 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.6939297318458557 	 
+Epoches 1 	 loss: 0.6933861970901489 	 
+Epoches 2 	 loss: 0.6881939768791199 	 
+Epoches 3 	 loss: 0.6809902191162109 	 
+Epoches 4 	 loss: 0.6722444891929626 	 
+Epoches 5 	 loss: 0.6626821756362915 	 
+Epoches 6 	 loss: 0.6521380543708801 	 
+Epoches 7 	 loss: 0.6419262290000916 	 
+Epoches 8 	 loss: 0.6328012347221375 	 
+Epoches 9 	 loss: 0.6242252588272095 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 777 	 Avg length: 4 	 Avg reward: 15 	 Elapsed time 5.046
+Episode 778 	 Avg length: 0 	 Avg reward: 25 	 Elapsed time 4.984
+Episode 779 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.964
+Episode 780 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.906
+Episode 781 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.966
+Episode 782 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.981
+Episode 783 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.967
+Episode 784 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.928
+Episode 785 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.977
+Episode 786 	 Avg length: 0 	 Avg reward: 24 	 Elapsed time 4.969
+Episode 787 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 788 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 789 	 Avg length: 2 	 Avg reward: 25 	 Elapsed time 4.918
+Episode 790 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.978
+Episode 791 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 792 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 793 	 Avg length: 1 	 Avg reward: 34 	 Elapsed time 4.975
+Episode 794 	 Avg length: 0 	 Avg reward: 24 	 Elapsed time 4.977
+Episode 795 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.913
+Episode 796 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.964
+Episode 797 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.971
+Episode 798 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.976
+Episode 799 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 4.902
+Episode 800 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.983
+Episode 801 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.980
+Episode 802 	 Avg length: 0 	 Avg reward: 36 	 Elapsed time 4.988
+Episode 803 	 Avg length: 3 	 Avg reward: 40 	 Elapsed time 4.919
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.34932613372802734 	 
+Epoches 1 	 loss: 0.3418545126914978 	 
+Epoches 2 	 loss: 0.336304247379303 	 
+Epoches 3 	 loss: 0.33297979831695557 	 
+Epoches 4 	 loss: 0.3300210237503052 	 
+Epoches 5 	 loss: 0.32695040106773376 	 
+Epoches 6 	 loss: 0.32564252614974976 	 
+Epoches 7 	 loss: 0.3248087763786316 	 
+Epoches 8 	 loss: 0.32317885756492615 	 
+Epoches 9 	 loss: 0.3212887942790985 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 804 	 Avg length: 0 	 Avg reward: 40 	 Elapsed time 5.026
+Episode 805 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 806 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 807 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 808 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 809 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 810 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 811 	 Avg length: 2 	 Avg reward: 34 	 Elapsed time 4.984
+Episode 812 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.904
+Episode 813 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.946
+Episode 814 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.968
+Episode 815 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.973
+Episode 816 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.929
+Episode 817 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 818 	 Avg length: 4 	 Avg reward: 35 	 Elapsed time 4.983
+Episode 819 	 Avg length: 0 	 Avg reward: 54 	 Elapsed time 4.972
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.4140065908432007 	 
+Epoches 1 	 loss: 0.4143292009830475 	 
+Epoches 2 	 loss: 0.41362640261650085 	 
+Epoches 3 	 loss: 0.412312388420105 	 
+Epoches 4 	 loss: 0.4098055064678192 	 
+Epoches 5 	 loss: 0.40678897500038147 	 
+Epoches 6 	 loss: 0.403909295797348 	 
+Epoches 7 	 loss: 0.4027727544307709 	 
+Epoches 8 	 loss: 0.40113574266433716 	 
+Epoches 9 	 loss: 0.39958712458610535 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 820 	 Avg length: 2 	 Avg reward: 54 	 Elapsed time 5.029
+Episode 821 	 Avg length: 2 	 Avg reward: 12 	 Elapsed time 4.902
+Episode 822 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 4.973
+Episode 823 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 4.973
+Episode 824 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 4.915
+Episode 825 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 4.966
+Episode 826 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 4.958
+Episode 827 	 Avg length: 0 	 Avg reward: 5 	 Elapsed time 4.957
+Episode 828 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 4.914
+Episode 829 	 Avg length: 0 	 Avg reward: 8 	 Elapsed time 4.959
+Episode 830 	 Avg length: 0 	 Avg reward: 6 	 Elapsed time 4.957
+Episode 831 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 4.960
+Episode 832 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 4.900
+Episode 833 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.976
+Episode 834 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 4.957
+Episode 835 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 4.898
+Episode 836 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 4.977
+Episode 837 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 4.983
+Episode 838 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.978
+Episode 839 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.936
+Episode 840 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.986
+Episode 841 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.977
+Episode 842 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.969
+Episode 843 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.925
+Episode 844 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.983
+Episode 845 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.989
+Episode 846 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.905
+Episode 847 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.979
+Episode 848 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.955
+Episode 849 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 4.969
+Episode 850 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.909
+Episode 851 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.999
+Episode 852 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.971
+Episode 853 	 Avg length: 0 	 Avg reward: 17 	 Elapsed time 4.967
+Episode 854 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.913
+Episode 855 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.957
+Episode 856 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.966
+Episode 857 	 Avg length: 0 	 Avg reward: 54 	 Elapsed time 4.909
+Episode 858 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.963
+Episode 859 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.952
+Episode 860 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.968
+Episode 861 	 Avg length: 0 	 Avg reward: 25 	 Elapsed time 4.906
+Episode 862 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.960
+Episode 863 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.957
+Episode 864 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.977
+Episode 865 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.905
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.4198129177093506 	 
+Epoches 1 	 loss: 0.4226437211036682 	 
+Epoches 2 	 loss: 0.4229317307472229 	 
+Epoches 3 	 loss: 0.4208850860595703 	 
+Epoches 4 	 loss: 0.41674789786338806 	 
+Epoches 5 	 loss: 0.41079315543174744 	 
+Epoches 6 	 loss: 0.40341275930404663 	 
+Epoches 7 	 loss: 0.39518827199935913 	 
+Epoches 8 	 loss: 0.3878474235534668 	 
+Epoches 9 	 loss: 0.38257256150245667 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 866 	 Avg length: 0 	 Avg reward: 33 	 Elapsed time 5.015
+Episode 867 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 868 	 Avg length: 4 	 Avg reward: 34 	 Elapsed time 4.964
+Episode 869 	 Avg length: 0 	 Avg reward: 41 	 Elapsed time 4.978
+Episode 870 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 871 	 Avg length: 3 	 Avg reward: 40 	 Elapsed time 4.902
+Episode 872 	 Avg length: 2 	 Avg reward: 27 	 Elapsed time 4.974
+Episode 873 	 Avg length: 0 	 Avg reward: 54 	 Elapsed time 4.993
+Episode 874 	 Avg length: 2 	 Avg reward: 26 	 Elapsed time 4.991
+Episode 875 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.929
+Episode 876 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.980
+Episode 877 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.993
+Episode 878 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.910
+Episode 879 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.970
+Episode 880 	 Avg length: 0 	 Avg reward: 19 	 Elapsed time 4.972
+Episode 881 	 Avg length: 0 	 Avg reward: 11 	 Elapsed time 4.963
+Episode 882 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.900
+Episode 883 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.969
+Episode 884 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.968
+Episode 885 	 Avg length: 0 	 Avg reward: 51 	 Elapsed time 4.980
+Episode 886 	 Avg length: 4 	 Avg reward: 51 	 Elapsed time 4.980
+Episode 887 	 Avg length: 2 	 Avg reward: 38 	 Elapsed time 4.921
+Episode 888 	 Avg length: 0 	 Avg reward: 53 	 Elapsed time 4.966
+Episode 889 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.971
+Episode 890 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.969
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.4891834557056427 	 
+Epoches 1 	 loss: 0.49127256870269775 	 
+Epoches 2 	 loss: 0.49298331141471863 	 
+Epoches 3 	 loss: 0.4938572347164154 	 
+Epoches 4 	 loss: 0.4939205050468445 	 
+Epoches 5 	 loss: 0.4934345781803131 	 
+Epoches 6 	 loss: 0.4922773540019989 	 
+Epoches 7 	 loss: 0.4905203878879547 	 
+Epoches 8 	 loss: 0.4898209273815155 	 
+Epoches 9 	 loss: 0.4903858006000519 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 891 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 5.023
+Episode 892 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.913
+Episode 893 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.969
+Episode 894 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.952
+Episode 895 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.985
+Episode 896 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.906
+Episode 897 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.973
+Episode 898 	 Avg length: 0 	 Avg reward: 49 	 Elapsed time 4.983
+Episode 899 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.904
+Episode 900 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.967
+Episode 901 	 Avg length: 0 	 Avg reward: 54 	 Elapsed time 4.965
+Episode 902 	 Avg length: 4 	 Avg reward: 20 	 Elapsed time 4.991
+Episode 903 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.972
+Episode 904 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.909
+Episode 905 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.994
+Episode 906 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.988
+Episode 907 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.985
+Episode 908 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.913
+Episode 909 	 Avg length: 0 	 Avg reward: 27 	 Elapsed time 4.967
+Episode 910 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.975
+Episode 911 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.919
+Episode 912 	 Avg length: 0 	 Avg reward: 37 	 Elapsed time 4.980
+Episode 913 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.980
+Episode 914 	 Avg length: 0 	 Avg reward: 31 	 Elapsed time 4.975
+Episode 915 	 Avg length: 0 	 Avg reward: 50 	 Elapsed time 4.918
+Episode 916 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 917 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 918 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 919 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.540095865726471 	 
+Epoches 1 	 loss: 0.5396636724472046 	 
+Epoches 2 	 loss: 0.5370843410491943 	 
+Epoches 3 	 loss: 0.5330450534820557 	 
+Epoches 4 	 loss: 0.5284424424171448 	 
+Epoches 5 	 loss: 0.5251315832138062 	 
+Epoches 6 	 loss: 0.5227037668228149 	 
+Epoches 7 	 loss: 0.5206025838851929 	 
+Epoches 8 	 loss: 0.5183708071708679 	 
+Epoches 9 	 loss: 0.515873372554779 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 920 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.062
+Episode 921 	 Avg length: 4 	 Avg reward: 52 	 Elapsed time 4.968
+Episode 922 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.950
+Episode 923 	 Avg length: 0 	 Avg reward: 14 	 Elapsed time 4.972
+Episode 924 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 4.960
+Episode 925 	 Avg length: 0 	 Avg reward: 25 	 Elapsed time 4.904
+Episode 926 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.978
+Episode 927 	 Avg length: 0 	 Avg reward: 25 	 Elapsed time 4.965
+Episode 928 	 Avg length: 0 	 Avg reward: 39 	 Elapsed time 4.967
+Episode 929 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 930 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 931 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 932 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.009
+Episode 933 	 Avg length: 2 	 Avg reward: 33 	 Elapsed time 4.946
+Episode 934 	 Avg length: 1 	 Avg reward: 49 	 Elapsed time 4.892
+Episode 935 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 936 	 Avg length: 3 	 Avg reward: 36 	 Elapsed time 4.973
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.3521754741668701 	 
+Epoches 1 	 loss: 0.34583139419555664 	 
+Epoches 2 	 loss: 0.33818647265434265 	 
+Epoches 3 	 loss: 0.3302864134311676 	 
+Epoches 4 	 loss: 0.3217984437942505 	 
+Epoches 5 	 loss: 0.3149033784866333 	 
+Epoches 6 	 loss: 0.31393513083457947 	 
+Epoches 7 	 loss: 0.3156737685203552 	 
+Epoches 8 	 loss: 0.31795769929885864 	 
+Epoches 9 	 loss: 0.31985270977020264 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 937 	 Avg length: 2 	 Avg reward: 33 	 Elapsed time 5.028
+Episode 938 	 Avg length: 0 	 Avg reward: 33 	 Elapsed time 4.966
+Episode 939 	 Avg length: 1 	 Avg reward: 52 	 Elapsed time 4.906
+Episode 940 	 Avg length: 4 	 Avg reward: 22 	 Elapsed time 4.971
+Episode 941 	 Avg length: 0 	 Avg reward: 21 	 Elapsed time 4.974
+Episode 942 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.962
+Episode 943 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.900
+Episode 944 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.954
+Episode 945 	 Avg length: 0 	 Avg reward: 15 	 Elapsed time 4.966
+Episode 946 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.918
+Episode 947 	 Avg length: 0 	 Avg reward: 25 	 Elapsed time 4.972
+Episode 948 	 Avg length: 0 	 Avg reward: 43 	 Elapsed time 4.965
+Episode 949 	 Avg length: 2 	 Avg reward: 27 	 Elapsed time 4.972
+Episode 950 	 Avg length: 0 	 Avg reward: 23 	 Elapsed time 4.912
+Episode 951 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.968
+Episode 952 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.963
+Episode 953 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.965
+Episode 954 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.915
+Episode 955 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.958
+Episode 956 	 Avg length: 0 	 Avg reward: 38 	 Elapsed time 4.969
+Episode 957 	 Avg length: 0 	 Avg reward: 59 	 Elapsed time 4.915
+Episode 958 	 Avg length: 3 	 Avg reward: 8 	 Elapsed time 4.978
+Episode 959 	 Avg length: 0 	 Avg reward: 26 	 Elapsed time 4.968
+Episode 960 	 Avg length: 0 	 Avg reward: 10 	 Elapsed time 4.987
+Episode 961 	 Avg length: 0 	 Avg reward: 16 	 Elapsed time 4.926
+Episode 962 	 Avg length: 0 	 Avg reward: 18 	 Elapsed time 4.976
+Episode 963 	 Avg length: 0 	 Avg reward: 29 	 Elapsed time 4.976
+Episode 964 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.977
+Episode 965 	 Avg length: 0 	 Avg reward: 9 	 Elapsed time 4.906
+Episode 966 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.961
+Episode 967 	 Avg length: 0 	 Avg reward: 22 	 Elapsed time 4.971
+Episode 968 	 Avg length: 0 	 Avg reward: 28 	 Elapsed time 4.908
+Episode 969 	 Avg length: 0 	 Avg reward: 30 	 Elapsed time 4.970
+Episode 970 	 Avg length: 0 	 Avg reward: 27 	 Elapsed time 4.969
+Episode 971 	 Avg length: 1 	 Avg reward: 34 	 Elapsed time 4.963
+Episode 972 	 Avg length: 0 	 Avg reward: 50 	 Elapsed time 4.898
+Episode 973 	 Avg length: 0 	 Avg reward: 51 	 Elapsed time 4.961
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.5414577126502991 	 
+Epoches 1 	 loss: 0.5442289113998413 	 
+Epoches 2 	 loss: 0.5395563244819641 	 
+Epoches 3 	 loss: 0.5286480784416199 	 
+Epoches 4 	 loss: 0.5127362608909607 	 
+Epoches 5 	 loss: 0.4947762191295624 	 
+Epoches 6 	 loss: 0.4787895083427429 	 
+Epoches 7 	 loss: 0.4684363007545471 	 
+Epoches 8 	 loss: 0.4620670974254608 	 
+Epoches 9 	 loss: 0.4588148295879364 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 974 	 Avg length: 0 	 Avg reward: 53 	 Elapsed time 5.017
+Episode 975 	 Avg length: 0 	 Avg reward: 41 	 Elapsed time 4.965
+Episode 976 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 977 	 Avg length: 4 	 Avg reward: 40 	 Elapsed time 5.009
+Episode 978 	 Avg length: 0 	 Avg reward: 20 	 Elapsed time 4.910
+Episode 979 	 Avg length: 0 	 Avg reward: 13 	 Elapsed time 4.980
+Episode 980 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.010
+Episode 981 	 Avg length: 1 	 Avg reward: 22 	 Elapsed time 4.979
+Episode 982 	 Avg length: 1 	 Avg reward: 37 	 Elapsed time 4.971
+Episode 983 	 Avg length: 0 	 Avg reward: 12 	 Elapsed time 4.908
+Episode 984 	 Avg length: 0 	 Avg reward: 32 	 Elapsed time 4.968
+Episode 985 	 Avg length: 0 	 Avg reward: 53 	 Elapsed time 4.955
+Episode 986 	 Avg length: 0 	 Avg reward: 44 	 Elapsed time 4.913
+Episode 987 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.982
+Episode 988 	 Avg length: 0 	 Avg reward: 43 	 Elapsed time 4.964
+Episode 989 	 Avg length: 0 	 Avg reward: 42 	 Elapsed time 4.975
+Episode 990 	 Avg length: 0 	 Avg reward: 45 	 Elapsed time 4.907
+Episode 991 	 Avg length: 0 	 Avg reward: 41 	 Elapsed time 4.976
+Episode 992 	 Avg length: 3 	 Avg reward: 45 	 Elapsed time 4.983
+Episode 993 	 Avg length: 0 	 Avg reward: 41 	 Elapsed time 4.960
+Episode 994 	 Avg length: 4 	 Avg reward: 34 	 Elapsed time 4.982
+Episode 995 	 Avg length: 1 	 Avg reward: 33 	 Elapsed time 4.905
+Episode 996 	 Avg length: 0 	 Avg reward: 35 	 Elapsed time 4.980
+Episode 997 	 Avg length: 0 	 Avg reward: 34 	 Elapsed time 4.978
+Episode 998 	 Avg length: 0 	 Avg reward: 46 	 Elapsed time 4.999
+-*-*-*-*-*-*-*-*-*-* start training the RL agent -*-*-*-*-*-*-*-*-*-*
+Epoches 0 	 loss: 0.732003927230835 	 
+Epoches 1 	 loss: 0.7326136827468872 	 
+Epoches 2 	 loss: 0.7294562458992004 	 
+Epoches 3 	 loss: 0.7235758900642395 	 
+Epoches 4 	 loss: 0.7138532996177673 	 
+Epoches 5 	 loss: 0.7008150815963745 	 
+Epoches 6 	 loss: 0.6870811581611633 	 
+Epoches 7 	 loss: 0.6720911264419556 	 
+Epoches 8 	 loss: 0.6576385498046875 	 
+Epoches 9 	 loss: 0.6434056162834167 	 
+-*-*-*-*-*-*-*-*-*-* start search the pruning policies -*-*-*-*-*-*-*-*-*-*
+Episode 999 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.108
+Episode 1000 	 Avg length: 4 	 Avg reward: 0 	 Elapsed time 0.013

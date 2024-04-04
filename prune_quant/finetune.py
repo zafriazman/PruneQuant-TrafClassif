@@ -11,7 +11,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from tqdm import tqdm
 from pytorch_quantization import quant_modules
 from networks.cnn1d import CNN1D_TrafficClassification
-from utils.iscx2016vpn_training_utils import create_data_loaders_iscx2016vpn
+from utils.training_utils import create_data_loaders
 from prune_quant.quant_utils import evaluate, save_model_state_dict, load_fp32_model, benchmark_against_NiN
 from prune_quant.prune import prune_permenantly
 from prune_quant.quant_convert import convert_to_onnx
@@ -67,8 +67,9 @@ def finetune(net, train_loader, val_loader, dataset_name, model_name, epochs, lr
 
         # Save the model
         if val_loss < current_val_loss:
+            current_val_loss = val_loss
             print(f"Saving best model with {val_acc}% validation acc")
-            save_model_state_dict(net, dataset_name, model_name, preserve_array_prune, bitwidths)
+            save_model_state_dict(net, model_name, dataset_name, preserve_array_prune, bitwidths)
 
 
 
@@ -81,7 +82,6 @@ if __name__ == "__main__":
     n_worker    = 0
     train_ratio = 0.65
     val_ratio   = 0.15
-    dataset     = os.path.join('data', 'datasets', 'iscx2016vpn-pytorch')
     parser      = argparse.ArgumentParser()
     criterion   = nn.CrossEntropyLoss()
     parser.add_argument('--epochs', default=120, help='train with how many epochs')
@@ -93,39 +93,63 @@ if __name__ == "__main__":
     parser.add_argument('--eval_trt', default='false', help='only set this to \'true\' after converting onnx to trt engine')
     args = parser.parse_args()
     inf_batch_size = int(args.batch_size)
-    train_loader, valid_loader, test_loader, classes = create_data_loaders_iscx2016vpn(dataset, inf_batch_size, n_worker, train_ratio, val_ratio)
+    if args.dataset == "iscx2016vpn":
+        dataset     = os.path.join('data', 'datasets', 'iscx2016vpn-pytorch')
+    elif args.dataset == "ustctfc2016":
+        dataset     = os.path.join('data', 'datasets', 'ustc-tfc2016-pytorch')
+    train_loader, valid_loader, test_loader, classes = create_data_loaders(dataset, inf_batch_size, n_worker, train_ratio, val_ratio)
     example_inputs = (next(iter(test_loader))[0]).to(device)
+
 
 
     # Check whether to benchmark the trt model or to finetune
     if args.eval_trt == "true":
-        trt_engine_path = os.path.join("networks","quantized_models","iscx2016vpn","model_engine.trt")
-        path_own_model  = os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
-        path_NiN_model  = os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'NiN_CNN1D_TrafficClassification_best_model_without_aux.pth')
-        net             = load_fp32_model(path=path_own_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
-        net_NiN         = load_fp32_model(path=path_NiN_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
-        benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
-        exit()
+        if args.dataset == "iscx2016vpn":
+            trt_engine_path = os.path.join("networks","quantized_models","iscx2016vpn","model_engine.trt")
+            path_own_model  = os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
+            path_NiN_model  = os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'NiN_CNN1D_TrafficClassification_best_model_without_aux.pth')
+            net             = load_fp32_model(path=path_own_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
+            net_NiN         = load_fp32_model(path=path_NiN_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
+            benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
+            exit()
+        elif args.dataset == "ustctfc2016":
+            trt_engine_path = os.path.join("networks","quantized_models","ustc-tfc2016","model_engine.trt")
+            path_own_model  = os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
+            path_NiN_model  = os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', 'NiN_CNN1D_TrafficClassification_best_model_without_aux.pth')
+            net             = load_fp32_model(path=path_own_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
+            net_NiN         = load_fp32_model(path=path_NiN_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
+            benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
+            exit()
+
 
 
     # Load prune and quantized model
     quant_modules.initialize()
     net          = CNN1D_TrafficClassification(input_ch=example_inputs.shape[1], num_classes=classes).to(device)
     model_name   = net.__class__.__name__
-    checkpoint   = torch.load(os.path.join("networks","quantized_models","iscx2016vpn", f"{model_name}_{args.dataset}.pt"), map_location=device)
+
+    if args.dataset == "iscx2016vpn":
+        checkpoint   = torch.load(os.path.join("networks","quantized_models","iscx2016vpn", f"{model_name}_{args.dataset}.pt"), map_location=device)
+    elif args.dataset == "ustctfc2016":
+        checkpoint   = torch.load(os.path.join("networks","quantized_models","ustc-tfc2016", f"{model_name}_{args.dataset}.pt"), map_location=device)
+
     preserve_array_prune = checkpoint['preserve_array_prune']
     bitwidths = checkpoint['bitwidths']
+
     for name, module in net.named_modules():
         if isinstance(module, torch.nn.Conv1d): # dummy pruning to add masks
             prune.ln_structured(module, name='weight', amount=0., n=2, dim=0)   
+
     sd = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
     net.load_state_dict(sd, strict=True)
+
 
 
     # Get model's accuracy with targeted inference batch_size
     best_acc = 0
     current_loss, current_acc, _ = evaluate(net, valid_loader, criterion, device)
     print(f"Current accuracy is: {current_acc:.2f}%")
+
 
 
     # Finetune model
@@ -136,7 +160,10 @@ if __name__ == "__main__":
 
     # Save as onnx
     prune_permenantly(net)
-    onnx_path       = os.path.join("networks","quantized_models","iscx2016vpn","model.onnx")
+    if args.dataset == "iscx2016vpn":
+        onnx_path = os.path.join("networks","quantized_models","iscx2016vpn","model.onnx")
+    elif args.dataset == "ustctfc2016":
+        onnx_path = os.path.join("networks","quantized_models","ustc-tfc2016","model.onnx")
     convert_to_onnx(net, example_inputs, onnx_path)
     print(f"Export model as onnx at {onnx_path}")
     print("Please run trtexec to convert to .trt engine")

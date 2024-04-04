@@ -110,7 +110,10 @@ class RL_env:
                 self.best_accuracy = accuracy
 
                 save_model_state_dict(self.prune_quant_net_w_mask, self.model_name , self.dataset, self.preserve_ratio_p, ([8]*self.n_layer))
-                onnx_path = os.path.join("networks","quantized_models","iscx2016vpn","model.onnx")
+                if args.dataset == "iscx2016vpn":
+                    onnx_path = os.path.join("networks","quantized_models","iscx2016vpn","model.onnx")
+                elif args.dataset == "ustctfc2016":
+                    onnx_path = os.path.join("networks","quantized_models","ustc-tfc2016","model.onnx")
                 convert_to_onnx(self.prune_quant_net, self.input_x, onnx_path)
                 print(f"Saving best model in onnx at {onnx_path}")
                 print(f"Best accuracy is {accuracy:.2f}% with FLOPs ratio of {(r_flops*100):3f}% from baseline model")

@@ -12,7 +12,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from pytorch_quantization import quant_modules
 from pytorch_quantization import nn as quant_nn
 from networks.cnn1d import CNN1D_TrafficClassification
-from utils.iscx2016vpn_training_utils import create_data_loaders_iscx2016vpn
+from utils.training_utils import create_data_loaders
 from prune_quant.prune import channel_pruning, prune_permenantly, workaround_deepcopy
 from prune_quant.quant_prepare import action_to_bitwidth, prepare_perlayer
 from prune_quant.quant_calibrate import compute_amax, collect_stats, qat_train
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     train_ratio     = 0.65
     val_ratio       = 0.15
     dataset         = os.path.join('data', 'datasets', 'iscx2016vpn-pytorch')
-    train_loader, valid_loader, test_loader, classes = create_data_loaders_iscx2016vpn(dataset, batch_size, n_worker, train_ratio, val_ratio)
+    train_loader, valid_loader, test_loader, classes = create_data_loaders(dataset, batch_size, n_worker, train_ratio, val_ratio)
     
     
     # Set hyperparameters
