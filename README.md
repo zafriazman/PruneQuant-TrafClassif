@@ -63,6 +63,9 @@ Improve model accuracy by finetuning with optimal settings. This generates an ON
 python prune_quant/finetune.py --dataset iscx2016vpn --epochs 25 --lr 0.001 --batch_size 32
 ```
 Convert the ONNX model to a TensorRT (.trt) engine:
+<!-- Use new terminal, cd to repo -->
+<!-- export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/zafri/anaconda3/envs/cuda12:/home/zafri/anaconda3/envs/cuda12/lib -->
+<!-- /home/zafri/anaconda3/envs/cuda12/TensorRT-8.6.1.6/bin/trtexec --onnx=networks/quantized_models/iscx2016vpn/model.onnx --saveEngine=networks/quantized_models/iscx2016vpn/model_engine.trt --int8 -->
 ```bash
 trtexec --onnx=networks/quantized_models/iscx2016vpn/model.onnx --saveEngine=networks/quantized_models/iscx2016vpn/model_engine.trt --int8 
 ```
