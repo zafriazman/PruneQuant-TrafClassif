@@ -13,12 +13,14 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from torch.utils.data import Dataset, DataLoader, random_split
 from utils.training_utils import PacketDataset
+from prune_quant.quant_utils import load_fp32_model
 from sklearn.metrics import confusion_matrix
+from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 
 
-def get_true_and_pred_labels(engine_path, dataloader, batch_size, num_classes):
+def get_true_and_pred_labels_trt(engine_path, dataloader, batch_size, num_classes):
 
     def predict(batch, current_batch_size, num_classes): # result gets copied into output
         output = np.empty([current_batch_size, num_classes], dtype=np.float32)  # Adjusted output allocation
@@ -62,6 +64,47 @@ def get_true_and_pred_labels(engine_path, dataloader, batch_size, num_classes):
 
 
 
+def get_true_and_pred_labels_fp32(sd_path, dataloader, criterion, device, num_classes):
+
+    model = load_fp32_model(path=sd_path, input_ch=1, num_classes=num_classes, device=device)
+    model.eval()
+    print('Validation')
+    valid_running_loss = 0.0
+    valid_running_correct = 0
+    counter = 0
+
+    true_labels = []
+    predicted_labels = []
+
+    with torch.no_grad():
+        for i, data in tqdm(enumerate(dataloader), total=len(dataloader)):
+            counter += 1
+            
+            rawpacket, labels = data
+            rawpacket = rawpacket.to(device)
+            labels = labels.to(device)
+
+            # Forward pass.
+            outputs = model(rawpacket)
+            
+            # Ensure compatibility if model returns auxiliary outputs
+            main_output = outputs if not isinstance(outputs, tuple) else outputs[0]
+
+            # Calculate the loss.
+            loss = criterion(main_output, labels)
+            valid_running_loss += loss.item()
+
+            # Calculate the accuracy.
+            _, preds = torch.max(main_output.data, 1)
+            valid_running_correct += (preds == labels).sum().item()
+
+            # Append the current batch of predictions and labels to the lists
+            predicted_labels.extend(preds.cpu().numpy())
+            true_labels.extend(labels.cpu().numpy())
+        
+    return true_labels, predicted_labels
+
+
 
 def create_data_loaders_with_labels(data_directory, batch_size, n_worker, train_ratio, val_ratio):
     # Initialize the dataset
@@ -92,39 +135,137 @@ def create_data_loaders_with_labels(data_directory, batch_size, n_worker, train_
 
 
 
-start_time  = time.time()
-device      = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-n_worker    = 0
-criterion   = nn.CrossEntropyLoss()
-dataset     = os.path.join('data', 'datasets', 'iscx2016vpn-pytorch')
-train_ratio = 0.65
-val_ratio   = 0.15
-bsize       = 32
+if __name__ == '__main__':
+    
+    ##################################################################################
+    ##### ISCX2016VPN prune and quantized confusion matrix ###########################
+    ##################################################################################
+    start_time  = time.time()
+    device      = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    n_worker    = 0
+    criterion   = nn.CrossEntropyLoss()
+    dataset     = os.path.join('data', 'datasets', 'iscx2016vpn-pytorch')
+    train_ratio = 0.65
+    val_ratio   = 0.15
+    bsize       = 32
 
-train_loader, valid_loader, test_loader, n_classes, class_labels = create_data_loaders_with_labels(dataset, bsize, n_worker, train_ratio, val_ratio)
+    train_loader, valid_loader, test_loader, n_classes, class_labels = create_data_loaders_with_labels(dataset, bsize, n_worker, train_ratio, val_ratio)
 
-trt_engine_path = os.path.join("networks","quantized_models","iscx2016vpn","model_engine.trt")
+    trt_engine_path = os.path.join("networks","quantized_models","iscx2016vpn","model_engine.trt")
 
-true_labels, pred_labels = get_true_and_pred_labels(trt_engine_path, test_loader, bsize, n_classes)
+    true_labels, pred_labels = get_true_and_pred_labels_trt(trt_engine_path, test_loader, bsize, n_classes)
 
 
-class_labels = tuple(class_labels)
+    class_labels = tuple(class_labels)
 
-# Convert lists to numpy arrays
-true_labels = np.array(true_labels)
-pred_labels = np.array(pred_labels)
-conf_matrix = confusion_matrix(true_labels, pred_labels)
+    # Convert lists to numpy arrays
+    true_labels = np.array(true_labels)
+    pred_labels = np.array(pred_labels)
+    conf_matrix = confusion_matrix(true_labels, pred_labels)
 
-# Build confusion matrix
-cf_matrix = confusion_matrix(true_labels, pred_labels)
-df_cm = pd.DataFrame(cf_matrix / np.sum(cf_matrix, axis=1)[:, None], index = [i for i in class_labels],
-                     columns = [i for i in class_labels])
-plt.figure(figsize = (12,12))
-plt.rc('font', family='serif', serif='Times new Roman')
-sns.heatmap(df_cm, annot=True, fmt='.2f', cmap='YlOrBr')
-plt.xlabel('Predicted Label')
-plt.ylabel('True Label')
-plt.yticks(rotation=0)
-plt.show()
-#plt.savefig('output.png')
+    # Build confusion matrix
+    cf_matrix = confusion_matrix(true_labels, pred_labels)
+    df_cm = pd.DataFrame(cf_matrix / np.sum(cf_matrix, axis=1)[:, None], index = [i for i in class_labels],
+                        columns = [i for i in class_labels])
+    plt.figure(figsize = (12,12))
+    plt.rc('font', family='serif', serif='Times new Roman')
+    sns.heatmap(df_cm, annot=True, fmt='.2f', cmap='YlOrBr')
+    plt.xlabel('Predicted Label')
+    plt.ylabel('True Label')
+    plt.yticks(rotation=0)
+    plt.savefig(os.path.join('logs', 'iscx2016vpn', 'confusion-matrix-prune-quant.png'), format='png', dpi=300, bbox_inches='tight', transparent=True)
+    #plt.show()
 
+
+
+    ##################################################################################
+    ##### ISCX2016VPN pretrained model FP32 confusion matrix #########################
+    ##################################################################################
+
+    pretrained_state_dict_path = os.path.join("networks","pretrained_models", "iscx2016vpn", "CNN1D_TrafficClassification_best_model_without_aux.pth")
+
+    true_labels, pred_labels = get_true_and_pred_labels_fp32(pretrained_state_dict_path, test_loader, criterion, device, n_classes)
+
+    # Convert lists to numpy arrays
+    true_labels = np.array(true_labels)
+    pred_labels = np.array(pred_labels)
+    conf_matrix = confusion_matrix(true_labels, pred_labels)
+
+    # Build confusion matrix
+    cf_matrix = confusion_matrix(true_labels, pred_labels)
+    df_cm = pd.DataFrame(cf_matrix / np.sum(cf_matrix, axis=1)[:, None], index = [i for i in class_labels],
+                        columns = [i for i in class_labels])
+    plt.figure(figsize = (12,12))
+    plt.rc('font', family='serif', serif='Times new Roman')
+    sns.heatmap(df_cm, annot=True, fmt='.2f', cmap='YlOrBr')
+    plt.xlabel('Predicted Label')
+    plt.ylabel('True Label')
+    plt.yticks(rotation=0)
+    plt.savefig(os.path.join('logs', 'iscx2016vpn', 'confusion-matrix-pretrained-FP32-model.png'), format='png', dpi=300, bbox_inches='tight', transparent=True)
+    #plt.show()
+
+
+
+    ##################################################################################
+    ##### USTCTFC2016 prune and quantized confusion matrix ###########################
+    ##################################################################################
+
+    dataset     = os.path.join('data', 'datasets', 'ustc-tfc2016-pytorch')
+    train_ratio = 0.8
+    val_ratio   = 0.1
+    bsize       = 32
+
+    train_loader, valid_loader, test_loader, n_classes, class_labels = create_data_loaders_with_labels(dataset, bsize, n_worker, train_ratio, val_ratio)
+
+    trt_engine_path = os.path.join("networks","quantized_models", "ustc-tfc2016", "model_engine.trt")
+
+    true_labels, pred_labels = get_true_and_pred_labels_trt(trt_engine_path, test_loader, bsize, n_classes)
+
+
+    class_labels = tuple(class_labels)
+
+    # Convert lists to numpy arrays
+    true_labels = np.array(true_labels)
+    pred_labels = np.array(pred_labels)
+    conf_matrix = confusion_matrix(true_labels, pred_labels)
+
+    # Build confusion matrix
+    cf_matrix = confusion_matrix(true_labels, pred_labels)
+    df_cm = pd.DataFrame(cf_matrix / np.sum(cf_matrix, axis=1)[:, None], index = [i for i in class_labels],
+                        columns = [i for i in class_labels])
+    plt.figure(figsize = (12,12))
+    plt.rc('font', family='serif', serif='Times new Roman')
+    sns.heatmap(df_cm, annot=True, fmt='.2f', cmap='RdPu')
+    plt.xlabel('Predicted Label')
+    plt.ylabel('True Label')
+    plt.yticks(rotation=0)
+    plt.savefig(os.path.join('logs', 'ustc-tfc2016', 'confusion-matrix-prune-quant.png'), format='png', dpi=300, bbox_inches='tight', transparent=True)
+    #plt.show()
+
+
+
+    ##################################################################################
+    ##### USTCTFC2016 pretrained model FP32 confusion matrix #########################
+    ##################################################################################
+
+    pretrained_state_dict_path = os.path.join("networks","pretrained_models", "ustc-tfc2016", "CNN1D_TrafficClassification_best_model_without_aux.pth")
+
+    true_labels, pred_labels = get_true_and_pred_labels_fp32(pretrained_state_dict_path, test_loader, criterion, device, n_classes)
+
+    # Convert lists to numpy arrays
+    true_labels = np.array(true_labels)
+    pred_labels = np.array(pred_labels)
+    conf_matrix = confusion_matrix(true_labels, pred_labels)
+
+    # Build confusion matrix
+    cf_matrix = confusion_matrix(true_labels, pred_labels)
+    df_cm = pd.DataFrame(cf_matrix / np.sum(cf_matrix, axis=1)[:, None], index = [i for i in class_labels],
+                        columns = [i for i in class_labels])
+    plt.figure(figsize = (12,12))
+    plt.rc('font', family='serif', serif='Times new Roman')
+    sns.heatmap(df_cm, annot=True, fmt='.2f', cmap='RdPu')
+    plt.xlabel('Predicted Label')
+    plt.ylabel('True Label')
+    plt.yticks(rotation=0)
+    plt.savefig(os.path.join('logs', 'ustc-tfc2016', 'confusion-matrix-pretrained-FP32-model.png'), format='png', dpi=300, bbox_inches='tight', transparent=True)
+    #plt.show()
