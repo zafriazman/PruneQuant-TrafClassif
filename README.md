@@ -46,8 +46,9 @@ python utils/training_utils.py --dataset iscx2016vpn --NiN_model false --epochs 
 To prune 20% of the filters and quantize to 8 bit, execute:\
 Change dataset argument from `iscx2016vpn`  to `ustctfc2016` accordingly
 ```bash
-python auto_prune_quant.py --dataset iscx2016vpn --model CNN1D_TrafficClassification --prune_ratio 0.2 --qat_epochs 5 --data_bsize 1024 --seed 2024 --action_std 0.5 --max_episodes 1000 | tee logs/iscx2016vpn/prune0.20_qatepch5_bsize1024_actionstd0.5_maxepsd1000.txt
+python auto_prune_quant.py --dataset iscx2016vpn --model CNN1D_TrafficClassification --prune_ratio 0.2 --qat_epochs 5 --data_bsize 1024 --seed 2024 --action_std 0.5 --max_episodes 500
 ```
+<!-- python auto_prune_quant.py --dataset iscx2016vpn --model CNN1D_TrafficClassification --prune_ratio 0.2 --qat_epochs 5 --data_bsize 1024 --seed 2024 --action_std 0.5 --max_episodes 1000 | tee logs/iscx2016vpn/prune0.20_qatepch5_bsize1024_actionstd0.5_maxepsd1000.txt -->
 
 &nbsp;
 &nbsp;

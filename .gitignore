@@ -7,3 +7,4 @@ __pycache__/
 /data/datasets/iscx2016vpn-extracted-pcaps-nonVPNonly/
 /data/datasets/ustc-tfc2016-extracted-pcaps/
 #/data/datasets/ustc-tfc2016-pytorch/
+/logs/
