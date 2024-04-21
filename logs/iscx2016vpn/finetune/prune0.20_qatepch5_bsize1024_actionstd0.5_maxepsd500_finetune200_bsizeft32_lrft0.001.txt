@@ -1,0 +1,509 @@
+class name: scp 	 label: 0 	 no. packet: 7000
+class name: skype 	 label: 1 	 no. packet: 7000
+class name: sftp 	 label: 2 	 no. packet: 7000
+class name: aimchat 	 label: 3 	 no. packet: 7000
+class name: facebook 	 label: 4 	 no. packet: 7000
+class name: ftps 	 label: 5 	 no. packet: 7000
+class name: netflix 	 label: 6 	 no. packet: 7000
+class name: icq 	 label: 7 	 no. packet: 7000
+class name: hangouts 	 label: 8 	 no. packet: 7000
+class name: spotify 	 label: 9 	 no. packet: 7000
+class name: gmail 	 label: 10 	 no. packet: 7000
+class name: voipbuster 	 label: 11 	 no. packet: 7000
+class name: bittorrent 	 label: 12 	 no. packet: 7000
+class name: youtube 	 label: 13 	 no. packet: 7000
+class name: email 	 label: 14 	 no. packet: 7000
+class name: vimeo 	 label: 15 	 no. packet: 7000
+Current accuracy is: 57.38%
+Epoch 0: Training loss: 0.970, training acc: 70.584
+Epoch 0: Validation loss: 0.638, validation acc: 81.208
+Saving best model with 81.20833333333334% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 1: Training loss: 0.643, training acc: 80.913
+Epoch 1: Validation loss: 0.527, validation acc: 85.292
+Saving best model with 85.29166666666667% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 2: Training loss: 0.558, training acc: 83.640
+Epoch 2: Validation loss: 0.492, validation acc: 85.375
+Saving best model with 85.375% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 3: Training loss: 0.516, training acc: 85.004
+Epoch 3: Validation loss: 0.525, validation acc: 84.071
+Epoch 4: Training loss: 0.489, training acc: 85.694
+Epoch 4: Validation loss: 0.416, validation acc: 87.565
+Saving best model with 87.56547619047619% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 5: Training loss: 0.460, training acc: 86.522
+Epoch 5: Validation loss: 0.399, validation acc: 88.744
+Saving best model with 88.74404761904762% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 6: Training loss: 0.441, training acc: 87.124
+Epoch 6: Validation loss: 0.387, validation acc: 89.244
+Saving best model with 89.24404761904762% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 7: Training loss: 0.426, training acc: 87.573
+Epoch 7: Validation loss: 0.452, validation acc: 87.327
+Epoch 8: Training loss: 0.420, training acc: 87.687
+Epoch 8: Validation loss: 0.494, validation acc: 85.351
+Epoch 9: Training loss: 0.405, training acc: 88.251
+Epoch 9: Validation loss: 0.369, validation acc: 89.565
+Saving best model with 89.56547619047619% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 10: Training loss: 0.401, training acc: 88.166
+Epoch 10: Validation loss: 0.409, validation acc: 88.310
+Epoch 11: Training loss: 0.388, training acc: 88.666
+Epoch 11: Validation loss: 1.266, validation acc: 68.649
+Epoch 12: Training loss: 0.386, training acc: 88.736
+Epoch 12: Validation loss: 0.344, validation acc: 89.696
+Saving best model with 89.69642857142858% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 13: Training loss: 0.381, training acc: 88.874
+Epoch 13: Validation loss: 0.329, validation acc: 90.315
+Saving best model with 90.31547619047619% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 14: Training loss: 0.375, training acc: 89.008
+Epoch 14: Validation loss: 0.330, validation acc: 90.244
+Epoch 15: Training loss: 0.367, training acc: 89.273
+Epoch 15: Validation loss: 0.323, validation acc: 90.768
+Saving best model with 90.76785714285714% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 16: Training loss: 0.365, training acc: 89.341
+Epoch 16: Validation loss: 0.332, validation acc: 90.262
+Epoch 17: Training loss: 0.362, training acc: 89.484
+Epoch 17: Validation loss: 0.531, validation acc: 83.440
+Epoch 18: Training loss: 0.355, training acc: 89.643
+Epoch 18: Validation loss: 0.321, validation acc: 90.952
+Saving best model with 90.95238095238095% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 19: Training loss: 0.354, training acc: 89.662
+Epoch 19: Validation loss: 0.312, validation acc: 90.958
+Saving best model with 90.95833333333333% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 20: Training loss: 0.347, training acc: 89.949
+Epoch 20: Validation loss: 0.391, validation acc: 88.845
+Epoch 21: Training loss: 0.346, training acc: 89.790
+Epoch 21: Validation loss: 0.333, validation acc: 90.696
+Epoch 22: Training loss: 0.340, training acc: 90.104
+Epoch 22: Validation loss: 0.334, validation acc: 90.393
+Epoch 23: Training loss: 0.336, training acc: 90.247
+Epoch 23: Validation loss: 0.314, validation acc: 90.720
+Epoch 24: Training loss: 0.336, training acc: 90.181
+Epoch 24: Validation loss: 0.301, validation acc: 91.196
+Saving best model with 91.19642857142857% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 25: Training loss: 0.335, training acc: 90.212
+Epoch 25: Validation loss: 0.299, validation acc: 91.119
+Saving best model with 91.11904761904762% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 26: Training loss: 0.333, training acc: 90.272
+Epoch 26: Validation loss: 0.299, validation acc: 91.494
+Saving best model with 91.49404761904762% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 27: Training loss: 0.330, training acc: 90.382
+Epoch 27: Validation loss: 0.297, validation acc: 91.333
+Saving best model with 91.33333333333333% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 28: Training loss: 0.327, training acc: 90.529
+Epoch 28: Validation loss: 0.295, validation acc: 91.357
+Saving best model with 91.35714285714286% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 29: Training loss: 0.325, training acc: 90.479
+Epoch 29: Validation loss: 0.711, validation acc: 77.536
+Epoch 30: Training loss: 0.318, training acc: 90.692
+Epoch 30: Validation loss: 0.286, validation acc: 91.756
+Saving best model with 91.75595238095238% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 31: Training loss: 0.321, training acc: 90.640
+Epoch 31: Validation loss: 0.302, validation acc: 91.125
+Epoch 32: Training loss: 0.316, training acc: 90.852
+Epoch 32: Validation loss: 0.440, validation acc: 86.173
+Epoch 33: Training loss: 0.317, training acc: 90.663
+Epoch 33: Validation loss: 0.286, validation acc: 91.560
+Epoch 34: Training loss: 0.315, training acc: 90.820
+Epoch 34: Validation loss: 0.289, validation acc: 91.512
+Epoch 35: Training loss: 0.309, training acc: 91.038
+Epoch 35: Validation loss: 0.287, validation acc: 91.446
+Epoch 36: Training loss: 0.311, training acc: 90.962
+Epoch 36: Validation loss: 0.284, validation acc: 91.631
+Saving best model with 91.63095238095238% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 37: Training loss: 0.309, training acc: 91.037
+Epoch 37: Validation loss: 0.349, validation acc: 90.173
+Epoch 38: Training loss: 0.305, training acc: 91.076
+Epoch 38: Validation loss: 0.288, validation acc: 91.512
+Epoch 39: Training loss: 0.306, training acc: 91.081
+Epoch 39: Validation loss: 0.282, validation acc: 92.071
+Saving best model with 92.07142857142857% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 40: Training loss: 0.304, training acc: 91.102
+Epoch 40: Validation loss: 0.270, validation acc: 92.113
+Saving best model with 92.11309523809523% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 41: Training loss: 0.306, training acc: 91.047
+Epoch 41: Validation loss: 0.280, validation acc: 92.071
+Epoch 42: Training loss: 0.304, training acc: 91.122
+Epoch 42: Validation loss: 0.278, validation acc: 91.881
+Epoch 43: Training loss: 0.299, training acc: 91.271
+Epoch 43: Validation loss: 0.266, validation acc: 92.583
+Saving best model with 92.58333333333333% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 44: Training loss: 0.299, training acc: 91.235
+Epoch 44: Validation loss: 0.347, validation acc: 89.821
+Epoch 45: Training loss: 0.297, training acc: 91.242
+Epoch 45: Validation loss: 0.270, validation acc: 92.167
+Epoch 46: Training loss: 0.298, training acc: 91.409
+Epoch 46: Validation loss: 0.273, validation acc: 92.262
+Epoch 47: Training loss: 0.295, training acc: 91.445
+Epoch 47: Validation loss: 0.267, validation acc: 92.512
+Epoch 48: Training loss: 0.291, training acc: 91.433
+Epoch 48: Validation loss: 0.273, validation acc: 92.185
+Epoch 49: Training loss: 0.294, training acc: 91.457
+Epoch 49: Validation loss: 0.272, validation acc: 92.060
+Epoch 50: Training loss: 0.290, training acc: 91.496
+Epoch 50: Validation loss: 0.272, validation acc: 92.315
+Epoch 51: Training loss: 0.292, training acc: 91.396
+Epoch 51: Validation loss: 0.327, validation acc: 91.101
+Epoch 52: Training loss: 0.288, training acc: 91.609
+Epoch 52: Validation loss: 0.266, validation acc: 92.369
+Saving best model with 92.36904761904762% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 53: Training loss: 0.287, training acc: 91.559
+Epoch 53: Validation loss: 0.270, validation acc: 91.982
+Epoch 54: Training loss: 0.286, training acc: 91.659
+Epoch 54: Validation loss: 0.265, validation acc: 92.256
+Saving best model with 92.25595238095238% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 55: Training loss: 0.283, training acc: 91.646
+Epoch 55: Validation loss: 0.327, validation acc: 90.607
+Epoch 56: Training loss: 0.289, training acc: 91.473
+Epoch 56: Validation loss: 0.263, validation acc: 92.155
+Saving best model with 92.15476190476191% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 57: Training loss: 0.286, training acc: 91.694
+Epoch 57: Validation loss: 0.256, validation acc: 92.667
+Saving best model with 92.66666666666666% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 58: Training loss: 0.283, training acc: 91.723
+Epoch 58: Validation loss: 0.264, validation acc: 92.220
+Epoch 59: Training loss: 0.279, training acc: 91.783
+Epoch 59: Validation loss: 0.261, validation acc: 92.464
+Epoch 60: Training loss: 0.282, training acc: 91.723
+Epoch 60: Validation loss: 0.303, validation acc: 91.429
+Epoch 61: Training loss: 0.279, training acc: 91.823
+Epoch 61: Validation loss: 0.279, validation acc: 92.190
+Epoch 62: Training loss: 0.279, training acc: 91.842
+Epoch 62: Validation loss: 0.260, validation acc: 92.458
+Epoch 63: Training loss: 0.279, training acc: 91.841
+Epoch 63: Validation loss: 0.266, validation acc: 92.470
+Epoch 64: Training loss: 0.281, training acc: 91.677
+Epoch 64: Validation loss: 0.268, validation acc: 92.137
+Epoch 65: Training loss: 0.276, training acc: 91.946
+Epoch 65: Validation loss: 0.256, validation acc: 92.821
+Saving best model with 92.82142857142858% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 66: Training loss: 0.278, training acc: 91.874
+Epoch 66: Validation loss: 0.516, validation acc: 85.679
+Epoch 67: Training loss: 0.275, training acc: 92.036
+Epoch 67: Validation loss: 0.266, validation acc: 92.286
+Epoch 68: Training loss: 0.274, training acc: 91.875
+Epoch 68: Validation loss: 0.251, validation acc: 92.821
+Saving best model with 92.82142857142858% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 69: Training loss: 0.278, training acc: 91.853
+Epoch 69: Validation loss: 0.257, validation acc: 92.619
+Epoch 70: Training loss: 0.277, training acc: 91.747
+Epoch 70: Validation loss: 0.258, validation acc: 92.536
+Epoch 71: Training loss: 0.271, training acc: 91.999
+Epoch 71: Validation loss: 1.444, validation acc: 63.649
+Epoch 72: Training loss: 0.275, training acc: 91.922
+Epoch 72: Validation loss: 0.316, validation acc: 91.417
+Epoch 73: Training loss: 0.269, training acc: 92.037
+Epoch 73: Validation loss: 0.265, validation acc: 92.405
+Epoch 74: Training loss: 0.272, training acc: 92.001
+Epoch 74: Validation loss: 0.258, validation acc: 92.512
+Epoch 75: Training loss: 0.273, training acc: 91.962
+Epoch 75: Validation loss: 0.315, validation acc: 91.345
+Epoch 76: Training loss: 0.271, training acc: 92.000
+Epoch 76: Validation loss: 0.321, validation acc: 90.685
+Epoch 77: Training loss: 0.272, training acc: 92.059
+Epoch 77: Validation loss: 0.306, validation acc: 91.107
+Epoch 78: Training loss: 0.271, training acc: 91.988
+Epoch 78: Validation loss: 0.252, validation acc: 92.732
+Epoch 79: Training loss: 0.269, training acc: 92.091
+Epoch 79: Validation loss: 0.264, validation acc: 92.500
+Epoch 80: Training loss: 0.269, training acc: 92.118
+Epoch 80: Validation loss: 0.250, validation acc: 92.750
+Saving best model with 92.75% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 81: Training loss: 0.266, training acc: 92.203
+Epoch 81: Validation loss: 0.275, validation acc: 92.512
+Epoch 82: Training loss: 0.268, training acc: 92.012
+Epoch 82: Validation loss: 1.765, validation acc: 60.780
+Epoch 83: Training loss: 0.267, training acc: 92.060
+Epoch 83: Validation loss: 0.250, validation acc: 92.976
+Saving best model with 92.97619047619048% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 84: Training loss: 0.267, training acc: 92.231
+Epoch 84: Validation loss: 0.290, validation acc: 91.667
+Epoch 85: Training loss: 0.264, training acc: 92.229
+Epoch 85: Validation loss: 0.244, validation acc: 93.071
+Saving best model with 93.07142857142857% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 86: Training loss: 0.264, training acc: 92.214
+Epoch 86: Validation loss: 0.505, validation acc: 86.500
+Epoch 87: Training loss: 0.263, training acc: 92.247
+Epoch 87: Validation loss: 0.245, validation acc: 93.024
+Epoch 88: Training loss: 0.263, training acc: 92.224
+Epoch 88: Validation loss: 0.251, validation acc: 92.690
+Epoch 89: Training loss: 0.261, training acc: 92.313
+Epoch 89: Validation loss: 0.296, validation acc: 91.554
+Epoch 90: Training loss: 0.264, training acc: 92.220
+Epoch 90: Validation loss: 0.250, validation acc: 92.815
+Epoch 91: Training loss: 0.261, training acc: 92.365
+Epoch 91: Validation loss: 0.245, validation acc: 93.000
+Epoch 92: Training loss: 0.264, training acc: 92.225
+Epoch 92: Validation loss: 0.244, validation acc: 92.970
+Saving best model with 92.9702380952381% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 93: Training loss: 0.266, training acc: 92.056
+Epoch 93: Validation loss: 0.304, validation acc: 91.530
+Epoch 94: Training loss: 0.262, training acc: 92.231
+Epoch 94: Validation loss: 0.249, validation acc: 92.815
+Epoch 95: Training loss: 0.260, training acc: 92.352
+Epoch 95: Validation loss: 0.247, validation acc: 93.119
+Epoch 96: Training loss: 0.260, training acc: 92.349
+Epoch 96: Validation loss: 0.249, validation acc: 92.988
+Epoch 97: Training loss: 0.259, training acc: 92.489
+Epoch 97: Validation loss: 0.290, validation acc: 91.988
+Epoch 98: Training loss: 0.259, training acc: 92.374
+Epoch 98: Validation loss: 0.286, validation acc: 91.863
+Epoch 99: Training loss: 0.258, training acc: 92.424
+Epoch 99: Validation loss: 0.308, validation acc: 91.339
+Epoch 100: Training loss: 0.259, training acc: 92.374
+Epoch 100: Validation loss: 0.240, validation acc: 92.994
+Saving best model with 92.99404761904762% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 101: Training loss: 0.262, training acc: 92.304
+Epoch 101: Validation loss: 0.841, validation acc: 76.494
+Epoch 102: Training loss: 0.259, training acc: 92.323
+Epoch 102: Validation loss: 0.302, validation acc: 91.024
+Epoch 103: Training loss: 0.258, training acc: 92.319
+Epoch 103: Validation loss: 0.243, validation acc: 93.220
+Epoch 104: Training loss: 0.257, training acc: 92.411
+Epoch 104: Validation loss: 1.227, validation acc: 71.714
+Epoch 105: Training loss: 0.256, training acc: 92.451
+Epoch 105: Validation loss: 0.258, validation acc: 92.518
+Epoch 106: Training loss: 0.255, training acc: 92.449
+Epoch 106: Validation loss: 0.455, validation acc: 85.798
+Epoch 107: Training loss: 0.254, training acc: 92.464
+Epoch 107: Validation loss: 0.247, validation acc: 92.821
+Epoch 108: Training loss: 0.254, training acc: 92.512
+Epoch 108: Validation loss: 0.301, validation acc: 91.554
+Epoch 109: Training loss: 0.256, training acc: 92.466
+Epoch 109: Validation loss: 0.323, validation acc: 90.768
+Epoch 110: Training loss: 0.252, training acc: 92.581
+Epoch 110: Validation loss: 0.312, validation acc: 91.524
+Epoch 111: Training loss: 0.255, training acc: 92.510
+Epoch 111: Validation loss: 0.257, validation acc: 92.673
+Epoch 112: Training loss: 0.255, training acc: 92.462
+Epoch 112: Validation loss: 0.308, validation acc: 91.601
+Epoch 113: Training loss: 0.251, training acc: 92.617
+Epoch 113: Validation loss: 0.240, validation acc: 93.065
+Epoch 114: Training loss: 0.252, training acc: 92.548
+Epoch 114: Validation loss: 0.238, validation acc: 93.256
+Saving best model with 93.25595238095238% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 115: Training loss: 0.250, training acc: 92.526
+Epoch 115: Validation loss: 0.268, validation acc: 92.405
+Epoch 116: Training loss: 0.250, training acc: 92.655
+Epoch 116: Validation loss: 0.241, validation acc: 93.060
+Epoch 117: Training loss: 0.251, training acc: 92.501
+Epoch 117: Validation loss: 0.235, validation acc: 93.411
+Saving best model with 93.41071428571428% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 118: Training loss: 0.251, training acc: 92.496
+Epoch 118: Validation loss: 0.293, validation acc: 91.667
+Epoch 119: Training loss: 0.250, training acc: 92.497
+Epoch 119: Validation loss: 0.242, validation acc: 92.976
+Epoch 120: Training loss: 0.250, training acc: 92.614
+Epoch 120: Validation loss: 0.600, validation acc: 82.560
+Epoch 121: Training loss: 0.249, training acc: 92.613
+Epoch 121: Validation loss: 0.284, validation acc: 92.000
+Epoch 122: Training loss: 0.253, training acc: 92.552
+Epoch 122: Validation loss: 0.307, validation acc: 91.643
+Epoch 123: Training loss: 0.248, training acc: 92.641
+Epoch 123: Validation loss: 0.286, validation acc: 91.798
+Epoch 124: Training loss: 0.249, training acc: 92.615
+Epoch 124: Validation loss: 0.245, validation acc: 93.042
+Epoch 125: Training loss: 0.251, training acc: 92.549
+Epoch 125: Validation loss: 1.604, validation acc: 62.292
+Epoch 126: Training loss: 0.248, training acc: 92.699
+Epoch 126: Validation loss: 0.239, validation acc: 93.214
+Epoch 127: Training loss: 0.247, training acc: 92.688
+Epoch 127: Validation loss: 0.238, validation acc: 93.137
+Epoch 128: Training loss: 0.245, training acc: 92.725
+Epoch 128: Validation loss: 0.240, validation acc: 93.196
+Epoch 129: Training loss: 0.251, training acc: 92.567
+Epoch 129: Validation loss: 0.241, validation acc: 93.452
+Epoch 130: Training loss: 0.249, training acc: 92.657
+Epoch 130: Validation loss: 0.269, validation acc: 92.494
+Epoch 131: Training loss: 0.246, training acc: 92.614
+Epoch 131: Validation loss: 0.241, validation acc: 93.262
+Epoch 132: Training loss: 0.245, training acc: 92.739
+Epoch 132: Validation loss: 0.238, validation acc: 93.208
+Epoch 133: Training loss: 0.246, training acc: 92.742
+Epoch 133: Validation loss: 0.243, validation acc: 92.958
+Epoch 134: Training loss: 0.249, training acc: 92.647
+Epoch 134: Validation loss: 0.306, validation acc: 90.976
+Epoch 135: Training loss: 0.246, training acc: 92.681
+Epoch 135: Validation loss: 0.289, validation acc: 92.048
+Epoch 136: Training loss: 0.244, training acc: 92.747
+Epoch 136: Validation loss: 0.794, validation acc: 77.321
+Epoch 137: Training loss: 0.247, training acc: 92.658
+Epoch 137: Validation loss: 0.245, validation acc: 92.982
+Epoch 138: Training loss: 0.245, training acc: 92.772
+Epoch 138: Validation loss: 0.242, validation acc: 93.000
+Epoch 139: Training loss: 0.246, training acc: 92.674
+Epoch 139: Validation loss: 0.569, validation acc: 85.107
+Epoch 140: Training loss: 0.247, training acc: 92.573
+Epoch 140: Validation loss: 0.266, validation acc: 92.500
+Epoch 141: Training loss: 0.243, training acc: 92.830
+Epoch 141: Validation loss: 0.306, validation acc: 91.827
+Epoch 142: Training loss: 0.242, training acc: 92.791
+Epoch 142: Validation loss: 0.235, validation acc: 93.119
+Epoch 143: Training loss: 0.247, training acc: 92.676
+Epoch 143: Validation loss: 0.283, validation acc: 91.976
+Epoch 144: Training loss: 0.244, training acc: 92.845
+Epoch 144: Validation loss: 0.244, validation acc: 93.012
+Epoch 145: Training loss: 0.246, training acc: 92.734
+Epoch 145: Validation loss: 0.241, validation acc: 92.756
+Epoch 146: Training loss: 0.241, training acc: 92.883
+Epoch 146: Validation loss: 0.281, validation acc: 91.935
+Epoch 147: Training loss: 0.242, training acc: 92.816
+Epoch 147: Validation loss: 0.284, validation acc: 92.155
+Epoch 148: Training loss: 0.243, training acc: 92.755
+Epoch 148: Validation loss: 0.230, validation acc: 93.637
+Saving best model with 93.63690476190476% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 149: Training loss: 0.241, training acc: 92.782
+Epoch 149: Validation loss: 2.612, validation acc: 60.613
+Epoch 150: Training loss: 0.241, training acc: 92.805
+Epoch 150: Validation loss: 0.297, validation acc: 91.601
+Epoch 151: Training loss: 0.242, training acc: 92.787
+Epoch 151: Validation loss: 0.288, validation acc: 92.101
+Epoch 152: Training loss: 0.241, training acc: 92.852
+Epoch 152: Validation loss: 0.281, validation acc: 91.923
+Epoch 153: Training loss: 0.241, training acc: 92.875
+Epoch 153: Validation loss: 0.228, validation acc: 93.554
+Saving best model with 93.55357142857143% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 154: Training loss: 0.240, training acc: 92.863
+Epoch 154: Validation loss: 0.227, validation acc: 93.458
+Saving best model with 93.45833333333333% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 155: Training loss: 0.239, training acc: 92.878
+Epoch 155: Validation loss: 0.231, validation acc: 93.363
+Epoch 156: Training loss: 0.238, training acc: 92.890
+Epoch 156: Validation loss: 0.302, validation acc: 91.470
+Epoch 157: Training loss: 0.241, training acc: 92.766
+Epoch 157: Validation loss: 0.413, validation acc: 87.446
+Epoch 158: Training loss: 0.240, training acc: 92.865
+Epoch 158: Validation loss: 0.232, validation acc: 93.363
+Epoch 159: Training loss: 0.240, training acc: 92.843
+Epoch 159: Validation loss: 0.240, validation acc: 93.083
+Epoch 160: Training loss: 0.238, training acc: 92.940
+Epoch 160: Validation loss: 0.279, validation acc: 92.190
+Epoch 161: Training loss: 0.240, training acc: 92.872
+Epoch 161: Validation loss: 0.232, validation acc: 93.387
+Epoch 162: Training loss: 0.239, training acc: 92.867
+Epoch 162: Validation loss: 0.242, validation acc: 93.167
+Epoch 163: Training loss: 0.236, training acc: 92.942
+Epoch 163: Validation loss: 0.227, validation acc: 93.500
+Saving best model with 93.5% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 164: Training loss: 0.239, training acc: 92.886
+Epoch 164: Validation loss: 0.237, validation acc: 92.964
+Epoch 165: Training loss: 0.237, training acc: 92.911
+Epoch 165: Validation loss: 0.230, validation acc: 93.345
+Epoch 166: Training loss: 0.235, training acc: 93.040
+Epoch 166: Validation loss: 0.229, validation acc: 93.690
+Epoch 167: Training loss: 0.239, training acc: 92.911
+Epoch 167: Validation loss: 0.231, validation acc: 93.363
+Epoch 168: Training loss: 0.237, training acc: 92.893
+Epoch 168: Validation loss: 0.266, validation acc: 92.393
+Epoch 169: Training loss: 0.239, training acc: 92.973
+Epoch 169: Validation loss: 0.227, validation acc: 93.399
+Saving best model with 93.39880952380952% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 170: Training loss: 0.239, training acc: 92.843
+Epoch 170: Validation loss: 0.225, validation acc: 93.482
+Saving best model with 93.48214285714286% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 171: Training loss: 0.238, training acc: 92.870
+Epoch 171: Validation loss: 0.227, validation acc: 93.583
+Epoch 172: Training loss: 0.237, training acc: 92.946
+Epoch 172: Validation loss: 0.239, validation acc: 93.077
+Epoch 173: Training loss: 0.236, training acc: 93.004
+Epoch 173: Validation loss: 0.278, validation acc: 92.095
+Epoch 174: Training loss: 0.237, training acc: 92.975
+Epoch 174: Validation loss: 0.232, validation acc: 93.262
+Epoch 175: Training loss: 0.237, training acc: 92.960
+Epoch 175: Validation loss: 0.223, validation acc: 93.726
+Saving best model with 93.72619047619047% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 176: Training loss: 0.234, training acc: 92.970
+Epoch 176: Validation loss: 0.222, validation acc: 93.768
+Saving best model with 93.76785714285715% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 177: Training loss: 0.236, training acc: 92.945
+Epoch 177: Validation loss: 0.221, validation acc: 93.482
+Saving best model with 93.48214285714286% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 178: Training loss: 0.235, training acc: 92.970
+Epoch 178: Validation loss: 0.230, validation acc: 93.327
+Epoch 179: Training loss: 0.235, training acc: 93.032
+Epoch 179: Validation loss: 0.380, validation acc: 89.500
+Epoch 180: Training loss: 0.236, training acc: 92.951
+Epoch 180: Validation loss: 0.228, validation acc: 93.583
+Epoch 181: Training loss: 0.237, training acc: 92.893
+Epoch 181: Validation loss: 0.219, validation acc: 93.917
+Saving best model with 93.91666666666667% validation acc
+Saving state_dict checkpoint with masks for finetuning at networks/quantized_models/iscx2016vpn/CNN1D_TrafficClassification_iscx2016vpn.pt
+Epoch 182: Training loss: 0.236, training acc: 93.032
+Epoch 182: Validation loss: 0.229, validation acc: 93.607
+Epoch 183: Training loss: 0.232, training acc: 93.059
+Epoch 183: Validation loss: 0.268, validation acc: 92.363
+Epoch 184: Training loss: 0.232, training acc: 93.019
+Epoch 184: Validation loss: 0.228, validation acc: 93.470
+Epoch 185: Training loss: 0.233, training acc: 93.096
+Epoch 185: Validation loss: 0.247, validation acc: 92.798
+Epoch 186: Training loss: 0.235, training acc: 92.999
+Epoch 186: Validation loss: 0.342, validation acc: 90.202
+Epoch 187: Training loss: 0.233, training acc: 93.041
+Epoch 187: Validation loss: 0.634, validation acc: 82.304
+Epoch 188: Training loss: 0.233, training acc: 93.038
+Epoch 188: Validation loss: 0.227, validation acc: 93.440
+Epoch 189: Training loss: 0.232, training acc: 93.076
+Epoch 189: Validation loss: 0.246, validation acc: 92.917
+Epoch 190: Training loss: 0.235, training acc: 92.890
+Epoch 190: Validation loss: 0.229, validation acc: 93.476
+Epoch 191: Training loss: 0.233, training acc: 93.067
+Epoch 191: Validation loss: 0.235, validation acc: 93.363
+Epoch 192: Training loss: 0.231, training acc: 93.099
+Epoch 192: Validation loss: 0.225, validation acc: 93.482
+Epoch 193: Training loss: 0.231, training acc: 93.133
+Epoch 193: Validation loss: 0.229, validation acc: 93.542
+Epoch 194: Training loss: 0.231, training acc: 93.084
+Epoch 194: Validation loss: 0.227, validation acc: 93.524
+Epoch 195: Training loss: 0.233, training acc: 93.058
+Epoch 195: Validation loss: 0.229, validation acc: 93.208
+Epoch 196: Training loss: 0.235, training acc: 92.971
+Epoch 196: Validation loss: 0.513, validation acc: 84.815
+Epoch 197: Training loss: 0.230, training acc: 93.111
+Epoch 197: Validation loss: 0.288, validation acc: 91.458
+Epoch 198: Training loss: 0.229, training acc: 93.118
+Epoch 198: Validation loss: 0.226, validation acc: 93.649
+Epoch 199: Training loss: 0.230, training acc: 93.133
+Epoch 199: Validation loss: 0.231, validation acc: 93.310
+Export model as onnx at networks/quantized_models/iscx2016vpn/model.onnx
+Please run trtexec to convert to .trt engine
