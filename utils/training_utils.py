@@ -305,10 +305,10 @@ if __name__ == '__main__':
     # load best model if it exist / checkpoint
     model_name = model.__class__.__name__
     if args.dataset == "iscx2016vpn":
-        prev_path = Path(os.path.join('networks', 'pretrained_models', 'iscx2016vpn', (model_name+'_best_model.pth')))
+        prev_path = Path(os.path.join('networks', 'pretrained_models', 'iscx2016vpn', (model_name+'_best_model_without_aux.pth')))
 
     elif args.dataset == "ustctfc2016":
-        prev_path = Path(os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', (model_name+'_best_model.pth')))
+        prev_path = Path(os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', (model_name+'_best_model_without_aux.pth')))
 
     if (prev_path.is_file() == True):
         print(f"Previous trained model exist at {prev_path}\n")
