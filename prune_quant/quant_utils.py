@@ -163,10 +163,13 @@ def load_fp32_model(path, input_ch, num_classes, device):
 def benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, batch_size, classes, criterion, device):
     
     print("Benchmarking...")
-
-    # NiN model
+    
+    # NiN model (Report pretrained (original) model's accuracy, but use pruned model to measure speed)
+    from networks.cnn1d_NiN import NiN_CNN1D_TrafficClassification_Prune30Percent
+    net_NiN_prune30                = NiN_CNN1D_TrafficClassification_Prune30Percent(input_ch=1, num_classes=classes).to(device).eval()
+    _, test_acc_NiN, _             = evaluate(net_NiN, test_loader, criterion, device)  # Get original/pretrained model's accuracy
     start_time_inf_fp32_NiN        = time.time()
-    _, test_acc_NiN, time_fp32_NiN = evaluate(net_NiN, test_loader, criterion, device)
+    _, _, time_fp32_NiN            = evaluate(net_NiN_prune30, test_loader, criterion, device)  # Get pruned model's speed
     fp32_inf_time_NiN              = time.time() - start_time_inf_fp32_NiN
 
     # My model (baseline on GPU)

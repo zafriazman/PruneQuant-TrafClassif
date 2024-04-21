@@ -141,6 +141,67 @@ class NiN_CNN1D_TrafficClassification(nn.Module):
         x = x.reshape(x.shape[0], -1)
 
         return x
+    
+
+
+class NiN_CNN1D_TrafficClassification_Prune30Percent(nn.Module):
+    """
+    Same as "NiN_CNN1D_TrafficClassification" class (without auxiliary learning),
+    But modified to have 30% less parameter (50% FLOPs reduction according to NiN paper).
+    This is to emulate the speed if it has been pruned (The accuracy is not discussed using this model).
+    """
+    def __init__(self, input_ch, num_classes):
+        super().__init__()
+        
+        # Block 1
+        self.conv1 = nn.Conv1d(in_channels=input_ch, out_channels=11, kernel_size=2, stride=2, padding=0)
+        self.bn1 = nn.BatchNorm1d(11)
+        self.conv2 = nn.Conv1d(in_channels=11, out_channels=11, kernel_size=1, stride=1, padding=0)
+        self.conv3 = nn.Conv1d(in_channels=11, out_channels=11, kernel_size=1, stride=1, padding=0)
+        self.bn2 = nn.BatchNorm1d(11)
+        
+        # Block 2
+        self.conv4 = nn.Conv1d(in_channels=11, out_channels=22, kernel_size=2, stride=2, padding=0)
+        self.bn3 = nn.BatchNorm1d(22)
+        self.conv5 = nn.Conv1d(in_channels=22, out_channels=22, kernel_size=1, stride=1, padding=0)
+        self.conv6 = nn.Conv1d(in_channels=22, out_channels=22, kernel_size=1, stride=1, padding=0)
+        self.bn4 = nn.BatchNorm1d(22)
+
+        # Block 3
+        self.conv7 = nn.Conv1d(in_channels=22, out_channels=44, kernel_size=2, stride=2, padding=0)
+        self.bn5 = nn.BatchNorm1d(44)
+        self.conv8 = nn.Conv1d(in_channels=44, out_channels=44, kernel_size=1, stride=1, padding=0)
+        self.conv9 = nn.Conv1d(in_channels=44, out_channels=44, kernel_size=1, stride=1, padding=0)
+        self.bn6 = nn.BatchNorm1d(44)
+
+        self.conv10 = nn.Conv1d(in_channels=44, out_channels=num_classes, kernel_size=1, stride=1, padding=0)
+
+        self.relu = nn.ReLU()
+
+    
+    def forward(self, x):
+
+        # Block 1
+        x = self.relu(self.bn1(self.conv1(x)))
+        x = self.relu(self.conv2(x))
+        x = self.relu(self.bn2(self.conv3(x)))
+
+        # Block 2
+        x = self.relu(self.bn3(self.conv4(x)))
+        x = self.relu(self.conv5(x))
+        x = self.relu(self.bn4(self.conv6(x)))
+
+        # Block 3
+        x = self.relu(self.bn5(self.conv7(x)))
+        x = self.relu(self.conv8(x))
+        x = self.relu(self.bn6(self.conv9(x)))
+        
+        x = self.conv10(x)
+        x = F.avg_pool1d(x, x.size(2))
+        x = x.reshape(x.shape[0], -1)
+
+        return x
+
 
 
 # Get the model summary when given 1, 1500 input
