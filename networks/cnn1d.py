@@ -53,27 +53,44 @@ class CNN1D_TrafficClassification_with_auxiliary(nn.Module):
         
         # Generic layer
         self.relu = nn.ReLU()
+        #self.dropout = nn.Dropout(p=0.01)
 
     
     def forward(self, x):
-        auxiliary_outputs = []
+
+        auxiliary_classification = []
+        auxiliary_fmap = []
+
         x = self.pool1(self.relu(self.bn1(self.conv1(x))))
+        #x = self.dropout(x)
         if self.training:
             auxiliary = self.submod1(x)
-            auxiliary_outputs.append(self.process_auxiliary(auxiliary))
+            auxiliary_fmap.append(auxiliary)
+            auxiliary_classification.append(self.process_auxiliary(auxiliary))
+
         x = self.pool2(self.relu(self.bn2(self.conv2(x))))
+        #x = self.dropout(x)
         if self.training:
             auxiliary = self.submod2(x)
-            auxiliary_outputs.append(self.process_auxiliary(auxiliary))
+            auxiliary_fmap.append(auxiliary)
+            auxiliary_classification.append(self.process_auxiliary(auxiliary))
+
         x = self.pool3(self.relu(self.bn3(self.conv3(x))))
+        #x = self.dropout(x)
         if self.training:
             auxiliary = self.submod3(x)
-            auxiliary_outputs.append(self.process_auxiliary(auxiliary))
+            auxiliary_fmap.append(auxiliary)
+            auxiliary_classification.append(self.process_auxiliary(auxiliary))
+
         x = self.pool4(self.relu(self.bn4(self.conv4(x))))
+        #x = self.dropout(x)
         if self.training:
             auxiliary = self.submod4(x)
-            auxiliary_outputs.append(self.process_auxiliary(auxiliary))
+            auxiliary_fmap.append(auxiliary)
+            auxiliary_classification.append(self.process_auxiliary(auxiliary))
+
         x = self.conv5(x)
+        auxiliary_fmap.append(x)
 
         # Apply Global Average Pooling (GAP)
         # Using avg_pool1d with kernel size equal to the length of the feature maps
@@ -83,9 +100,10 @@ class CNN1D_TrafficClassification_with_auxiliary(nn.Module):
         x = torch.mean(x, dim=-1, keepdim=True) # manual avg_pool1d on the last dimension (channel)
         x = x.reshape(x.shape[0], -1)           # Flatten all dimension except batch dimension
         #x = self.fc1(x)                        # No need FC since we are using GAP
+        auxiliary_classification.append(x)
 
         if self.training:
-            return x, auxiliary_outputs
+            return auxiliary_classification, auxiliary_fmap
         return x
 
     def process_auxiliary(self, x):
@@ -152,7 +170,7 @@ if __name__ == '__main__':
     inf_model = CNN1D_TrafficClassification(input_ch=1, num_classes=16).to(device)
 
     input_x = torch.rand([1024, 1, 1500]).to(device)   # input to a conv1d model is [batch_size, channel, length]
-    main_output, auxiliary_outputs = model(input_x)
+    main_output, auxiliary_classification = model(input_x)
     output = inf_model(input_x)
 
     print(f"Final output shape of the model: {output.shape}")

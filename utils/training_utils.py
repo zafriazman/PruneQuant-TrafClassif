@@ -6,6 +6,7 @@ import numpy as np
 import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
+import torch.nn.functional as F
 
 from tqdm import tqdm
 from pathlib import Path
@@ -16,12 +17,17 @@ from networks.cnn1d import CNN1D_TrafficClassification_with_auxiliary, CNN1D_Tra
 from networks.cnn1d_NiN import NiN_CNN1D_TrafficClassification_with_auxiliary, NiN_CNN1D_TrafficClassification  #using other work's model that uses NiN
 
 
+
+
+
+
+
+
 # Training function.
 def train(model, train_loader, optimizer, criterion, device):
     """
-    Basic train function.
     Basically iterate through the train dataset (in the form of <DataLoader>), 
-    Infer, calc loss, calc acc, BP, updt weight.
+    Infer, calc loss, calc acc, BP (with self distillation), updt weight.
     return epoch_loss, epoch_acc
     """
     model.train()
@@ -29,6 +35,15 @@ def train(model, train_loader, optimizer, criterion, device):
     train_running_loss = 0.0
     train_running_correct = 0
     counter = 0
+
+    if "NiN" in model.__class__.__name__:
+        alpha = [0.1, 0.1, 0.8]  # Weightage for different submodule losses
+        beta  = 0.05             # Weightage for KL divergence loss
+        gamma = 0.000001         # Weightage for L2 norm feature loss
+    else:
+        alpha = [1.0, 1.0, 1.0, 1.0]
+        beta  = 0.000
+        gamma = 0.000000
     
     for i, data in tqdm(enumerate(train_loader), total=len(train_loader)):
         counter += 1
@@ -38,24 +53,36 @@ def train(model, train_loader, optimizer, criterion, device):
         optimizer.zero_grad()
 
         # Forward pass.
-        outputs = model(rawpacket)
+        outputs, outputs_fmaps = model(rawpacket)
 
-        # Calculate the loss.
-        if isinstance(outputs, tuple):  # Check if model outputs auxiliary predictions.
-            main_output, auxiliary_outputs = outputs
-            # Main loss
-            loss = criterion(main_output, labels)
-            # Auxiliary losses
-            for aux_output in auxiliary_outputs:
-                aux_loss = criterion(aux_output, labels)
-                loss += aux_loss  # Summing main loss with auxiliary losses
-        else:
-            main_output = outputs
-            loss = criterion(main_output, labels)
+        loss = 0
+        final_output = outputs[-1]
+        final_features = outputs_fmaps[-1]
+
+        loss += criterion(final_output, labels)
+        temperature = 10.0    # following temperature from "Two-stage distillation... NiN paper"
+
+        # CrossEntropy loss for each submodule output (excluding final output i.e. real classification)
+        for i, output in enumerate(outputs[:-1]):
+            loss += alpha[i] * criterion(output, labels)
+        
+        # KL divergernce loss between first 2 submodule classification vs deepest classification
+        # Exclude last two, following "Two-stage distillation... NiN paper"
+        for i, output in enumerate(outputs[:-2]):
+            loss += beta * KL_DivergenceLoss(output, final_output, temperature)
+                
+        # L2 Norm loss - distance between feature maps
+        # Exclude last two, following "Two-stage distillation... NiN paper"
+        for i, feature in enumerate(outputs_fmaps[:-2]):
+            target_feature_size = final_features.shape[2]
+            adaptive_pool = nn.AdaptiveMaxPool1d(target_feature_size)
+            adjusted_feature = adaptive_pool(feature)
+            l2_norm = torch.norm(adjusted_feature - final_features, p=2).item()
+            loss += gamma * l2_norm
 
         train_running_loss += loss.item()
-        # Calculate the accuracy. (Only from main_outputs, not from auxiliary)
-        _, preds = torch.max(main_output.data, 1)
+        # Calculate the accuracy. (Only from final_output, not from auxiliary)
+        _, preds = torch.max(final_output.data, 1)
         train_running_correct += (preds == labels).sum().item()
 
         # Backpropagation
@@ -66,9 +93,22 @@ def train(model, train_loader, optimizer, criterion, device):
     
     # Loss and accuracy for the complete epoch.
     epoch_loss = train_running_loss / counter
-    # epoch_acc = 100. * (train_running_correct / len(train_loader.dataset))
     epoch_acc = 100. * (train_running_correct / len(train_loader.dataset))
     return epoch_loss, epoch_acc
+
+
+
+# Self distillation's loss
+def CrossEntropyLoss(outputs, targets):
+    # Temperature = 1, i.e., hard predict
+    criterion = nn.CrossEntropyLoss()
+    loss_CE = criterion(outputs, targets)
+    return loss_CE
+
+def KL_DivergenceLoss(outputs, targets, temperature):
+    log_softmax_outputs = F.log_softmax(outputs/temperature, dim=1)
+    softmax_targets = F.softmax(targets/temperature, dim=1)
+    return -(log_softmax_outputs * softmax_targets).sum(dim=1).mean()
 
 
 
@@ -100,6 +140,7 @@ def validate(model, dataloader, criterion, device):
             main_output = outputs if not isinstance(outputs, tuple) else outputs[0]
 
             # Calculate the loss.
+            criterion = nn.CrossEntropyLoss()
             loss = criterion(main_output, labels)
             valid_running_loss += loss.item()
 
@@ -305,10 +346,12 @@ if __name__ == '__main__':
     # load best model if it exist / checkpoint
     model_name = model.__class__.__name__
     if args.dataset == "iscx2016vpn":
-        prev_path = Path(os.path.join('networks', 'pretrained_models', 'iscx2016vpn', (model_name+'_best_model_without_aux.pth')))
+        inf_model_name = model_name.replace('_with_auxiliary','')
+        prev_path = Path(os.path.join('networks', 'pretrained_models', 'iscx2016vpn', (inf_model_name+'_best_model_without_aux.pth')))
 
     elif args.dataset == "ustctfc2016":
-        prev_path = Path(os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', (model_name+'_best_model_without_aux.pth')))
+        inf_model_name = model_name.replace('_with_auxiliary','')
+        prev_path = Path(os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', (inf_model_name+'_best_model_without_aux.pth')))
 
     if (prev_path.is_file() == True):
         print(f"Previous trained model exist at {prev_path}\n")
@@ -318,6 +361,7 @@ if __name__ == '__main__':
 
     # hyperparameter for training
     optimizer = optim.Adam(model.parameters(), lr=float(args.lr))
+    #optimizer = optim.Adam(model.parameters(), lr=float(args.lr), betas=(0.95, 0.999))
     criterion = nn.CrossEntropyLoss()
 
 
@@ -346,11 +390,13 @@ if __name__ == '__main__':
     # Test accuracy (of unseen test_data) on the best model, using the inference model (without auxiliary)
     if 'true' in args.NiN_model:
         inf_model = NiN_CNN1D_TrafficClassification(input_ch=1, num_classes=classes).to(device)
+        with_aux_path = os.path.join('networks', 'pretrained_models', str(args.dataset), (model_name+'_best_model.pth'))
     else:
         inf_model = CNN1D_TrafficClassification(input_ch=1, num_classes=classes).to(device)
+        with_aux_path = os.path.join('networks', 'pretrained_models', str(args.dataset), (model_name+'_best_model.pth'))
 
     model_name = inf_model.__class__.__name__
-    checkpoint = torch.load(prev_path, map_location=device)
+    checkpoint = torch.load(with_aux_path, map_location=device)
     sd = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
     inf_model.load_state_dict(sd, strict=False)
     test_loss, test_acc = validate(inf_model, test_loader, criterion, device)

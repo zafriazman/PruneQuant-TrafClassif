@@ -43,41 +43,51 @@ class NiN_CNN1D_TrafficClassification_with_auxiliary(nn.Module):
         
         # Generic layer
         self.relu = nn.ReLU()
+        self.dropout = nn.Dropout(p=0.03)
 
     
     def forward(self, x):
-        auxiliary_outputs = []
+        auxiliary_classification = []
+        auxiliary_fmap = []
 
         # Block 1
         x = self.relu(self.bn1(self.conv1(x)))
         x = self.relu(self.conv2(x))
         x = self.relu(self.bn2(self.conv3(x)))
+        x = self.dropout(x)
         if self.training:
             auxiliary = self.submod1(x)
-            auxiliary_outputs.append(self.process_auxiliary(auxiliary))
+            auxiliary_fmap.append(auxiliary)
+            auxiliary_classification.append(self.process_auxiliary(auxiliary))
 
         # Block 2
         x = self.relu(self.bn3(self.conv4(x)))
         x = self.relu(self.conv5(x))
         x = self.relu(self.bn4(self.conv6(x)))
+        x = self.dropout(x)
         if self.training:
             auxiliary = self.submod2(x)
-            auxiliary_outputs.append(self.process_auxiliary(auxiliary))
+            auxiliary_fmap.append(auxiliary)
+            auxiliary_classification.append(self.process_auxiliary(auxiliary))
 
         # Block 3
         x = self.relu(self.bn5(self.conv7(x)))
         x = self.relu(self.conv8(x))
         x = self.relu(self.bn6(self.conv9(x)))
+        x = self.dropout(x)
         if self.training:
             auxiliary = self.submod3(x)
-            auxiliary_outputs.append(self.process_auxiliary(auxiliary))
+            auxiliary_fmap.append(auxiliary)
+            auxiliary_classification.append(self.process_auxiliary(auxiliary))
         
         x = self.conv10(x)
+        auxiliary_fmap.append(x)
         x = F.avg_pool1d(x, x.size(2))  # Apply Global Average Pooling (GAP) to prepare for classification
         x = x.reshape(x.shape[0], -1)   # Flatten
+        auxiliary_classification.append(x)
 
         if self.training:
-            return x, auxiliary_outputs
+            return auxiliary_classification, auxiliary_fmap
         return x
 
     def process_auxiliary(self, x):
@@ -220,7 +230,7 @@ if __name__ == '__main__':
     inf_model = NiN_CNN1D_TrafficClassification(input_ch=1, num_classes=16).to(device)
 
     input_x = torch.rand([1024, 1, 1500]).to(device)   # input to a conv1d model is [batch_size, channel, length]
-    main_output, auxiliary_outputs = model(input_x)
+    main_output, auxiliary_classification = model(input_x)
     output = inf_model(input_x)
 
     print(f"Final output shape of the model: {output.shape}")
