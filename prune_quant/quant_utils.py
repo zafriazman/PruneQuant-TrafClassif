@@ -71,6 +71,118 @@ def evaluate_trt(engine_path, dataloader, batch_size, num_classes):
     return correct/total*100., avg_time
 
 
+def write_mem_comp_breakdown(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, num_classes, criterion, device):
+#def write_mem_comp_breakdown(engine_path, dataloader, batch_size, num_classes):
+    import csv
+    total_duration_start_time = time.time()
+    csv_file_path = os.path.join('logs', 'iscx2016vpn', f"mem_cpu_timing_breakdown_{inf_batch_size}_bsize.csv")
+    
+    def predict_w_time(batch, current_batch_size, num_classes, timings): # result gets copied into output
+        output = np.empty([current_batch_size, num_classes], dtype=np.float32)  # Adjusted output allocation
+        
+        # Start timing data transfer to device
+        start = time.time()
+        cuda.memcpy_htod_async(d_input, batch, stream)
+        timings['data_transfer_to_gpu'] = time.time() - start
+
+        # Start timing model execution
+        start = time.time()
+        context.execute_async_v2(bindings, stream.handle, None)
+        timings['model_execution'] = time.time() - start
+
+        # Start timing data transfer back to host
+        start = time.time()
+        cuda.memcpy_dtoh_async(output, d_output, stream)
+        timings['data_transfer_to_cpu'] = time.time() - start
+
+        # Start timing thread synchronization
+        start = time.time()
+        stream.synchronize()
+        timings['thread_synchronization'] = time.time() - start
+
+        return output  
+
+    with open(trt_engine_path, 'rb') as f, trt.Runtime(trt.Logger(trt.Logger.WARNING)) as runtime, runtime.deserialize_cuda_engine(f.read()) as engine, engine.create_execution_context() as context:
+        total = 0
+        correct = 0
+        timings = []
+        
+        """ # Warmup
+        device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+        eg_inputs, eg_labels = (next(iter(test_loader)))
+        eg_inputs = eg_inputs.numpy()
+        eg_labels = eg_labels.numpy()
+        bsize_allocate = eg_inputs.shape[0]
+        d_input  = cuda.mem_alloc(1 * eg_inputs.nbytes)
+        d_output = cuda.mem_alloc(int(1 * np.prod([bsize_allocate, num_classes]) * np.float32().itemsize))
+        bindings = [int(d_input), int(d_output)]
+        stream   = cuda.Stream()
+        eg_pred  = predict_w_time(eg_inputs, bsize_allocate, num_classes) """
+
+        for rawpackets, labels in test_loader:
+            batch_timings = {}
+            input_batch = rawpackets.numpy()
+            labels = labels.numpy()
+            current_batch_size = input_batch.shape[0]
+
+            # Timing input memory allocation
+            start = time.time()
+            d_input = cuda.mem_alloc(1 * input_batch.nbytes)
+            batch_timings['allocate_input_memory'] = time.time() - start
+
+            # Timing output memory allocation
+            start = time.time()
+            d_output = cuda.mem_alloc(int(1 * np.prod([current_batch_size, num_classes]) * np.float32().itemsize))
+            batch_timings['allocate_output_memory'] = time.time() - start
+
+            # Timing binding
+            start = time.time()
+            bindings = [int(d_input), int(d_output)]
+            batch_timings['binding'] = time.time() - start
+
+            # Timing CUDA stream creation
+            start = time.time()
+            stream = cuda.Stream()
+            batch_timings['create_cuda_stream'] = time.time() - start
+
+            preds = predict_w_time(input_batch, current_batch_size, num_classes, batch_timings)
+            batch_timings['current_batch_size'] = current_batch_size
+            pred_labels = []
+            for pred in preds:
+                pred_label = (-pred).argsort()[0]
+                pred_labels.append(pred_label)
+
+            total += len(labels)
+            correct += (pred_labels == labels).sum()
+            timings.append(batch_timings)
+    
+        # Writing timings to CSV file
+        with open(csv_file_path, 'w', newline='') as csvfile:
+            fieldnames = [
+                'allocate_input_memory',
+                'allocate_output_memory',
+                'binding',
+                'create_cuda_stream',
+                'data_transfer_to_gpu',
+                'model_execution',
+                'data_transfer_to_cpu',
+                'thread_synchronization',
+                'current_batch_size'
+            ]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+            writer.writeheader()
+            for timing in timings:
+                writer.writerow(timing)
+    
+    total_time = time.time() - total_duration_start_time
+    with open(csv_file_path, 'a') as fhandler:
+        fhandler.write(f",,,,,,,,,total_time:,{total_time:.4f}\n")
+
+
+
+
+
 def evaluate(model, dataloader, criterion, device):
 
     model.eval()

@@ -74,3 +74,5 @@ Evaluate the performance and accuracy of the TensorRT engine (use a batch size c
 ```bash
 python prune_quant/finetune.py --batch_size 1 --eval_trt true --dataset iscx2016vpn
 ```
+<!-- To capture memory vs cpu breakdown: -->
+<!-- python prune_quant/finetune.py --batch_size 1 --eval_trt true --dataset iscx2016vpn --trt_mem_cpu_breakdown true -->
