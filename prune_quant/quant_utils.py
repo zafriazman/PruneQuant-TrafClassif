@@ -1,4 +1,5 @@
 import os
+import csv
 import time
 import torch
 import numpy as np
@@ -71,11 +72,10 @@ def evaluate_trt(engine_path, dataloader, batch_size, num_classes):
     return correct/total*100., avg_time
 
 
-def write_mem_comp_breakdown(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, num_classes, criterion, device):
-#def write_mem_comp_breakdown(engine_path, dataloader, batch_size, num_classes):
-    import csv
+def write_mem_comp_breakdown_prune_quant(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, num_classes, criterion, device):
+
     total_duration_start_time = time.time()
-    csv_file_path = os.path.join('logs', 'iscx2016vpn', f"mem_cpu_timing_breakdown_{inf_batch_size}_bsize.csv")
+    csv_file_path = os.path.join('logs', 'iscx2016vpn', 'mem_comp_timing_breakdown', f"mem_cpu_prune_quant_timing_breakdown_{inf_batch_size}_bsize.csv")
     
     def predict_w_time(batch, current_batch_size, num_classes, timings): # result gets copied into output
         output = np.empty([current_batch_size, num_classes], dtype=np.float32)  # Adjusted output allocation
@@ -107,18 +107,6 @@ def write_mem_comp_breakdown(net, net_NiN, trt_engine_path, test_loader, inf_bat
         correct = 0
         timings = []
         
-        """ # Warmup
-        device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-        eg_inputs, eg_labels = (next(iter(test_loader)))
-        eg_inputs = eg_inputs.numpy()
-        eg_labels = eg_labels.numpy()
-        bsize_allocate = eg_inputs.shape[0]
-        d_input  = cuda.mem_alloc(1 * eg_inputs.nbytes)
-        d_output = cuda.mem_alloc(int(1 * np.prod([bsize_allocate, num_classes]) * np.float32().itemsize))
-        bindings = [int(d_input), int(d_output)]
-        stream   = cuda.Stream()
-        eg_pred  = predict_w_time(eg_inputs, bsize_allocate, num_classes) """
-
         for rawpackets, labels in test_loader:
             batch_timings = {}
             input_batch = rawpackets.numpy()
@@ -164,10 +152,10 @@ def write_mem_comp_breakdown(net, net_NiN, trt_engine_path, test_loader, inf_bat
                 'binding',
                 'create_cuda_stream',
                 'data_transfer_to_gpu',
-                'model_execution',
+                'model_execution',          # Computation
                 'data_transfer_to_cpu',
-                'thread_synchronization',
-                'current_batch_size'
+                'thread_synchronization',   # Computation
+                'current_batch_size'        # Not related
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
@@ -179,6 +167,69 @@ def write_mem_comp_breakdown(net, net_NiN, trt_engine_path, test_loader, inf_bat
     with open(csv_file_path, 'a') as fhandler:
         fhandler.write(f",,,,,,,,,total_time:,{total_time:.4f}\n")
 
+
+
+
+def write_mem_comp_breakdown_baseline(model, net_NiN, trt_engine_path, dataloader, inf_batch_size, num_classes, criterion, device):
+
+    total_duration_start_time = time.time()
+    csv_file_path = os.path.join('logs', 'iscx2016vpn', 'mem_comp_timing_breakdown', f"mem_cpu_baseline_timing_breakdown_{inf_batch_size}_bsize.csv")
+    model.eval()
+    model.to(device)
+    valid_running_loss = 0.0
+    valid_running_correct = 0
+    counter = 0
+    timings = []
+
+    with torch.no_grad():
+        for i, (rawpacket, labels) in enumerate(dataloader):
+            counter += 1
+            batch_timings = {}
+            
+            # dataset transfer from host to gpu/device
+            start = time.time()
+            rawpacket = rawpacket.to(device)
+            labels = labels.to(device)
+            batch_timings['data_transfer_to_gpu'] = time.time() - start
+
+            # Execute
+            start = time.time()
+            outputs = model(rawpacket)
+            batch_timings['model_execution'] = time.time() - start
+            
+            main_output = outputs if not isinstance(outputs, tuple) else outputs[0]
+            loss = criterion(main_output, labels)
+
+            # Transfer output on gpu/device to host/cpu (# For fairness with TRT that brings the output to cpu too)
+            start = time.time()
+            valid_running_loss += loss.item()
+            main_output.to(torch.device("cpu"))
+            batch_timings['data_transfer_to_cpu'] = time.time() - start
+
+            _, preds = torch.max(main_output.data, 1)
+            valid_running_correct += (preds == labels).sum().item()
+
+            # Current batch size
+            batch_timings['current_batch_size'] = rawpacket.shape[0]
+            timings.append(batch_timings)
+        
+        # Write as a csv
+        with open(csv_file_path, 'w', newline='') as csvfile:
+            fieldnames = [
+                'data_transfer_to_gpu',
+                'model_execution',
+                'data_transfer_to_cpu',
+                'current_batch_size'
+            ]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+            writer.writeheader()
+            for timing in timings:
+                writer.writerow(timing)
+    
+    total_time = time.time() - total_duration_start_time
+    with open(csv_file_path, 'a') as fhandler:
+        fhandler.write(f",,,,,,,,,total_time:,{total_time:.4f}\n")
 
 
 

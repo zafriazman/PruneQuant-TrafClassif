@@ -89,7 +89,7 @@ if __name__ == "__main__":
     parser.add_argument('--qat_momentum', default=0.9, type=float, help='momentum for quantize aware training')
     parser.add_argument('--qat_wd', default=4e-5, type=float, help='weight decay for quantize aware training')
     parser.add_argument('--eval_trt', default='false', help='only set this to \'true\' after converting onnx to trt engine')
-    parser.add_argument('--trt_mem_cpu_breakdown', default='false', help='only set this to \'true\' after converting onnx to trt engine')
+    parser.add_argument('--trt_mem_cpu_breakdown', default='false', help='Set to \'true\' to get the timing breakdown of memory vs computation')
     args = parser.parse_args()
     inf_batch_size = int(args.batch_size)
     if args.dataset == "iscx2016vpn":
@@ -115,10 +115,12 @@ if __name__ == "__main__":
             net_NiN         = load_fp32_model(path=path_NiN_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
             benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
             if args.trt_mem_cpu_breakdown == "true":
-                from prune_quant.quant_utils import write_mem_comp_breakdown
+                from prune_quant.quant_utils import write_mem_comp_breakdown_prune_quant, write_mem_comp_breakdown_baseline
                 inf_batch_sizes = [1, 2, 4, 8, 16, 32, 64, 128, 256]
                 for inf_batch_size in inf_batch_sizes:
-                    write_mem_comp_breakdown(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
+                    _, _, test_loader, classes = create_data_loaders(dataset, inf_batch_size, n_worker, train_ratio, val_ratio)
+                    write_mem_comp_breakdown_baseline(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
+                    write_mem_comp_breakdown_prune_quant(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
 
             exit()
         elif args.dataset == "ustctfc2016":
