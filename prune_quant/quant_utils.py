@@ -284,13 +284,21 @@ def evaluate(model, dataloader, criterion, device):
 
 
 
-def print_size_of_model(model):
-    if isinstance(model, torch.jit.RecursiveScriptModule):
-        torch.jit.save(model, "temp.p")
-    else:
-        torch.jit.save(torch.jit.script(model), "temp.p")
-    print("Size (kB):", os.path.getsize("temp.p")/1e3)
-    os.remove("temp.p")
+def save_prune_quant_model_to_check_size():
+    # For fair comparison with baseline model or NiN model
+    # We save model using torch.save and by using Pytorch's quantization generic flow, not TensorRT
+    # TensorRT save's engine/file differently and include various logging.
+
+    import torch.ao.quantization
+    device = torch.device('cpu')
+    net = load_fp32_model(os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'CNN1D_TrafficClassification_best_model_without_aux.pth'), 1, 16, device)
+    net.eval()
+    net.qconfig = torch.ao.quantization.get_default_qat_qconfig('x86')
+    net = torch.ao.quantization.fuse_modules(net,[['conv1', 'bn1', 'relu']])
+    net = torch.ao.quantization.prepare_qat(net.train())
+    net.eval()
+    net = torch.ao.quantization.convert(net.eval())
+    torch.save(net.state_dict(), os.path.join('networks', 'quantized_models', 'iscx2016vpn', 'CheckSize_w_Pytorch_flow.pth'))
 
 
 

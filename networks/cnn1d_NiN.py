@@ -228,8 +228,9 @@ if __name__ == '__main__':
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     model = NiN_CNN1D_TrafficClassification_with_auxiliary(input_ch=1, num_classes=16).to(device)
     inf_model = NiN_CNN1D_TrafficClassification(input_ch=1, num_classes=16).to(device)
+    prune_model = NiN_CNN1D_TrafficClassification_Prune30Percent(input_ch=1, num_classes=16).to(device)
 
-    input_x = torch.rand([1024, 1, 1500]).to(device)   # input to a conv1d model is [batch_size, channel, length]
+    input_x = torch.rand([1, 1, 1500]).to(device)   # input to a conv1d model is [batch_size, channel, length]
     main_output, auxiliary_classification = model(input_x)
     output = inf_model(input_x)
 
@@ -240,3 +241,9 @@ if __name__ == '__main__':
     
     print("\n\nModel summary for inferencing model")
     get_model_summary(inf_model)
+
+    print("\n\nModel summary for prune 30% model")
+    get_model_summary(prune_model)
+
+    import os   # Check model size of NiN when prune 30% parameter
+    torch.save(prune_model.state_dict(), os.path.join('networks', 'pretrained_models', 'iscx2016vpn', 'NiN_Prune30_Percent_Check_Size.pth'))

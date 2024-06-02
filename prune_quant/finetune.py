@@ -114,6 +114,8 @@ if __name__ == "__main__":
             net             = load_fp32_model(path=path_own_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
             net_NiN         = load_fp32_model(path=path_NiN_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
             benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
+            from prune_quant.quant_utils import save_prune_quant_model_to_check_size
+            save_prune_quant_model_to_check_size()
             if args.trt_mem_cpu_breakdown == "true":
                 from prune_quant.quant_utils import write_mem_comp_breakdown_prune_quant, write_mem_comp_breakdown_baseline
                 inf_batch_sizes = [1, 2, 4, 8, 16, 32, 64, 128, 256]
