@@ -100,6 +100,10 @@ if __name__ == "__main__":
         dataset     = os.path.join('data', 'datasets', 'ustc-tfc2016-pytorch')
         train_ratio = 0.8
         val_ratio   = 0.1
+    elif args.dataset == "ciciot2022":
+        dataset     = os.path.join('data', 'datasets', 'ciciot2022-pytorch')
+        train_ratio = 0.65
+        val_ratio   = 0.15
     train_loader, valid_loader, test_loader, classes = create_data_loaders(dataset, inf_batch_size, n_worker, train_ratio, val_ratio)
     example_inputs = (next(iter(test_loader))[0]).to(device)
 
@@ -133,6 +137,15 @@ if __name__ == "__main__":
             net_NiN         = load_fp32_model(path=path_NiN_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
             benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
             exit()
+        
+        elif args.dataset == "ciciot2022":
+            trt_engine_path = os.path.join("networks","quantized_models","ciciot2022","model_engine.trt")
+            path_own_model  = os.path.join('networks', 'pretrained_models', 'ciciot2022', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
+            path_NiN_model  = os.path.join('networks', 'pretrained_models', 'ciciot2022', 'NiN_CNN1D_TrafficClassification_best_model_without_aux.pth')
+            net             = load_fp32_model(path=path_own_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
+            net_NiN         = load_fp32_model(path=path_NiN_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
+            benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
+            exit()
 
 
 
@@ -145,6 +158,8 @@ if __name__ == "__main__":
         checkpoint   = torch.load(os.path.join("networks","quantized_models","iscx2016vpn", f"{model_name}_{args.dataset}.pt"), map_location=device)
     elif args.dataset == "ustctfc2016":
         checkpoint   = torch.load(os.path.join("networks","quantized_models","ustc-tfc2016", f"{model_name}_{args.dataset}.pt"), map_location=device)
+    elif args.dataset == "ciciot2022":
+        checkpoint   = torch.load(os.path.join("networks","quantized_models","ciciot2022", f"{model_name}_{args.dataset}.pt"), map_location=device)
 
     preserve_array_prune = checkpoint['preserve_array_prune']
     bitwidths = checkpoint['bitwidths']
@@ -177,6 +192,8 @@ if __name__ == "__main__":
         onnx_path = os.path.join("networks","quantized_models","iscx2016vpn","model.onnx")
     elif args.dataset == "ustctfc2016":
         onnx_path = os.path.join("networks","quantized_models","ustc-tfc2016","model.onnx")
+    elif args.dataset == "ciciot2022":
+        onnx_path = os.path.join("networks","quantized_models","ciciot2022","model.onnx")
     convert_to_onnx(net, example_inputs, onnx_path)
     print(f"Export model as onnx at {onnx_path}")
     print("Please run trtexec to convert to .trt engine")
