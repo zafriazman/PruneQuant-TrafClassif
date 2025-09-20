@@ -190,6 +190,13 @@ class SaveBestModel:
                 'optimizer_state_dict': optimizer.state_dict(),
                 'loss': criterion,
                 }, os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', (model_name+'_best_model.pth')))
+            elif dataset == "ciciot2022":
+                torch.save({
+                    'epoch': epoch+1,
+                    'state_dict': model.state_dict(),
+                    'optimizer_state_dict': optimizer.state_dict(),
+                    'loss': criterion,
+                    }, os.path.join('networks', 'pretrained_models', 'ciciot2022', (model_name+'_best_model.pth')))
 
 
 
@@ -215,6 +222,8 @@ def save_plots(train_acc, valid_acc, train_loss, valid_loss, name, dataset):
         plt.savefig(os.path.join('networks', 'pretrained_models', 'iscx2016vpn', name+'_accuracy.png'))
     elif dataset == "ustctfc2016":
         plt.savefig(os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', name+'_accuracy.png'))
+    elif dataset == "ciciot2022":
+        plt.savefig(os.path.join('networks', 'pretrained_models', 'ciciot2022', name+'_accuracy.png'))
     
     # Loss plots.
     plt.figure(figsize=(10, 7))
@@ -233,6 +242,8 @@ def save_plots(train_acc, valid_acc, train_loss, valid_loss, name, dataset):
         plt.savefig(os.path.join('networks', 'pretrained_models', 'iscx2016vpn', name+'_loss.png'))
     elif dataset == "ustctfc2016":
         plt.savefig(os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', name+'_loss.png'))
+    elif dataset == "ciciot2022":
+        plt.savefig(os.path.join('networks', 'pretrained_models', 'ciciot2022', name+'_loss.png'))
 
 
 
@@ -332,6 +343,17 @@ if __name__ == '__main__':
             train_ratio=train_ratio,
             val_ratio=val_ratio
         )
+    elif args.dataset == "ciciot2022":
+        train_ratio = 0.65
+        val_ratio   = 0.15
+        test_ratio  = 1.0 - train_ratio - val_ratio
+        train_loader, valid_loader, test_loader, classes = create_data_loaders(
+            os.path.join('data', 'datasets', 'ciciot2022-pytorch'),
+            batch_size=int(args.batch_size),
+            n_worker=0,
+            train_ratio=train_ratio,
+            val_ratio=val_ratio
+        )
     else:
         raise NotImplementedError(f"Did not implement for this dataset: {args.dataset}")
     
@@ -352,6 +374,10 @@ if __name__ == '__main__':
     elif args.dataset == "ustctfc2016":
         inf_model_name = model_name.replace('_with_auxiliary','')
         prev_path = Path(os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', (inf_model_name+'_best_model_without_aux.pth')))
+    
+    elif args.dataset == "ciciot2022":
+        inf_model_name = model_name.replace('_with_auxiliary','')
+        prev_path = Path(os.path.join('networks', 'pretrained_models', 'ciciot2022', (inf_model_name+'_best_model_without_aux.pth')))
 
     if (prev_path.is_file() == True):
         print(f"Previous trained model exist at {prev_path}\n")
@@ -406,5 +432,8 @@ if __name__ == '__main__':
     
     elif args.dataset == "ustctfc2016":
         torch.save(inf_model.state_dict(), os.path.join('networks', 'pretrained_models', 'ustc-tfc2016', (model_name+'_best_model_without_aux.pth')))
+    
+    elif args.dataset == "ciciot2022":
+        torch.save(inf_model.state_dict(), os.path.join('networks', 'pretrained_models', 'ciciot2022', (model_name+'_best_model_without_aux.pth')))
     
     print(f"Acc on unseen test data (not validation dataset): {test_acc}")
