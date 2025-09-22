@@ -1,0 +1,30 @@
+BatchSize = 1
+
+class name: Skype 	 label: 0 	 no. packet: 7000
+class name: SoundCloud 	 label: 1 	 no. packet: 7000
+class name: Google_Meet 	 label: 2 	 no. packet: 7000
+class name: WhatsApp 	 label: 3 	 no. packet: 7000
+class name: Telegram 	 label: 4 	 no. packet: 7000
+Benchmarking...
+
+
+Total speedup from GPU FP32 to TensorRT INT8 is 2.9884x
+Speedup from GPU FP32 to TensorRT INT8 for each batch is 4.4501x
+
+
+Using CUDA (TensorRT)
+Acc on unseen test data (not validation dataset):           95.3714
+Using CUDA (TensorRT): Elapsed time for 20% of dataset:     0.8481 seconds
+Using CUDA (TensorRT): Average time per batch:              0.000052 seconds
+
+
+Using GPU FP32 (my model)
+Acc on unseen test data (not validation dataset):           98.2
+Using GPU FP32 (my model): Elapsed time for 20% of dataset: 2.5345 seconds
+Using GPU FP32 (my model): Average time per batch:          0.000232 seconds
+
+
+Using CPU FP32 (my model)
+Acc on unseen test data (not validation dataset):           98.2
+Using CPU FP32 (my model): Elapsed time for 20% of dataset: 1.2143 seconds
+Using CPU FP32 (my model): Average time per batch:          0.000142 seconds

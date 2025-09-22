@@ -1,6 +1,6 @@
 # PruneQuant-TrafClassif
 
-PruneQuant-TrafClassif simplifies traffic classification using the ISCXVPN2016 dataset. Follow these steps to get started.
+PruneQuant-TrafClassif performs efficient traffic classification using the ISCXVPN2016, USTC-TFC2016, CICIOT2022, and ITC-NET-AUDIO-5 dataset. Follow these steps to get started. Change dataset argument from `iscx2016vpn`  to `ustctfc2016` or `ciciot2022` or `itcnetaudio5` accordingly.
 
 
 &nbsp;
@@ -11,7 +11,11 @@ PruneQuant-TrafClassif simplifies traffic classification using the ISCXVPN2016 d
 
 ## 1 - Dataset Preparation
 
-1. **Download Dataset**: Get ISCX2016VPN from [UNB datasets](https://www.unb.ca/cic/datasets/vpn.html).
+1. **Download Dataset**:
+   - Get ISCX2016VPN from [ISCXVPN2016](https://www.unb.ca/cic/datasets/vpn.html).
+   - Get USTC-TFC2016 from [USTC-TFC2016](https://github.com/davidyslu/USTC-TFC2016).
+   - Get CICIOT2022 from [CICIOT2022](https://www.unb.ca/cic/datasets/iotdataset-2022.html).
+   - Get ITC-NET-AUDIO-5 from [ITC-NET-AUDIO-5](https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-024-06718-7).
 
 2. **Extract PCAP Files**:
    Extract `.pcap` and `.pcappng` files into `repo/data/datasets/iscx2016vpn-extracted-pcaps/`
@@ -28,8 +32,7 @@ PruneQuant-TrafClassif simplifies traffic classification using the ISCXVPN2016 d
 
 ## 2 - Training
 
-Execute the training script:\
-Change dataset argument from `iscx2016vpn`  to `ustctfc2016` accordingly
+Execute the training script:
 ```bash
 python utils/training_utils.py --dataset iscx2016vpn --NiN_model false --epochs 250 --batch_size 128
 ```
@@ -43,8 +46,7 @@ python utils/training_utils.py --dataset iscx2016vpn --NiN_model false --epochs 
 
 
 ## 3 - Search for best pruning and quantization strategy
-To prune 20% of the filters and quantize to 8 bit, execute:\
-Change dataset argument from `iscx2016vpn`  to `ustctfc2016` accordingly
+To prune 20% of the filters and quantize to 8 bit, execute:
 ```bash
 python auto_prune_quant.py --dataset iscx2016vpn --model CNN1D_TrafficClassification --prune_ratio 0.2 --qat_epochs 5 --data_bsize 1024 --seed 2024 --action_std 0.5 --max_episodes 500
 ```
@@ -59,7 +61,7 @@ python auto_prune_quant.py --dataset iscx2016vpn --model CNN1D_TrafficClassifica
 
 ## 4 - Finetuning and Inferencing
 
-Improve model accuracy by finetuning with optimal settings. This generates an ONNX model. Change dataset argument from `iscx2016vpn` to `ustctfc2016` accordingly
+Improve model accuracy by finetuning with optimal settings. This generates an ONNX model.
 ```bash
 python prune_quant/finetune.py --dataset iscx2016vpn --epochs 25 --lr 0.001 --batch_size 32
 ```

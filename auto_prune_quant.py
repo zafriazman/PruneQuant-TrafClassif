@@ -129,6 +129,14 @@ if __name__ == "__main__":
         train_loader, val_loader, test_loader, classes = create_data_loaders(dataset, batch_size, n_worker, train_ratio, val_ratio)
         example_inputs  = (next(iter(test_loader))[0]).to(device)
         path_own_model  = os.path.join('networks', 'pretrained_models', 'ciciot2022', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
+    
+    elif args.dataset == "itcnetaudio5":
+        dataset         = os.path.join('data', 'datasets', 'itcnetaudio5-pytorch')
+        train_ratio     = 0.65
+        val_ratio       = 0.15
+        train_loader, val_loader, test_loader, classes = create_data_loaders(dataset, batch_size, n_worker, train_ratio, val_ratio)
+        example_inputs  = (next(iter(test_loader))[0]).to(device)
+        path_own_model  = os.path.join('networks', 'pretrained_models', 'itcnetaudio5', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
 
     else:
         raise NotImplementedError(f"Did not implement for this \"{args.dataset}\" dataset")

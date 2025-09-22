@@ -1,0 +1,31 @@
+BatchSize = 1
+
+class name: 2-Idle 	 label: 0 	 no. packet: 7000
+class name: 1-Power 	 label: 1 	 no. packet: 7000
+class name: 6-Attacks 	 label: 2 	 no. packet: 7000
+class name: 4-Scenarios 	 label: 3 	 no. packet: 7000
+class name: 3-Interactions 	 label: 4 	 no. packet: 7000
+class name: 5-Active 	 label: 5 	 no. packet: 7000
+Benchmarking...
+
+
+Total speedup from GPU FP32 to TensorRT INT8 is 2.0969x
+Speedup from GPU FP32 to TensorRT INT8 for each batch is 2.2028x
+
+
+Using CUDA (TensorRT)
+Acc on unseen test data (not validation dataset):           83.4643
+Using CUDA (TensorRT): Elapsed time for 20% of dataset:     1.4182 seconds
+Using CUDA (TensorRT): Average time per batch:              0.000105 seconds
+
+
+Using GPU FP32 (my model)
+Acc on unseen test data (not validation dataset):           84.95238095238096
+Using GPU FP32 (my model): Elapsed time for 20% of dataset: 2.9739 seconds
+Using GPU FP32 (my model): Average time per batch:          0.000232 seconds
+
+
+Using CPU FP32 (my model)
+Acc on unseen test data (not validation dataset):           84.95238095238096
+Using CPU FP32 (my model): Elapsed time for 20% of dataset: 1.4439 seconds
+Using CPU FP32 (my model): Average time per batch:          0.000141 seconds

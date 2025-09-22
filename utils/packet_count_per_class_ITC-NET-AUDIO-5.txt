@@ -1,0 +1,14 @@
+Counting number of packets takes 201s for Google_Meet. There are 2,123,193 packets.
+Finish parsing Google_Meet pcap files ... for 478s
+
+Counting number of packets takes 90s for Skype. There are 953,649 packets.
+Finish parsing Skype pcap files ... for 214s
+
+Counting number of packets takes 60s for Telegram. There are 636,429 packets.
+Finish parsing Telegram pcap files ... for 144s
+
+Counting number of packets takes 37s for SoundCloud. There are 487,574 packets.
+Finish parsing SoundCloud pcap files ... for 96s
+
+Counting number of packets takes 73s for WhatsApp. There are 764,829 packets.
+Finish parsing WhatsApp pcap files ... for 173s

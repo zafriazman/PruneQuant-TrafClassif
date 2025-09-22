@@ -12,7 +12,7 @@ from tqdm import tqdm
 from pytorch_quantization import quant_modules
 from networks.cnn1d import CNN1D_TrafficClassification
 from utils.training_utils import create_data_loaders
-from prune_quant.quant_utils import evaluate, save_model_state_dict, load_fp32_model, benchmark_against_NiN
+from prune_quant.quant_utils import evaluate, save_model_state_dict, load_fp32_model, benchmark_against_NiN, benchmark_without_NiN
 from prune_quant.prune import prune_permenantly
 from prune_quant.quant_convert import convert_to_onnx
 
@@ -104,6 +104,10 @@ if __name__ == "__main__":
         dataset     = os.path.join('data', 'datasets', 'ciciot2022-pytorch')
         train_ratio = 0.65
         val_ratio   = 0.15
+    elif args.dataset == "itcnetaudio5":
+        dataset     = os.path.join('data', 'datasets', 'itcnetaudio5-pytorch')
+        train_ratio = 0.65
+        val_ratio   = 0.15
     train_loader, valid_loader, test_loader, classes = create_data_loaders(dataset, inf_batch_size, n_worker, train_ratio, val_ratio)
     example_inputs = (next(iter(test_loader))[0]).to(device)
 
@@ -141,10 +145,15 @@ if __name__ == "__main__":
         elif args.dataset == "ciciot2022":
             trt_engine_path = os.path.join("networks","quantized_models","ciciot2022","model_engine.trt")
             path_own_model  = os.path.join('networks', 'pretrained_models', 'ciciot2022', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
-            path_NiN_model  = os.path.join('networks', 'pretrained_models', 'ciciot2022', 'NiN_CNN1D_TrafficClassification_best_model_without_aux.pth')
             net             = load_fp32_model(path=path_own_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
-            net_NiN         = load_fp32_model(path=path_NiN_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
-            benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
+            benchmark_without_NiN(net, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
+            exit()
+        
+        elif args.dataset == "itcnetaudio5":
+            trt_engine_path = os.path.join("networks","quantized_models","itcnetaudio5","model_engine.trt")
+            path_own_model  = os.path.join('networks', 'pretrained_models', 'itcnetaudio5', 'CNN1D_TrafficClassification_best_model_without_aux.pth')
+            net             = load_fp32_model(path=path_own_model, input_ch=example_inputs.shape[1], num_classes=classes, device=device)
+            benchmark_without_NiN(net, trt_engine_path, test_loader, inf_batch_size, classes, criterion, device)
             exit()
 
 
@@ -160,6 +169,8 @@ if __name__ == "__main__":
         checkpoint   = torch.load(os.path.join("networks","quantized_models","ustc-tfc2016", f"{model_name}_{args.dataset}.pt"), map_location=device)
     elif args.dataset == "ciciot2022":
         checkpoint   = torch.load(os.path.join("networks","quantized_models","ciciot2022", f"{model_name}_{args.dataset}.pt"), map_location=device)
+    elif args.dataset == "itcnetaudio5":
+        checkpoint   = torch.load(os.path.join("networks","quantized_models","itcnetaudio5", f"{model_name}_{args.dataset}.pt"), map_location=device)
 
     preserve_array_prune = checkpoint['preserve_array_prune']
     bitwidths = checkpoint['bitwidths']
@@ -194,6 +205,8 @@ if __name__ == "__main__":
         onnx_path = os.path.join("networks","quantized_models","ustc-tfc2016","model.onnx")
     elif args.dataset == "ciciot2022":
         onnx_path = os.path.join("networks","quantized_models","ciciot2022","model.onnx")
+    elif args.dataset == "itcnetaudio5":
+        onnx_path = os.path.join("networks","quantized_models","itcnetaudio5","model.onnx")
     convert_to_onnx(net, example_inputs, onnx_path)
     print(f"Export model as onnx at {onnx_path}")
     print("Please run trtexec to convert to .trt engine")

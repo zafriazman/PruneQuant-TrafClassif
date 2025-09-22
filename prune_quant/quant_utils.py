@@ -314,6 +314,8 @@ def save_model_state_dict(model, model_name, dataset, preserve_array_prune, bitw
         checkpoint = os.path.join("networks","quantized_models","ustc-tfc2016", f"{model_name}_{dataset}.pt")
     elif dataset == "ciciot2022":
         checkpoint = os.path.join("networks","quantized_models","ciciot2022", f"{model_name}_{dataset}.pt")
+    elif dataset == "itcnetaudio5":
+        checkpoint = os.path.join("networks","quantized_models","itcnetaudio5", f"{model_name}_{dataset}.pt")
     print(f"Saving state_dict checkpoint with masks for finetuning at {checkpoint}")
     torch.save(content, checkpoint)
 
@@ -387,6 +389,49 @@ def benchmark_against_NiN(net, net_NiN, trt_engine_path, test_loader, batch_size
     print(f"Acc on unseen test data (not validation dataset):           {test_acc_NiN}")
     print(f"Using GPU FP32 (NiN model): Elapsed time for 20% of dataset:{fp32_inf_time_NiN:.4f} seconds")
     print(f"Using GPU FP32 (NiN model): Average time per batch:         {time_fp32_NiN:4f} seconds")
+
+
+def benchmark_without_NiN(net, trt_engine_path, test_loader, batch_size, classes, criterion, device):
+    
+    print("Benchmarking...")
+    
+    # My model (baseline on GPU)
+    start_time_inf_fp32            = time.time()
+    _, test_acc_fp32, time_fp32    = evaluate(net, test_loader, criterion, device)
+    fp32_inf_time                  = time.time() - start_time_inf_fp32
+
+    # My model (baseline on CPU)
+    start_time_inf_cpu             = time.time()
+    _, test_acc_cpu, time_cpu      = evaluate(net.cpu(), test_loader, criterion, torch.device("cpu"))
+    cpu_inf_time                   = time.time() - start_time_inf_cpu
+    
+    # prune and quantized model
+    start_time_inf               = time.time()
+    test_acc, avg_time_per_batch = evaluate_trt(trt_engine_path, test_loader, batch_size, classes)
+    trt_inf_time                 = time.time() - start_time_inf
+
+
+    print(f"\n")
+    print(f"Total speedup from GPU FP32 to TensorRT INT8 is {(fp32_inf_time/trt_inf_time):.4f}x")
+    print(f"Speedup from GPU FP32 to TensorRT INT8 for each batch is {(time_fp32/avg_time_per_batch):.4f}x")
+
+    print(f"\n")
+    print(f"Using CUDA (TensorRT)")
+    print(f"Acc on unseen test data (not validation dataset):           {test_acc:.4f}")
+    print(f"Using CUDA (TensorRT): Elapsed time for 20% of dataset:     {trt_inf_time:.4f} seconds")
+    print(f"Using CUDA (TensorRT): Average time per batch:              {avg_time_per_batch:4f} seconds")
+    
+    print(f"\n")
+    print(f"Using GPU FP32 (my model)")
+    print(f"Acc on unseen test data (not validation dataset):           {test_acc_fp32}")
+    print(f"Using GPU FP32 (my model): Elapsed time for 20% of dataset: {fp32_inf_time:.4f} seconds")
+    print(f"Using GPU FP32 (my model): Average time per batch:          {time_fp32:4f} seconds")
+
+    print(f"\n")
+    print(f"Using CPU FP32 (my model)")
+    print(f"Acc on unseen test data (not validation dataset):           {test_acc_cpu}")
+    print(f"Using CPU FP32 (my model): Elapsed time for 20% of dataset: {cpu_inf_time:.4f} seconds")
+    print(f"Using CPU FP32 (my model): Average time per batch:          {time_cpu:4f} seconds")
 
 
 def evaluate_trt_backup_orig(engine_path, dataloader, batch_size, num_classes):

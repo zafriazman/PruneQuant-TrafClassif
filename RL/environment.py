@@ -116,6 +116,8 @@ class RL_env:
                     onnx_path = os.path.join("networks","quantized_models","ustc-tfc2016","model.onnx")
                 elif args.dataset == "ciciot2022":
                     onnx_path = os.path.join("networks","quantized_models","ciciot2022","model.onnx")
+                elif args.dataset == "itcnetaudio5":
+                    onnx_path = os.path.join("networks","quantized_models","itcnetaudio5","model.onnx")
                 convert_to_onnx(self.prune_quant_net, self.input_x, onnx_path)
                 print(f"Saving best model in onnx at {onnx_path}")
                 print(f"Best accuracy is {accuracy:.2f}% with FLOPs ratio of {(r_flops*100):3f}% from baseline model")
